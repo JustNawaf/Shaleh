@@ -2,6 +2,6 @@
 
 @section('content')
 <div class="container">
-    <h1 class="text-center">الصفحة الرئيسية</h1>
+    <h1 class="text-center">شاليهات</h1>
 </div>
 @endsection
