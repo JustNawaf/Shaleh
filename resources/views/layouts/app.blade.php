@@ -59,16 +59,29 @@
             z-index: 55;
             background-color: whitesmoke;
         }
+
+        .marTop {
+            margin-top: 25%;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .marTop {
+                margin-top: 75%;
+            }
+        }
     </style>
 </head>
 
 <body>
     <div id="app">
-        <div class="content" >
+        <div class="content">
             <div id="sideNav">
                 <div class="text-center">
                     <div class="mt-5">
-                        <p class="big-text">شاليه</p>
+                        <p class="big-text">
+                            <img src="/storage/logo/logl1.png" width="45" height="45" class="d-inline-block align-top" alt="">
+                            شاليه
+                        </p>
                     </div>
                     <br>
                     <div class="ml-3 mr-3" style="min-height: 2px;background-color:#a9a6a6;">
@@ -125,6 +138,7 @@
             <nav id="nav" class="navbar navbar-expand-md navbar-dark shadow-sm back w-100">
                 <div class="container">
                     <a class="navbar-brand big-text" href="{{ url('/') }}">
+                        <img src="/storage/logo/logl1.png" width="45" height="45" class="d-inline-block align-top" alt="">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                     <button id="buttonNav" class="navbar-toggler" type="button" data-target="#navbarSupportedContent"
