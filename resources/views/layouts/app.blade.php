@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'شـاليه') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
@@ -34,7 +34,7 @@
         }
 
         .mid-text {
-            font-size: 1.5em;
+            font-size: 1.3em;
         }
 
         #content {
@@ -73,7 +73,7 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" style="background-color:black;">
         <div class="content">
             <div id="sideNav">
                 <div class="text-center">
@@ -139,7 +139,8 @@
                 <div class="container">
                     <a class="navbar-brand big-text" href="{{ url('/') }}">
                         <img src="/storage/logo/logl1.png" width="45" height="45" class="d-inline-block align-top" alt="">
-                        {{ config('app.name', 'Laravel') }}
+                        {{-- {{ config('app.name', 'شـاليه') }} --}}
+                        شـاليه
                     </a>
                     <button id="buttonNav" class="navbar-toggler" type="button" data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false"
