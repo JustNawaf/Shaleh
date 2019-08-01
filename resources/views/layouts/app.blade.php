@@ -17,6 +17,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Tajawal&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/css/star-rating.min.css" media="all" rel="stylesheet" type="text/css"/>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
@@ -69,11 +70,15 @@
                 margin-top: 75%;
             }
         }
+        .my-container{
+            margin-left:15%;
+            margin-right:15%;
+        }
     </style>
 </head>
 
 <body>
-    <div id="app" style="background-color:black;">
+    <div id="app">
         <div class="content">
             <div id="sideNav">
                 <div class="text-center">
@@ -84,16 +89,14 @@
                         </p>
                     </div>
                     <br>
-                    <div class="ml-3 mr-3" style="min-height: 2px;background-color:#a9a6a6;">
 
-                    </div>
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav" style="padding-inline-start:0px;">
                         <li class="nav-item w-100 ml-0">
                             <a class="nav-link mid-text" href="{{ route('login') }}"></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link mid-text" href="{{ route('admin.index.shalehat') }}">الشاليهات</a>
+                            <a class="nav-link mid-text" href="{{ route('index.shalehat') }}">الشاليهات</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link mid-text" href="{{ route('admin.add.shaleh') }}">اضافة شاليه</a>
@@ -155,7 +158,7 @@
                                 <a class="nav-link mid-text" href="{{ route('login') }}"></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link mid-text" href="{{ route('admin.index.shalehat') }}">الشاليهات</a>
+                                <a class="nav-link mid-text" href="{{ route('index.shalehat') }}">الشاليهات</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link mid-text" href="{{ route('admin.add.shaleh') }}">اضافة شاليه</a>

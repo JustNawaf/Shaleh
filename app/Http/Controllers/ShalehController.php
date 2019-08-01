@@ -8,7 +8,7 @@ class ShalehController extends Controller
 {
     public function index()
     {
-        return view('pages.admin.shalehat');
+        return view('pages.all.shalehat');
     }
     public function add_shaleh()
     {
