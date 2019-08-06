@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div  id="root">
+        <Ul>
+            <li v-for="(item,index) in items" v-if="index == 1">
+                INDEX : {{ index }}<br>
+                ID : {{ item.id }}<br>
+                NAME : {{ item.name }}<br><br>
+            </li>
+        </Ul>
+        <my-com :just="just"></my-com>
+        <my-com></my-com>
+        <my-com></my-com>
+        <my-com></my-com>
+        <my-com></my-com>
+    </div>
+
+<script>
+Vue.component('my-com',{
+    data:function(){
+        return {
+            name:'nawaf',
+            just:'OMG',
+            count:0
+        }
+    },
+    props:[
+        'just'
+    ],
+    template:'<p @click="count++">Helo {{ name }} You Clicked to thie line  : {{ count }} || Name  : {{ just }}</p>'
+});
+new Vue({
+ el:'#root',
+ data:{
+     name:'I"Nawaf',
+     items:[
+         {
+            id:436002469,
+            name:'Nawaf Alharbi'
+         },
+         {
+            id:436002469,
+            name:'Mohammed Alharbi'
+         },
+
+     ],
+
+ },
+ methods: {
+     get:function() {
+         for (let index = 0; index < 3; index++) {
+             alert(this.items[0].id + this.items[1].id);
+
+         }
+     }
+ },
+})
+
+
+</script>
+</body>
+</html>
