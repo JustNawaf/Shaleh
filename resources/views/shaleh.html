@@ -16,20 +16,51 @@
         }
         .sub-div{
             position: absolute;
+            z-index:2;
+        }
+        .background-shadow{
+            position: absolute;
+            background: rgba(0, 0, 0, 0.40);
+            z-index: 1;
+        }
+        .title-text {
+            font-size: 3em;
+        }
+        .desc-text {
+            font-size: 2em;
+        }
+        @media only screen and (max-width: 600px) {
+            .title-text {
+                font-size: 2em;
+            }
+            .desc-text {
+            font-size: 1em;
+            }
         }
 
 
     </style>
 </head>
 <body>
-    <div class="w-100 d-flex flex-column">
-        <div class="w-50 py-1 mx-auto shadow-lg main-div">
-            <div class="sub-div">
-                <img src="/public/storage/images/navbarBackground.jpg" width="100%" height="500em">
+    <div class="w-100 d-flex h-100 flex-column">
+
+        <div class="row w-100 m-0 main-div justify-content-center" style="height: 30vh">
+            <div class="col-lg-6 col-sm-12 sub-div h-100 p-0" style="margin-right:50%;">
+                <div class="background-shadow w-100 h-100"></div>
+                <img src="/public/storage/images/4K_Wanted8.jpg" class="h-100" width="100%">
             </div>
-            <div class="w-100 h-auto  d-flex flex-column justify-content-between  sub-div" style="min-height: 500px;">
+            <div class="col-lg-6 col-sm-12 sub-div h-100 p-0" style="margin-right:50%;">
+                    <div class="background-shadow w-100 h-100"></div>
+                    <img src="/public/storage/images/4K_Wanted8.jpg" class="h-100" width="100%">
+            </div>
+            <div class="col-lg-6 col-sm-12 sub-div h-100 p-0 d-flex flex-column justify-content-between">
                 <img class="m-3" src="/public/storage/stars.png" width="100px">
-                <h1 class="align-self-end m-4"style="color:white;" width="100px">اسم الاستراحة</h1>
+                <h1 class="text-right  pr-5 pb-3 title-text" style="color:white;">شاليه طيش شباب</h1>
+            </div>
+        </div>
+        <div class="row w-100 h-100 m-0 justify-content-center mt-1 text-right" style="color:black;">
+            <div class="col-lg-6 col-sm-12 my-auto p-0 pr-3" style="background:#E4E4E4;">
+                <p class="desc-text">عن الشاليه</p>
             </div>
         </div>
 
@@ -54,6 +85,20 @@
 
 
 
+
+
+
+
+
+        <!-- <div class="w-50 py-1 mx-auto shadow-lg main-div">
+            <div class="sub-div">
+                <img src="/public/storage/images/navbarBackground.jpg" width="100%" height="500em">
+            </div>
+            <div class="w-100 h-auto  d-flex flex-column justify-content-between  sub-div" style="min-height: 500px;">
+                <img class="m-3" src="/public/storage/stars.png" width="100px">
+                <h1 class="align-self-end m-4"style="color:white;" width="100px">اسم الاستراحة</h1>
+            </div>
+        </div> -->
 
 
 
