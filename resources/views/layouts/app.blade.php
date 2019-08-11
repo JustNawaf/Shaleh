@@ -11,18 +11,21 @@
     <title>{{ config('app.name', 'شـاليه') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Tajawal&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/css/star-rating.min.css" media="all" rel="stylesheet" type="text/css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/css/star-rating.min.css" media="all"
+        rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
         * {
-            font-family: 'Tajawal', sans-serif;
+            font-family: 'Cairo', sans-serif;
+            margin: 0px;
+            padding: 0px;
         }
 
         .back {
@@ -70,21 +73,56 @@
                 margin-top: 75%;
             }
         }
-        .my-container{
-            margin-left:15%;
-            margin-right:15%;
+
+        .my-container {
+            margin-left: 15%;
+            margin-right: 15%;
+        }
+
+        .main-div {
+            position: relative;
+        }
+
+        .sub-div {
+            position: absolute;
+            z-index: 2;
+        }
+
+        .background-shadow {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.40);
+            z-index: 1;
+        }
+
+        .title-text {
+            font-size: 2.5em;
+        }
+
+        .desc-text {
+            font-size: 2em;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .title-text {
+                font-size: 2em;
+            }
+
+            .desc-text {
+                font-size: 1em;
+            }
         }
     </style>
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" class="m-0 p-0 m-auto m-lg-0">
         <div class="content">
-            <div id="sideNav">
+            <div id="sideNav" style="height:100vh;">
                 <div class="text-center">
                     <div class="mt-5">
                         <p class="big-text">
-                            <img src="/storage/logo/logl1.png" width="45" height="45" class="d-inline-block align-top" alt="">
+                            <img src="/storage/logo/logl1.png" width="45" height="45" class="d-inline-block align-top"
+                                alt="">
                             شاليه
                         </p>
                     </div>
@@ -138,10 +176,11 @@
                     </ul>
                 </div>
             </div>
-            <nav id="nav" class="navbar navbar-expand-md navbar-dark shadow-sm back w-100">
+            <nav id="nav" class="navbar navbar-expand-md navbar-dark shadow-sm back w-100 position-relative">
                 <div class="container">
                     <a class="navbar-brand big-text" href="{{ url('/') }}">
-                        <img src="/storage/logo/logl1.png" width="45" height="45" class="d-inline-block align-top" alt="">
+                        <img src="/storage/logo/logl1.png" width="45" height="45" class="d-inline-block align-top"
+                            alt="">
                         {{-- {{ config('app.name', 'شـاليه') }} --}}
                         شـاليه
                     </a>
@@ -202,12 +241,34 @@
                 </div>
             </nav>
         </div>
-
-
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <div class="row m-0 py-3">
+            <div class="col-12 w-100 col-md-4 col-sm-12 col-xs-4">
+                <div class="card text-left">
+                    <img class="card-img-top" src="holder.js/100px180/" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">Title</h4>
+                        <p class="card-text">Body</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-sm-12 col-xs-4">
+                <div id="shaleh">
+                    <example-component v-for="shaleh in 5"></example-component>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 w-100 col-sm-12 col-xs-4">
+                <div class="card text-left">
+                  <img class="card-img-top" src="holder.js/100px180/" alt="">
+                  <div class="card-body">
+                    <h4 class="card-title">Title</h4>
+                    <p class="card-text">Body</p>
+                  </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <script src="{{ asset('js/app.js') }}"></script>
     <script>
         $('#buttonNav').click(function(){
             // $('#navbarSupportedContent').show();
