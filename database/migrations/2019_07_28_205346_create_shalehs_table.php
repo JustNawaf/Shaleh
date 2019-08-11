@@ -18,10 +18,14 @@ class CreateShalehsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('name');
-            $table->string('lat');
-            $table->string('long');
+            $table->string('lat')->nullable();
+            $table->string('long')->nullable();
             $table->mediumText('description');
             $table->integer('quality');
+            $table->integer('price');
+            $table->integer('price_in_ramadan');
+            $table->integer('price_in_eid_ftr');
+            $table->integer('price_in_eid_adha');
             $table->timestamps();
         });
     }
