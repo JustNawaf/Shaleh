@@ -99,7 +99,12 @@
         }
 
         .desc-text {
-            font-size: 2em;
+            font-size: 1.5em;
+        }
+        .my-shadow{
+            -webkit-box-shadow: 0px 11px 37px -10px rgba(0, 0, 0, 0.25);
+            -moz-box-shadow: 0px 11px 37px -10px rgba(0, 0, 0, 0.25);
+            box-shadow: 0px 11px 37px -10px rgba(0, 0, 0, 0.25);
         }
 
         @media only screen and (max-width: 600px) {
@@ -110,6 +115,11 @@
             .desc-text {
                 font-size: 1em;
             }
+            .my-shadow{
+            -webkit-box-shadow: 0px 11px 37px -10px rgba(0, 0, 0, 0.25);
+            -moz-box-shadow: 0px 11px 37px -10px rgba(0, 0, 0, 0.25);
+            box-shadow: 0px 11px 37px -10px rgba(0, 0, 0, 0.25);
+        }
         }
     </style>
 </head>
@@ -242,7 +252,7 @@
             </nav>
         </div>
         <div class="row m-0 py-3">
-            <div class="col-12 w-100 col-md-4 col-sm-12 col-xs-4">
+            <div class="col-12 w-100 col-md-3 col-sm-12 col-xs-4">
                 <div class="card text-left">
                     <img class="card-img-top" src="holder.js/100px180/" alt="">
                     <div class="card-body">
@@ -251,12 +261,12 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-4 col-sm-12 col-xs-4">
+            <div class="col-12 col-md-6 col-sm-12 col-xs-4">
                 <div id="shaleh">
                     <example-component v-for="shaleh in 5"></example-component>
                 </div>
             </div>
-            <div class="col-12 col-md-4 w-100 col-sm-12 col-xs-4">
+            <div class="col-12 col-md-3 w-100 col-sm-12 col-xs-4">
                 <div class="card text-left">
                   <img class="card-img-top" src="holder.js/100px180/" alt="">
                   <div class="card-body">

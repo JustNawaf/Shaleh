@@ -1,6 +1,6 @@
 <template>
-    <div class="main-div">
-        <div class="py-3">
+    <div class="main-div  my-shadow my-3" style="background-color:white;">
+        <div class="">
         
             <div class="row  w-100 m-0 main-div justify-content-center" style="height: 30vh;z-index: 10;">
                 <div class="col-sm-12 w-100 sub-div h-100 p-0" style="">
@@ -12,9 +12,11 @@
                     <h1 class="text-right  pr-5 pb-3 title-text" style="color:white;">شاليه طيش شباب</h1>
                 </div>
             </div>
-             <div class="row w-100 h-100 m-0 justify-content-center mt-1 text-right" style="color:black;">
-                <div class="col-sm-12 my-auto p-0 pr-3" style="background:#E4E4E4;">
-                    <p class="desc-text">عن الشاليه</p>
+             <div class="row w-100 m-0 justify-content-center mt-1 text-right" style="color:black;">
+                <div class="col-sm-12 h-100 my-auto p-0 pr-3" style="border-bottom:1px solid #B9B9B9;">
+                    <p class="desc-text">
+                        <img src="/storage/icons/information.png" width="25px"/>
+                    </p>
                 </div>
             </div> 
         </div>
