@@ -20,18 +20,12 @@ class CreateRolesTable extends Migration
             $table->timestamps();
         });
 
-        $role_admin = new Role();
-        $role_user = new Role();
-        $role_buss = new Role();
+        DB::table('roles')->insert([
+            'name'=>'admin',
+            'name'=>'buss',
+            'name'=>'user',
 
-        $role_admin->name = 'admin';
-        $role_admin->save();
-
-        $role_user->name = 'user';
-        $role_user->save();
-
-        $role_buss->name = 'buss';
-        $role_buss->save();
+        ]);
     }
 
     /**

@@ -11,6 +11,8 @@
     <title>{{ config('app.name', 'شـاليه') }}</title>
 
     <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -23,7 +25,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
         body{
-            background-color:#C3C6CE;
+            background-color:#C4C4C4;
         }
         * {
             font-family: 'Cairo', sans-serif;
@@ -32,7 +34,8 @@
         }
 
         .back {
-            background-image: url('/storage/images/navbarBackground.jpg');
+            /* background-image: url('/storage/images/navbarBackground2.jpg'); */
+            background-color:#343434;
             padding-bottom: 25em;
         }
 

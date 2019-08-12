@@ -5,7 +5,7 @@
 <div class="row m-0 py-3 d-flex flex-row justify-content-center">
     <div class="col-12 col-md-6 text-right">
         <div class="form-group">
-            <label for="my-input" class="">بحث</label>
+            <h1 for="my-input" class="text-sm-center text-center">بحث</h1>
             <input id="my-input" class="form-control" type="text" name="" placeholder="ابحث عن اسم الشاليه">
         </div>
     </div>
