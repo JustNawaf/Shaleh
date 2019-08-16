@@ -21,12 +21,23 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/css/star-rating.min.css" media="all"
         rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/82a6a22d16.js"></script>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
-        body{
-            background-color:#C4C4C4;
+        body {
+            /* background-color:#C4C4C4; */
+            background-image: url('/storage/images/navbarBackground2.jpg');
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
         }
+
+        html {
+
+        }
+
         * {
             font-family: 'Cairo', sans-serif;
             margin: 0px;
@@ -34,8 +45,7 @@
         }
 
         .back {
-            /* background-image: url('/storage/images/navbarBackground2.jpg'); */
-            background-color:#343434;
+            /* background-color:#343434; */
             padding-bottom: 25em;
         }
 
@@ -107,10 +117,37 @@
         .desc-text {
             font-size: 1.5em;
         }
-        .my-shadow{
+
+        .my-shadow {
             -webkit-box-shadow: 0px 11px 37px -10px rgba(0, 0, 0, 0.25);
             -moz-box-shadow: 0px 11px 37px -10px rgba(0, 0, 0, 0.25);
             box-shadow: 0px 11px 37px -10px rgba(0, 0, 0, 0.25);
+        }
+
+        .background-black {
+            background: rgba(0, 0, 0, 0.49);
+            position: absolute;
+            height: 100vmax;
+            top: 0%;
+            bottom: 0;
+            margin: 0%;
+            margin-bottom: calc(50% - 50vw);
+            z-index: -1;
+            width: 100%;
+        }
+
+        .large-text-subject {
+            font-size: 4em;
+        }
+
+        .medium-text-subject {
+            font-size: 2em;
+        }
+
+        .subject {
+            position: absolute;
+            top: 0%;
+            z-index: -1;
         }
 
         @media only screen and (max-width: 600px) {
@@ -121,11 +158,14 @@
             .desc-text {
                 font-size: 1em;
             }
-            .my-shadow{
-            -webkit-box-shadow: 0px 11px 37px -10px rgba(0, 0, 0, 0.25);
-            -moz-box-shadow: 0px 11px 37px -10px rgba(0, 0, 0, 0.25);
-            box-shadow: 0px 11px 37px -10px rgba(0, 0, 0, 0.25);
-        }
+
+            .my-shadow {
+                -webkit-box-shadow: 0px 11px 37px -10px rgba(0, 0, 0, 0.25);
+                -moz-box-shadow: 0px 11px 37px -10px rgba(0, 0, 0, 0.25);
+                box-shadow: 0px 11px 37px -10px rgba(0, 0, 0, 0.25);
+            }
+
+
         }
     </style>
 </head>
@@ -192,7 +232,7 @@
                     </ul>
                 </div>
             </div>
-            <nav id="nav" class="navbar navbar-expand-md navbar-dark shadow-sm back w-100 position-relative">
+            <nav id="nav" class="navbar navbar-expand-md navbar-dark  back w-100 position-relative">
                 <div class="container">
                     <a class="navbar-brand big-text" href="{{ url('/') }}">
                         <img src="/storage/logo/logl1.png" width="45" height="45" class="d-inline-block align-top"
@@ -257,9 +297,11 @@
                 </div>
             </nav>
         </div>
+
         @yield('content')
     </div>
-
+    <div class="background-black">
+    </div>
     <script src="{{ asset('js/app.js') }}"></script>
     <script>
         $('#buttonNav').click(function(){
