@@ -11,7 +11,7 @@
             <h2 class="align-self-start medium-text-subject" style="color:#BEBFBE;">
                 تستطيع من خلال موقعنا البحث عن الشاليه القريب منك و رؤية الاسعار و الصور الخاصة بالشاليه
             </h2>
-            <i class="fas fa-fan" style="font-size: 100px;color:white;"></i>
+            <i class="fas fa-fan" style="font-size: 100px;"></i>
         </div>
     </div>
 

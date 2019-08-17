@@ -27,7 +27,7 @@
     <style>
         body {
             /* background-color:#C4C4C4; */
-            background-image: url('/storage/images/navbarBackground.jpg');
+            background-image: url('/storage/images/navbarBackground2.jpg');
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
