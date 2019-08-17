@@ -27,7 +27,7 @@
     <style>
         body {
             /* background-color:#C4C4C4; */
-            background-image: url('/storage/images/navbarBackground2.jpg');
+            background-image: url('/storage/images/navbarBackground.jpg');
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -132,7 +132,7 @@
             bottom: 0;
             margin: 0%;
             margin-bottom: calc(50% - 50vw);
-            z-index: -1;
+            z-index: -2;
             width: 100%;
         }
 
