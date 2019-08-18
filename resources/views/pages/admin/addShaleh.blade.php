@@ -135,7 +135,7 @@
     <div class="form-group">
         <h1 class="text-center">الخدمات</h1>
         <div class="row">
-            <div class="form-group mt-5 col d-flex flex-row justify-content-center align-content-center"
+            <div class="form-group mt-5 col-3 d-flex flex-row justify-content-center align-content-center"
                 onclick="show(this)">
                 <div class="col d-flex flex-column justify-content-center align-items-center">
                     <i class="fas fa-fan" style="font-size:50px;"></i>
@@ -144,7 +144,7 @@
                 </div>
             </div>
 
-            <div class="form-group mt-5 col d-flex flex-row justify-content-center align-content-center"
+            <div class="form-group mt-5 col-3 d-flex flex-row justify-content-center align-content-center"
                 onclick="show(this)">
                 <div class="col d-flex flex-column justify-content-center align-items-center">
                     <i class="fas fa-bath" style="font-size:50px;"></i>
@@ -153,7 +153,23 @@
                 </div>
             </div>
 
-            <div class="form-group mt-5 col d-flex flex-row justify-content-center align-content-center"
+            <div class="form-group mt-5 col-3 d-flex flex-row justify-content-center align-content-center"
+                onclick="show(this)">
+                <div class="col d-flex flex-column justify-content-center align-items-center">
+                    <i class="fas fa-bath" style="font-size:50px;"></i>
+                    <p>مكيف</p>
+                    <input type="checkbox" class="n-checkbox" />
+                </div>
+            </div>
+            <div class="form-group mt-5 col-3 d-flex flex-row justify-content-center align-content-center"
+                onclick="show(this)">
+                <div class="col d-flex flex-column justify-content-center align-items-center">
+                    <i class="fas fa-bath" style="font-size:50px;"></i>
+                    <p>مكيف</p>
+                    <input type="checkbox" class="n-checkbox" />
+                </div>
+            </div>
+            <div class="form-group mt-5 col-3 d-flex flex-row justify-content-center align-content-center"
                 onclick="show(this)">
                 <div class="col d-flex flex-column justify-content-center align-items-center">
                     <i class="fas fa-bath" style="font-size:50px;"></i>
