@@ -25,8 +25,13 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
-        body {
+        #background-image-fixed {
             /* background-color:#C4C4C4; */
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -5;
+            ;
             background-image: url('/storage/images/navbarBackground2.jpg');
             -webkit-background-size: cover;
             -moz-background-size: cover;
@@ -34,9 +39,6 @@
             background-size: cover;
         }
 
-        html {
-
-        }
 
         * {
             font-family: 'Cairo', sans-serif;
@@ -126,14 +128,17 @@
 
         .background-black {
             background: rgba(0, 0, 0, 0.49);
-            position: absolute;
+            position: fixed;
             height: 100vmax;
-            top: 0%;
+            top: 0;
             bottom: 0;
+            left: 0;
+            right: 0;
             margin: 0%;
             margin-bottom: calc(50% - 50vw);
             z-index: -2;
             width: 100%;
+            /* height: 100%; */
         }
 
         .large-text-subject {
@@ -167,10 +172,27 @@
 
 
         }
+
+        .n-checkbox {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            top: 0%;
+            left: 0%;
+            right: 0%;
+            bottom: 0%;
+        }
+
+        .n-checkbox-shadow {
+            color: green;
+        }
     </style>
 </head>
 
 <body>
+    <div id="background-image-fixed">
+    </div>
     <div id="app" class="m-0 p-0 m-auto m-lg-0">
         <div class="content">
             <div id="sideNav" style="height:100vh;">

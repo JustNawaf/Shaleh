@@ -9,34 +9,19 @@
 </head>
 <body>
     <div  id="root">
-        <Ul>
-            <li v-for="(item,index) in items" v-if="index == 1">
+        <!-- <ul style="margin-left: 40%;">
+            <li v-for="(item,index) in items">
                 INDEX : {{ index }}<br>
                 ID : {{ item.id }}<br>
                 NAME : {{ item.name }}<br><br>
+                <hr>
             </li>
-        </Ul>
-        <my-com :just="just"></my-com>
-        <my-com></my-com>
-        <my-com></my-com>
-        <my-com></my-com>
-        <my-com></my-com>
+        </ul> -->
+        <p @click="get()">Helo</p>
     </div>
 
 <script>
-Vue.component('my-com',{
-    data:function(){
-        return {
-            name:'nawaf',
-            just:'OMG',
-            count:0
-        }
-    },
-    props:[
-        'just'
-    ],
-    template:'<p @click="count++">Helo {{ name }} You Clicked to thie line  : {{ count }} || Name  : {{ just }}</p>'
-});
+
 new Vue({
  el:'#root',
  data:{
@@ -55,11 +40,12 @@ new Vue({
 
  },
  methods: {
-     get:function() {
+     get:function(value) {
          for (let index = 0; index < 3; index++) {
              alert(this.items[0].id + this.items[1].id);
 
          }
+
      }
  },
 })
