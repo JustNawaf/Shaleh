@@ -5,49 +5,49 @@
 <div class="container d-flex flex-row w-100">
     <div id="1" class="d-flex flex-row justify-content-center align-items-center" data-toggle="tooltip"
         data-placement="top" title="المعلومات الشخصية"
-        style="background:#BEBEBE;color:black;width: 50px;height:50px;border-radius: 50%;cursor: pointer;">
+        style="background:#BEBEBE;color:black;width:65px;height:50px;border-radius: 50%;cursor: pointer;">
         <b class="text-center" style="height:fit-content">1</b>
     </div>
     <div class="align-self-center" style="border-top:3px solid green;width: 150px;">
     </div>
     <div id="2" class="d-flex flex-row justify-content-center align-items-center" data-toggle="tooltip"
         data-placement="top" title="المعلومات الشخصية"
-        style="background:black;color:white;width: 50px;height:50px;border-radius: 50%;cursor: pointer;">
+        style="background:black;color:white;width:65px;height:50px;border-radius: 50%;cursor: pointer;">
         <b class="text-center" style="height:fit-content">2</b>
     </div>
     <div class="align-self-center" style="border-top:3px solid black;width: 150px;">
     </div>
     <div id="3" class="d-flex flex-row justify-content-center align-items-center" data-toggle="tooltip"
         data-placement="top" title="المعلومات الشخصية"
-        style="background:black;color:white;width: 50px;height:50px;border-radius: 50%;cursor: pointer;">
+        style="background:black;color:white;width:65px;height:50px;border-radius: 50%;cursor: pointer;">
         <b class="text-center" style="height:fit-content">3</b>
     </div>
     <div class="align-self-center" style="border-top:3px solid black;width: 150px;">
     </div>
     <div id="4" class="d-flex flex-row justify-content-center align-items-center" data-toggle="tooltip"
         data-placement="top" title="المعلومات الشخصية"
-        style="background:red;color:white;width: 50px;height:50px;border-radius: 50%;cursor: pointer;">
+        style="background:red;color:white;width:65px;height:50px;border-radius: 50%;cursor: pointer;">
         <b class="text-center" style="height:fit-content">4</b>
     </div>
     <div class="align-self-center" style="border-top:3px solid black;width: 150px;">
     </div>
     <div id="5" class="d-flex flex-row justify-content-center align-items-center" data-toggle="tooltip"
         data-placement="top" title="المعلومات الشخصية"
-        style="background:green;color:white;width: 50px;height:50px;border-radius: 50%;cursor: pointer;">
+        style="background:green;color:white;width:65px;height:50px;border-radius: 50%;cursor: pointer;">
         <b class="text-center" style="height:fit-content">5</b>
     </div>
     <div class="align-self-center" style="border-top:3px solid black;width: 150px;">
     </div>
     <div id="6" class="d-flex flex-row justify-content-center align-items-center" data-toggle="tooltip"
         data-placement="top" title="المعلومات الشخصية"
-        style="background:black;color:white;width: 50px;height:50px;border-radius: 50%;cursor: pointer;">
+        style="background:black;color:white;width:65px;height:50px;border-radius: 50%;cursor: pointer;">
         <b class="text-center" style="height:fit-content">6</b>
     </div>
     <div class="align-self-center" style="border-top:3px solid black;width: 150px;">
     </div>
     <div id="7" class="d-flex flex-row justify-content-center align-items-center" data-toggle="tooltip"
         data-placement="top" title="المعلومات الشخصية"
-        style="background:black;color:white;width: 50px;height:50px;border-radius: 50%;cursor: pointer;">
+        style="background:black;color:white;width:65px;height:50px;border-radius: 50%;cursor: pointer;">
         <b class="text-center" style="height:fit-content">7</b>
     </div>
 
@@ -135,16 +135,19 @@
     <div class="form-group">
         <h1 class="text-center">الخدمات</h1>
         <div class="row">
-            <div class="form-group mt-5 col d-flex flex-row justify-content-center align-content-center"
-                onclick="show(this)">
-                <div class="col d-flex flex-column justify-content-center align-items-center">
-                    <i class="fas fa-fan" style="font-size:50px;"></i>
-                    <p>مكيف</p>
-                    <input type="checkbox" class="n-checkbox" />
+            @foreach ($properties as $property)
+                <div class="form-group mt-5 col-md-3 col-4 d-flex flex-row justify-content-center align-content-center"
+                    onclick="show(this)">
+                    <div class="col d-flex flex-column justify-content-center align-items-center">
+                        <i class="{{ $property->icon_name }}" style="font-size:50px;"></i>
+                        <p>{{ $property->name }}</p>
+                        <input type="checkbox" value="{{ $property->id }}" class="n-checkbox" />
+                    </div>
                 </div>
-            </div>
+            @endforeach
 
-            <div class="form-group mt-5 col d-flex flex-row justify-content-center align-content-center"
+
+            {{-- <div class="form-group mt-5 col-md-3 col-4 d-flex flex-row justify-content-center align-content-center"
                 onclick="show(this)">
                 <div class="col d-flex flex-column justify-content-center align-items-center">
                     <i class="fas fa-bath" style="font-size:50px;"></i>
@@ -153,7 +156,7 @@
                 </div>
             </div>
 
-            <div class="form-group mt-5 col d-flex flex-row justify-content-center align-content-center"
+            <div class="form-group mt-5 col-md-3 col-4 d-flex flex-row justify-content-center align-content-center"
                 onclick="show(this)">
                 <div class="col d-flex flex-column justify-content-center align-items-center">
                     <i class="fas fa-bath" style="font-size:50px;"></i>
@@ -161,6 +164,22 @@
                     <input type="checkbox" class="n-checkbox" />
                 </div>
             </div>
+            <div class="form-group mt-5 col-md-3 col-4 d-flex flex-row justify-content-center align-content-center"
+                onclick="show(this)">
+                <div class="col d-flex flex-column justify-content-center align-items-center">
+                    <i class="fas fa-bath" style="font-size:50px;"></i>
+                    <p>مكيف</p>
+                    <input type="checkbox" class="n-checkbox" />
+                </div>
+            </div>
+            <div class="form-group mt-5 col-md-3 col-4 d-flex flex-row justify-content-center align-content-center"
+                onclick="show(this)">
+                <div class="col d-flex flex-column justify-content-center align-items-center">
+                    <i class="fas fa-bath" style="font-size:50px;"></i>
+                    <p>مكيف</p>
+                    <input type="checkbox" class="n-checkbox" />
+                </div>
+            </div> --}}
         </div>
     </div>
 

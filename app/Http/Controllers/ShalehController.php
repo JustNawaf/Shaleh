@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Property;
 use Illuminate\Http\Request;
 
 class ShalehController extends Controller
@@ -12,6 +13,7 @@ class ShalehController extends Controller
     }
     public function add_shaleh()
     {
-        return view('pages.admin.addShaleh');
+        $properties = Property::all();
+        return view('pages.admin.addShaleh')->with('properties',$properties);
     }
 }
