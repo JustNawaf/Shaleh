@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 <div class="container d-flex flex-row w-100">
     <div id="1" class="d-flex flex-row justify-content-center align-items-center" data-toggle="tooltip"
         data-placement="top" title="المعلومات الشخصية"
@@ -52,210 +53,177 @@
     </div>
 
 </div>
+<form action="{{ route('admin.store.shaleh') }}" method="post">
+    @csrf
+    <div id="personalInformation" class="container text-right" style="color:white">
+        <div class="form-group mt-5">
+            <h1 class="text-center">معلومات عن صاحب الشاليه</h1>
+            <div class="row pt-3">
+                <div class="col-12 w-100 col-md-3 col-sm-12 col-xs-4">
+                    <label for="inputName">الاسم الاول</label>
+                    <input type="text" class="form-control is-valid" name="first_name" id="first_name">
+                    <div class="invalid-feedback" style="">
+                        Validation message
+                    </div>
+                </div>
+                <div class="col-12 w-100 col-md-3 col-sm-12 col-xs-4">
+                    <label for="inputName">الاسم الاخير</label>
+                    <input type="text" class="form-control is-valid" name="last_name" id="last_name">
+                    <div class="invalid-feedback" style="">
+                        Validation message
+                    </div>
+                </div>
 
-<div class="container text-right" style="color:white">
-    <div class="form-group mt-5">
-        <h1 class="text-center">معلومات عن صاحب الشاليه</h1>
-        <div class="row pt-3">
-            <div class="col-12 w-100 col-md-3 col-sm-12 col-xs-4">
-                <label for="inputName">الاسم الاول</label>
-                <input type="text" class="form-control is-valid" name="inputName" id="inputName">
-                <div class="invalid-feedback" style="">
-                    Validation message
+                <div class="col-12 w-100 col-md-3 col-sm-12 col-xs-4">
+                    <label for="inputName">رقم الجوال</label>
+                    <input type="number" class="form-control is-valid" name="phone" id="phone">
+                    <div class="invalid-feedback" style="">
+                        Validation message
+                    </div>
                 </div>
-            </div>
-            <div class="col-12 w-100 col-md-3 col-sm-12 col-xs-4">
-                <label for="inputName">الاسم الاخير</label>
-                <input type="text" class="form-control is-valid" name="inputName" id="inputName">
-                <div class="invalid-feedback" style="">
-                    Validation message
-                </div>
-            </div>
-
-            <div class="col-12 w-100 col-md-3 col-sm-12 col-xs-4">
-                <label for="inputName">رقم الجوال</label>
-                <input type="text" class="form-control is-valid" name="inputName" id="inputName">
-                <div class="invalid-feedback" style="">
-                    Validation message
-                </div>
-            </div>
-            <div class="col-12 w-100 col-md-3 col-sm-12 col-xs-4">
-                <label for="inputName">البريد الاكتروني</label>
-                <input type="text" class="form-control is-valid" name="inputName" id="inputName">
-                <div class="invalid-feedback" style="">
-                    Validation message
+                <div class="col-12 w-100 col-md-3 col-sm-12 col-xs-4">
+                    <label for="inputName">البريد الاكتروني</label>
+                    <input type="email" class="form-control is-valid" name="email" id="email">
+                    <div class="invalid-feedback" style="">
+                        Validation message
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
 
-</div>
 
 
+    <div id="shalehInformation" class="container  text-right mt-5" style="color:white;">
 
-<div class="container  text-right mt-5" style="color:white;">
-
-    <h1 class="text-center">اضافة الشاليه</h1>
-    <div class="form-group pt-3">
-        <label for="inputName">اسم الشاليه</label>
-        <input type="text" class="form-control is-valid" name="inputName" id="inputName">
-        <div class="invalid-feedback" style="">
-            Validation message
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="form-group">
-            <label for="">الوصف</label>
-            <textarea class="form-control is-valid" name="" id="" rows="3"></textarea>
+        <h1 class="text-center">اضافة الشاليه</h1>
+        <div class="form-group pt-3">
+            <label for="inputName">اسم الشاليه</label>
+            <input type="text" class="form-control is-valid" name="shaleh_name" id="shaleh_name">
             <div class="invalid-feedback" style="">
                 Validation message
             </div>
         </div>
-    </div>
 
-    <div class="form-group">
         <div class="form-group">
-            <label for="">الموقع</label>
-            <textarea class="form-control is-valid" name="" id="" rows="3"></textarea>
-            <div class="invalid-feedback" style="">
-                Validation message
+            <div class="form-group">
+                <label for="">الوصف</label>
+                <textarea class="form-control is-valid" name="shaleh_desc" id="shaleh_desc" rows="3"></textarea>
+                <div class="invalid-feedback" style="">
+                    Validation message
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <label for="inputName">الجودة من 5 نجوم</label>
-        <input type="text" class="form-control is-valid" name="inputName" id="inputName">
-        <div class="invalid-feedback" style="">
-            Validation message
-        </div>
-    </div>
-
-    <div class="form-group">
-        <h1 class="text-center">الخدمات</h1>
-        <div class="row">
-            @foreach ($properties as $property)
+        <div class="form-group">
+            <h1 class="text-center">الخدمات</h1>
+            <div class="row">
+                @foreach ($properties as $property)
                 <div class="form-group mt-5 col-md-3 col-4 d-flex flex-row justify-content-center align-content-center"
                     onclick="show(this)">
                     <div class="col d-flex flex-column justify-content-center align-items-center">
                         <i class="{{ $property->icon_name }}" style="font-size:50px;"></i>
                         <p>{{ $property->name }}</p>
-                        <input type="checkbox" value="{{ $property->id }}" class="n-checkbox" />
+                        <input type="checkbox" value="{{ $property->id }}" name="properites[]" class="n-checkbox" />
                     </div>
                 </div>
-            @endforeach
-
-
-            {{-- <div class="form-group mt-5 col-md-3 col-4 d-flex flex-row justify-content-center align-content-center"
-                onclick="show(this)">
-                <div class="col d-flex flex-column justify-content-center align-items-center">
-                    <i class="fas fa-bath" style="font-size:50px;"></i>
-                    <p>دورة مياه</p>
-                    <input type="checkbox" class="n-checkbox" />
-                </div>
-            </div>
-
-            <div class="form-group mt-5 col-md-3 col-4 d-flex flex-row justify-content-center align-content-center"
-                onclick="show(this)">
-                <div class="col d-flex flex-column justify-content-center align-items-center">
-                    <i class="fas fa-bath" style="font-size:50px;"></i>
-                    <p>مكيف</p>
-                    <input type="checkbox" class="n-checkbox" />
-                </div>
-            </div>
-            <div class="form-group mt-5 col-md-3 col-4 d-flex flex-row justify-content-center align-content-center"
-                onclick="show(this)">
-                <div class="col d-flex flex-column justify-content-center align-items-center">
-                    <i class="fas fa-bath" style="font-size:50px;"></i>
-                    <p>مكيف</p>
-                    <input type="checkbox" class="n-checkbox" />
-                </div>
-            </div>
-            <div class="form-group mt-5 col-md-3 col-4 d-flex flex-row justify-content-center align-content-center"
-                onclick="show(this)">
-                <div class="col d-flex flex-column justify-content-center align-items-center">
-                    <i class="fas fa-bath" style="font-size:50px;"></i>
-                    <p>مكيف</p>
-                    <input type="checkbox" class="n-checkbox" />
-                </div>
-            </div> --}}
-        </div>
-    </div>
-
-    <div class="form-group mt-5">
-        <h1 class="text-center">معلومات الموقع</h1>
-        <div class="row pt-3">
-            <div class="col-12 w-100 col-md-3 col-sm-12 col-xs-4">
-                <label for="inputName">السعر في اليوم العادي</label>
-                <input type="text" class="form-control is-valid" name="inputName" id="inputName">
-                <div class="invalid-feedback" style="">
-                    Validation message
-                </div>
-            </div>
-            <div class="col-12 w-100 col-md-3 col-sm-12 col-xs-4">
-                <label for="inputName">السعر في رمضان</label>
-                <input type="text" class="form-control is-valid" name="inputName" id="inputName">
-                <div class="invalid-feedback" style="">
-                    Validation message
-                </div>
-            </div>
-
-            <div class="col-12 w-100 col-md-3 col-sm-12 col-xs-4">
-                <label for="inputName">السعر في عيد الفطر</label>
-                <input type="text" class="form-control is-valid" name="inputName" id="inputName">
-                <div class="invalid-feedback" style="">
-                    Validation message
-                </div>
-            </div>
-            <div class="col-12 w-100 col-md-3 col-sm-12 col-xs-4">
-                <label for="inputName">السعر في عيد الاضحى</label>
-                <input type="text" class="form-control is-valid" name="inputName" id="inputName">
-                <div class="invalid-feedback" style="">
-                    Validation message
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="form-group mt-5">
-        <h1 class="text-center">الأسعار</h1>
-        <div class="row pt-3">
-            <div class="col-12 w-100 col-md-3 col-sm-12 col-xs-4">
-                <label for="inputName">السعر في اليوم العادي</label>
-                <input type="text" class="form-control is-valid" name="inputName" id="inputName">
-                <div class="invalid-feedback" style="">
-                    Validation message
-                </div>
-            </div>
-            <div class="col-12 w-100 col-md-3 col-sm-12 col-xs-4">
-                <label for="inputName">السعر في رمضان</label>
-                <input type="text" class="form-control is-valid" name="inputName" id="inputName">
-                <div class="invalid-feedback" style="">
-                    Validation message
-                </div>
-            </div>
-
-            <div class="col-12 w-100 col-md-3 col-sm-12 col-xs-4">
-                <label for="inputName">السعر في عيد الفطر</label>
-                <input type="text" class="form-control is-valid" name="inputName" id="inputName">
-                <div class="invalid-feedback" style="">
-                    Validation message
-                </div>
-            </div>
-            <div class="col-12 w-100 col-md-3 col-sm-12 col-xs-4">
-                <label for="inputName">السعر في عيد الاضحى</label>
-                <input type="text" class="form-control is-valid" name="inputName" id="inputName">
-                <div class="invalid-feedback" style="">
-                    Validation message
-                </div>
+                @endforeach
             </div>
         </div>
 
-        <button type="submit" class="btn btn-primary w-100 mt-5 bg-dark">اضافة شاليه</button>
+        <div id="mapInformation" class="form-group mt-5">
+            <h1 class="text-center">معلومات الموقع</h1>
+            <div class="row pt-3">
+                <div class="col-12 w-100 col-md-4 col-sm-12 col-xs-4">
+                    <label for="inputName">المدينة</label>
+                      <select class="form-control is-valid" name="city_id">
+                          @foreach ($cities as $city)
+                              <option value="{{ $city->id }}">{{ $city->name }}</option>
+                          @endforeach
+                      </select>
+                </div>
+                <div class="col-12 w-100 col-md-4 col-sm-12 col-xs-4">
+                    <label for="area">الحي</label>
+                    <input type="text" class="form-control is-valid" name="area" id="area">
+                    <div class="invalid-feedback" style="">
+                        Validation message
+                    </div>
+                </div>
+
+                <div class="col-12 w-100 col-md-4 col-sm-12 col-xs-4">
+                    <label for="street">الشارع</label>
+                    <input type="text" class="form-control is-valid" name="street" id="street">
+                    <div class="invalid-feedback" style="">
+                        Validation message
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="priceInformation" class="form-group mt-5">
+            <h1 class="text-center">الأسعار</h1>
+            <div class="row pt-3">
+                <div class="col-12 w-100 col-md-3 col-sm-12 col-xs-4">
+                    <label for="normal_price">السعر في اليوم العادي</label>
+                    <input type="text" class="form-control is-valid" name="normal_price" id="normal_price">
+                    <div class="invalid-feedback" style="">
+                        Validation message
+                    </div>
+                </div>
+                <div class="col-12 w-100 col-md-3 col-sm-12 col-xs-4">
+                    <label for="ramadan_price">السعر في رمضان</label>
+                    <input type="text" class="form-control is-valid" name="ramadan_price" id="ramadan_price">
+                    <div class="invalid-feedback" style="">
+                        Validation message
+                    </div>
+                </div>
+
+                <div class="col-12 w-100 col-md-3 col-sm-12 col-xs-4">
+                    <label for="ftr_price">السعر في عيد الفطر</label>
+                    <input type="text" class="form-control is-valid" name="ftr_price" id="ftr_price">
+                    <div class="invalid-feedback" style="">
+                        Validation message
+                    </div>
+                </div>
+                <div class="col-12 w-100 col-md-3 col-sm-12 col-xs-4">
+                    <label for="adha_price">السعر في عيد الاضحى</label>
+                    <input type="text" class="form-control is-valid" name="adha_price" id="adha_price">
+                    <div class="invalid-feedback" style="">
+                        Validation message
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 mt-5 bg-dark">اضافة شاليه</button>
+        </div>
     </div>
-</div>
-</div>
+    </div>
+</form>
 <script>
+    // new Vue({
+    //     el:'#personalInformation',
+    //     data: {
+    //         key: 'information'
+    //     },
+    //   });
+    //   new Vue({
+    //     el:'#shalehInformation',
+    //     data: {
+    //         key: 'information'
+    //     },
+    //   });
+    //   new Vue({
+    //     el:'#mapInformation',
+    //     data: {
+    //         key: 'information'
+    //     },
+    //   });
+    //   new Vue({
+    //     el:'#priceInformation',
+    //     data: {
+    //         key: 'information'
+    //     },
+    //   });
     $('#1').click(function(){
         alert('1');
 
@@ -300,5 +268,6 @@
 
         // $(this).find('p').addClass('n-checkbox-shadow');
       }
+
 </script>
 @endsection

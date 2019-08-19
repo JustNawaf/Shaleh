@@ -6381,7 +6381,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.n-checkbox {\n  position: absolute;\n  height: 100%;\n  width: 100%;\n  opacity: 0;\n  top: 0%;\n  left: 0%;\n  right: 0%;\n  bottom: 0%;\n}\n.n-checkbox-shadow{\ncolor:green;\n}\n", ""]);
+exports.push([module.i, "\n.n-checkbox {\r\n  position: absolute;\r\n  height: 100%;\r\n  width: 100%;\r\n  opacity: 0;\r\n  top: 0%;\r\n  left: 0%;\r\n  right: 0%;\r\n  bottom: 0%;\n}\n.n-checkbox-shadow{\r\ncolor:green;\n}\r\n", ""]);
 
 // exports
 

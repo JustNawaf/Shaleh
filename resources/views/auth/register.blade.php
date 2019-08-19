@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-5 bg-light text-right">
+{{-- <div class="container mt-5 bg-light text-right">
 
 
 
@@ -20,11 +20,11 @@
                             value="3">
                         <label class="custom-control-label" for="businessUserRole">مستخدم عادي</label>
                     </div>
-                </div>
+                </div> --}}
 
                 {{-- Business User --}}
 
-                <div id="businessUser"  style="display:none;">
+                {{-- <div id="businessUser"  style="display:none;">
                     <div class="row pt-3">
                         <div class="col-12 w-100 col-md-6 col-sm-12 col-xs-4">
                             <label for="inputName">الاسم</label>
@@ -69,11 +69,11 @@
                     </div>
 
                     <button type="submit" class="btn btn-primary w-100 mt-5 bg-dark">تسجيل حساب جديد</button>
-                </div>
+                </div> --}}
 
                 {{-- Normal User --}}
 
-                <div id="normalUser" style="display:none;">
+                {{-- <div id="normalUser" style="display:none;">
                     <div class="row pt-3">
                         <div class="col-12 w-100 col-md-6 col-sm-12 col-xs-4">
                             <label for="inputName">الاسم</label>
@@ -141,7 +141,7 @@
             }
         });
 
-    </script>
+    </script> --}}
 
 
 
@@ -179,7 +179,7 @@
 
 
 
-    {{-- <div class="row justify-content-center">
+    <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">تسجيل جديد</div>
@@ -253,6 +253,6 @@
 </div>
 </div>
 </div>
-</div> --}}
+</div>
 </div>
 @endsection
