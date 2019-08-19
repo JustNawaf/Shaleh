@@ -21,6 +21,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('admin')->group(function(){
     Route::get('/shalehat','ShalehController@index')->name('index.shalehat');
-    Route::get('/add-shaleh','ShalehController@add_shaleh')->name('admin.add.shaleh');
-    Route::post('/store-shaleh','ShalehController@store_shaleh')->name('admin.store.shaleh');
+    Route::get('/add-shaleh','ShalehController@add_shaleh')->middleware(['admin','buss'])->name('admin.add.shaleh');
+    Route::post('/store-shaleh','ShalehController@store_shaleh')->middleware(['admin','buss'])->name('admin.store.shaleh');
 });

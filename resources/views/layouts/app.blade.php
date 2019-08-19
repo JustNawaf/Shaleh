@@ -214,9 +214,11 @@
                         <li class="nav-item">
                             <a class="nav-link mid-text" href="{{ route('index.shalehat') }}">الشاليهات</a>
                         </li>
+                        @canany(['is_admin','is_buss'])
                         <li class="nav-item">
                             <a class="nav-link mid-text" href="{{ route('admin.add.shaleh') }}">اضافة شاليه</a>
                         </li>
+                        @endcanany
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -277,9 +279,12 @@
                             <li class="nav-item">
                                 <a class="nav-link mid-text" href="{{ route('index.shalehat') }}">الشاليهات</a>
                             </li>
+                            @canany(['is_admin','is_buss'])
                             <li class="nav-item">
                                 <a class="nav-link mid-text" href="{{ route('admin.add.shaleh') }}">اضافة شاليه</a>
                             </li>
+                            @endcanany
+
                         </ul>
 
                         <!-- Right Side Of Navbar -->
