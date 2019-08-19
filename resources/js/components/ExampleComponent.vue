@@ -9,7 +9,9 @@
                 </div>
                 <div class="col-sm-12 sub-div h-100 w-100 p-0 d-flex flex-column justify-content-between">
                     <img class="m-3 align-self-end" src="/storage/stars.png" width="100px">
-                    <h1 class="text-right  pr-5 pb-3 title-text" style="color:white;">شاليه طيش شباب</h1>
+                    <h1 class="text-right  pr-5 title-text" style="color:white;">{{ shaleh_name }}
+                            <p class="text-right pr-3 n-desc-color" style="font-size:0.5em;">{{ desc }}</p>
+                    </h1>
                 </div>
             </div>
              <div class="row w-100 m-0 justify-content-center mt-1 text-right" style="color:black;">
@@ -27,8 +29,12 @@
 
 <script>
     export default {
+        props:[
+            'shaleh_name',
+            'desc'
+        ],
         mounted() {
             console.log('Component mounted.')
-        }
+        },
     }
 </script>

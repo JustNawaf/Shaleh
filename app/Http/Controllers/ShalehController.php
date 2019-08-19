@@ -11,7 +11,8 @@ class ShalehController extends Controller
 {
     public function index()
     {
-        return view('pages.all.shalehat');
+        $shalehat = Shaleh::all();
+        return view('pages.all.shalehat')->with('shalehat',$shalehat);
     }
     public function add_shaleh()
     {

@@ -50,6 +50,9 @@
             /* background-color:#343434; */
             padding-bottom: 25em;
         }
+        .n-desc-color{
+            color:rgba(255, 255, 255, 0.5);
+        }
 
         .big-text {
             font-size: 2em;

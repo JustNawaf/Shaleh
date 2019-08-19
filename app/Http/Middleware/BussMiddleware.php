@@ -16,7 +16,7 @@ class BussMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()->role_id == 2) {
+        if (Auth::user()->role_id == 2 || Auth::user()->role_id == 1) {
             return $next($request);
         }
         return redirect()->back();

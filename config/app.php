@@ -225,8 +225,6 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'admin'=>App\Http\Middleware\AdminMiddleware::class,
-        'buss'=>App\Http\Middleware\BussMiddleware::class,
 
     ],
 

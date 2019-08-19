@@ -22,7 +22,9 @@
     </div>
     <div class="col-12 col-md-6 col-sm-12 col-xs-4">
         <div id="shaleh">
-            <example-component v-for="shaleh in 5"></example-component>
+            @foreach ($shalehat as $shaleh)
+            <example-component shaleh_name="{{ $shaleh->shaleh_name }}" desc="{{ $shaleh->shaleh_desc }}"></example-component>
+            @endforeach
         </div>
     </div>
     <div class="col-12 col-md-3 w-100 col-sm-12 col-xs-4">
