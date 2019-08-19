@@ -5,7 +5,7 @@
 <div class="row m-0 py-3 d-flex flex-row justify-content-center">
     <div class="col-12 col-md-6 text-right">
         <div class="form-group">
-            <h1 for="my-input" class="text-sm-center text-center">بحث</h1>
+            <h1 for="my-input" class="text-sm-center text-center" style="color:#6c757d;">بحث</h1>
             <input id="my-input" class="form-control" type="text" name="" placeholder="ابحث عن اسم الشاليه">
         </div>
     </div>
@@ -22,7 +22,9 @@
     </div>
     <div class="col-12 col-md-6 col-sm-12 col-xs-4">
         <div id="shaleh">
-            <example-component v-for="shaleh in 5"></example-component>
+            @foreach ($shalehat as $index => $shaleh)
+                <example-component  name="{{ $shaleh->shaleh_name }}"></example-component>
+            @endforeach
         </div>
     </div>
     <div class="col-12 col-md-3 w-100 col-sm-12 col-xs-4">

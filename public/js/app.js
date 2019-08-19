@@ -1866,6 +1866,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['name'],
   mounted: function mounted() {
     console.log('Component mounted.');
   }
@@ -37863,9 +37864,67 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    {
+      staticClass: "main-div  my-shadow mb-3",
+      staticStyle: { "background-color": "white" }
+    },
+    [
+      _c("div", {}, [
+        _c(
+          "div",
+          {
+            staticClass: "row  w-100 m-0 main-div justify-content-center",
+            staticStyle: { height: "30vh", "z-index": "10" }
+          },
+          [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "col-sm-12 sub-div h-100 w-100 p-0 d-flex flex-column justify-content-between"
+              },
+              [
+                _c("img", {
+                  staticClass: "m-3 align-self-end",
+                  attrs: { src: "/storage/stars.png", width: "100px" }
+                }),
+                _vm._v(" "),
+                _c(
+                  "h1",
+                  {
+                    staticClass: "text-right  pr-5 pb-3 title-text",
+                    staticStyle: { color: "white" }
+                  },
+                  [_vm._v(_vm._s(_vm.name))]
+                )
+              ]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _vm._m(1)
+      ])
+    ]
+  )
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-12 w-100 sub-div h-100 p-0" }, [
+      _c("div", { staticClass: "background-shadow w-100 h-100" }),
+      _vm._v(" "),
+      _c("img", {
+        staticClass: "h-100",
+        attrs: { src: "/storage/images/4K_Wanted8.jpg", width: "100%" }
+      })
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -37873,83 +37932,24 @@ var staticRenderFns = [
     return _c(
       "div",
       {
-        staticClass: "main-div  my-shadow mb-3",
-        staticStyle: { "background-color": "white" }
+        staticClass: "row w-100 m-0 justify-content-center mt-1 text-right",
+        staticStyle: { color: "black" }
       },
       [
-        _c("div", {}, [
-          _c(
-            "div",
-            {
-              staticClass: "row  w-100 m-0 main-div justify-content-center",
-              staticStyle: { height: "30vh", "z-index": "10" }
-            },
-            [
-              _c("div", { staticClass: "col-sm-12 w-100 sub-div h-100 p-0" }, [
-                _c("div", { staticClass: "background-shadow w-100 h-100" }),
-                _vm._v(" "),
-                _c("img", {
-                  staticClass: "h-100",
-                  attrs: {
-                    src: "/storage/images/4K_Wanted8.jpg",
-                    width: "100%"
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "col-sm-12 sub-div h-100 w-100 p-0 d-flex flex-column justify-content-between"
-                },
-                [
-                  _c("img", {
-                    staticClass: "m-3 align-self-end",
-                    attrs: { src: "/storage/stars.png", width: "100px" }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "h1",
-                    {
-                      staticClass: "text-right  pr-5 pb-3 title-text",
-                      staticStyle: { color: "white" }
-                    },
-                    [_vm._v("شاليه طيش شباب")]
-                  )
-                ]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                "row w-100 m-0 justify-content-center mt-1 text-right",
-              staticStyle: { color: "black" }
-            },
-            [
-              _c(
-                "div",
-                {
-                  staticClass: "col-sm-12 h-100 my-auto p-0 pr-3",
-                  staticStyle: { "border-bottom": "1px solid #B9B9B9" }
-                },
-                [
-                  _c("p", { staticClass: "desc-text" }, [
-                    _c("img", {
-                      attrs: {
-                        src: "/storage/icons/information.png",
-                        width: "25px"
-                      }
-                    })
-                  ])
-                ]
-              )
-            ]
-          )
-        ])
+        _c(
+          "div",
+          {
+            staticClass: "col-sm-12 h-100 my-auto p-0 pr-3",
+            staticStyle: { "border-bottom": "1px solid #B9B9B9" }
+          },
+          [
+            _c("p", { staticClass: "desc-text" }, [
+              _c("img", {
+                attrs: { src: "/storage/icons/information.png", width: "25px" }
+              })
+            ])
+          ]
+        )
       ]
     )
   }
