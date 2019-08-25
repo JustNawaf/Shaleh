@@ -50,6 +50,9 @@
             /* background-color:#343434; */
             padding-bottom: 25em;
         }
+        .n-desc-color{
+            color:rgba(255, 255, 255, 0.5);
+        }
 
         .big-text {
             font-size: 2em;
@@ -214,9 +217,11 @@
                         <li class="nav-item">
                             <a class="nav-link mid-text" href="{{ route('index.shalehat') }}">الشاليهات</a>
                         </li>
+                        @canany(['is_admin','is_buss'])
                         <li class="nav-item">
                             <a class="nav-link mid-text" href="{{ route('admin.add.shaleh') }}">اضافة شاليه</a>
                         </li>
+                        @endcanany
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -277,9 +282,12 @@
                             <li class="nav-item">
                                 <a class="nav-link mid-text" href="{{ route('index.shalehat') }}">الشاليهات</a>
                             </li>
+                            @canany(['is_admin','is_buss'])
                             <li class="nav-item">
                                 <a class="nav-link mid-text" href="{{ route('admin.add.shaleh') }}">اضافة شاليه</a>
                             </li>
+                            @endcanany
+
                         </ul>
 
                         <!-- Right Side Of Navbar -->

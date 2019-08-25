@@ -22,8 +22,8 @@
     </div>
     <div class="col-12 col-md-6 col-sm-12 col-xs-4">
         <div id="shaleh">
-            @foreach ($shalehat as $index => $shaleh)
-                <example-component  name="{{ $shaleh->shaleh_name }}"></example-component>
+            @foreach ($shalehat as $shaleh)
+            <example-component shaleh_name="{{ $shaleh->shaleh_name }}" desc="{{ $shaleh->shaleh_desc }}"></example-component>
             @endforeach
         </div>
     </div>
