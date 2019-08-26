@@ -53,7 +53,7 @@
     </div>
 
 </div>
-<form action="{{ route('admin.store.shaleh') }}" method="post">
+<form id="addShalehForm" action="{{ route('admin.store.shaleh') }}" method="post">
     @csrf
     <div id="personalInformation" class="container text-right" style="color:white">
         <div class="form-group mt-5">
@@ -198,71 +198,38 @@
         </div>
     </div>
     </div>
-</form>
-
-<div class="container min-vh-100 bg-dark">
-    <form>
+    <div class="container min-vh-100 bg-dark">
         <div class="form-group">
             <label for="exampleFormControlFile" class="float-right text-light">رفع الصور الخاصة بالشاليه</label>
-            <input type="file" class="form-control-file text-light" id="exampleFormControlFile" name="imgs[]" multiple>
+            <input type="file" class="form-control-file text-light" id="exampleFormControlFile" multiple>
         </div>
-    </form>
     <div id="img-container" class="row">
         {{-- <div class="w-25 h-25 py-2 px-2 bg-dark col-12 w-100 col-md-3 col-sm-12 col-xs-4" style="">
             <button type="button" class="position-absolute btn btn-danger text-light mr-1 p-1"
                 style="background-color:red;" onclick="deleteImg(this)">حذف</button>
             <img id="myimage" class="w-100 h-100 img-responsive rounded">
             <p class="text-center text-light pt-3">الصورة الاولى</p>
-        </div>
-        <div class="w-25 h-50 py-2 px-2 bg-dark col-12 w-100 col-md-3 col-sm-12 col-xs-4" style="">
-            <button type="button" class="position-absolute btn btn-danger text-light mr-1 p-1"
-                style="background-color:red;" onclick="deleteImg(this)">حذف</button>
-            <img class="w-100 h-100 img-responsive rounded" src="/storage/images/navbarBackground2.jpg">
-            <p class="text-center text-light pt-3">الصورة الاولى</p>
-        </div>
-        <div class="w-25 h-50 py-2 px-2 bg-dark col-12 w-100 col-md-3 col-sm-12 col-xs-4" style="width: 100%;">
-            <button type="button" class="position-absolute btn btn-danger text-light mr-1 p-1"
-                style="background-color:red;" onclick="deleteImg(this)">حذف</button>
-            <img class="w-100 h-100 img-responsive rounded" src="/storage/images/navbarBackground2.jpg">
-            <p class="text-center text-light pt-3">الصورة الاولى</p>
-        </div>
-        <div class="w-25 h-50 py-2 px-2 bg-dark col-12 w-100 col-md-3 col-sm-12 col-xs-4">
-            <button type="button" class="position-absolute btn btn-danger text-light mr-1 p-1"
-                style="background-color:red;" onclick="deleteImg(this)">حذف</button>
-            <img class="w-100 h-100 img-responsive rounded" src="/storage/images/navbarBackground2.jpg">
-            <p class="text-center text-light pt-3">الصورة الاولى</p>
-        </div>
-        <div class="w-25 h-50 py-2 px-2 bg-dark col-12 w-100 col-md-3 col-sm-12 col-xs-4">
-            <button type="button" class="position-absolute btn btn-danger text-light mr-1 p-1"
-                style="background-color:red;" onclick="deleteImg(this)">حذف</button>
-            <img class="w-100 h-100 img-responsive rounded" src="/storage/images/navbarBackground2.jpg">
-            <p class="text-center text-light pt-3">الصورة الاولى</p>
-        </div>
-        <div class="w-25 h-50 py-2 px-2 bg-dark col-12 w-100 col-md-3 col-sm-12 col-xs-4">
-            <button type="button" class="position-absolute btn btn-danger text-light mr-1 p-1"
-                style="background-color:red;" onclick="deleteImg(this)">حذف</button>
-            <img class="w-100 h-100 img-responsive rounded" src="/storage/images/navbarBackground2.jpg">
-            <p class="text-center text-light pt-3">الصورة الاولى</p>
-        </div>
-        <div class="w-25 h-50 py-2 px-2 bg-dark col-12 w-100 col-md-3 col-sm-12 col-xs-4">
-            <button type="button" class="position-absolute btn btn-danger text-light mr-1 p-1"
-                style="background-color:red;" onclick="deleteImg(this)">حذف</button>
-            <img class="w-100 h-100 img-responsive rounded" src="/storage/images/navbarBackground2.jpg">
-            <p class="text-center text-light pt-3">الصورة الاولى</p>
-        </div> --}}
+        {{-- </div> --}}
     </div>
 </div>
+</form>
+
+
 <script>
+    var imgs = [];
     $('#exampleFormControlFile').change(function(e){
         var tgt = e.target,
         files = tgt.files;
-
+        
     if (FileReader && files && files.length) {
         for (let index = 0; index < files.length; index++) {
+            imgs.push(files[index])
             setupReader(files[index]);
             }
         }
     });
+    var x = new FormData($('#addShalehForm')[0]);
+
 
     function setupReader(file) {
         var name = file.name;
@@ -272,8 +239,8 @@
                 // document.getElementById('myimage').src = fr.result;
                 let s = '<div class="w-25 h-50 py-2 px-2 bg-dark col-12 w-100 col-md-3 col-sm-12 col-xs-4">';
                 s+='<button type="button" class="position-absolute btn btn-danger text-light mr-1 p-1"';
-                s+=`style="background-color:red;" onclick="deleteImg('${file.name}')">حذف</button>`;
-                s+=`<img class="w-100 h-100 img-responsive rounded" src="${reader.result}">`;
+                s+=`style="background-color:red;" onclick="deleteImg(this)">حذف</button>`;
+                s+=`<img class="w-100 h-100 img-responsive rounded" src="${reader.result}" data-name="${file.name}">`;
                 s+=`<p class="text-center text-light pt-3">${file.name}</p>`;
                 s+='</div>';
 
@@ -281,6 +248,7 @@
 
             }
             reader.readAsDataURL(file);
+
         }
 
     // Not supported
@@ -289,12 +257,17 @@
     //     // them on the server until the user's session ends.
     // }
     // })
-    function deleteImg(imgName)
+    function deleteImg(div)
     {
-        console.log(imgName);
-        $('#exampleFormControlFile').toArray()[0].files[0].name = 'ASDasd';
-        return console.log($('#exampleFormControlFile').toArray()[0].files);
-        $(div).parent().hide(600).remove();
+        imgs = imgs.filter(img=>img.name.trim()!= $(div).next().data('name').trim());
+        console.log(imgs);
+        if(imgs.length == 0 )
+        {
+            $('#exampleFormControlFile').val('');
+        }
+        // $('#exampleFormControlFile').toArray()[0].files[0].name = 'ASDasd';
+        // return console.log($('#exampleFormControlFile').toArray()[0].files);
+        $(div).parent().remove();
     }
     // new Vue({
     //     el:'#personalInformation',
