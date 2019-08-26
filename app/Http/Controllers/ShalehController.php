@@ -52,6 +52,7 @@ class ShalehController extends Controller
                 $prop->save();
             }
         });
+        return redirect('/admin/shalehat');
         // $properties = Property::all();
         // $cities = City::all();
         // return view('pages.admin.addShaleh')->with(['properties'=>$properties,'cities'=>$cities]);
