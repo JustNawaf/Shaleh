@@ -220,7 +220,7 @@
     $('#exampleFormControlFile').change(function(e){
         var tgt = e.target,
         files = tgt.files;
-        
+
     if (FileReader && files && files.length) {
         for (let index = 0; index < files.length; index++) {
             imgs.push(files[index])
