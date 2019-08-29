@@ -21,17 +21,18 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/css/star-rating.min.css" media="all"
         rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Tajawal&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/82a6a22d16.js"></script>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
         #background-image-fixed {
-            /* background-color:#C4C4C4; */
+            background-color:#C4C4C4;
             position: fixed;
             width: 100%;
             height: 100%;
             z-index: -5;
-            ;
+            /* background-color:white; */
             background-image: url('/storage/images/navbarBackground2.jpg');
             -webkit-background-size: cover;
             -moz-background-size: cover;
@@ -41,7 +42,8 @@
 
 
         * {
-            font-family: 'Cairo', sans-serif;
+            /* font-family: 'Cairo', sans-serif; */
+            font-family: 'Tajawal', sans-serif;
             margin: 0px;
             padding: 0px;
         }

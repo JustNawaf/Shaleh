@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="/public/css/app.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet">
+    <style>
+        .shaleh-img {
+            width: 25%;
+
+        }
+
+        @media only screen and (max-width: 600px) {
+            .shaleh-img {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="shaleh" class="row p-4">
+        <div class="col-12 col-md-4 col-lg-3 p-sm-1 col-sm-6 d-flex flex-column mt-5 align-items-center text-center w-100 h-100"
+            v-for="shaleh in 5">
+            <div class=" h-75 d-flex flex-column align-items-center">
+                <div class="w-100 h-100"
+                    style="z-index: 0;border-radius: 25%;box-shadow: 2px 6px 18px 1px rgba(153,153,153,1);;">
+                    <img class="w-100" src="/public/storage/images/navbarBackground2.jpg" style="border-radius: 10px;">
+                </div>
+                <div class="h-25 bg-light text-dark"
+                    style="z-index: 1;margin-top: -10%;width: 95%;min-height: 100px;border-radius: 10px;box-shadow: 2px 6px 18px 1px rgba(153,153,153,1);">
+                    <div class="row">
+                        <div class="col d-flex flex-column justify-content-start align-items-start px-5 py-3">
+                            <div>
+                                <p class="bg-info px-2 rounded d-inline">مميز</p>
+                                <p class="d-inline" style="color:lightgray">3 اسرة - 10 دورات مياه - مسبح ياشيخ جيد صح</p>
+                            </div>
+                            <div class="mt-2">
+                                <h5 class="font-weight-bold">شاليه يعم بطيش الشباب</h5>
+                            </div>
+                            <div class="mt-1">
+                                <h5 class="font-weight-bold">500 ريال <span style="color:lightgray;">/ باليوم</span></h5>
+                            </div>
+                            <div class="mt-1 text-left">
+                                <img width="80px" src="/public//storage/stars.png">
+                                <p class="d-inline mt-3" style="color:lightgray;">34 تقييم</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/public/js/app.js"></script>
+
+    <script>
+
+    </script>
+</body>
+
+</html>
