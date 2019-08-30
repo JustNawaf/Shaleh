@@ -11,6 +11,9 @@ class Shaleh extends Model
 
     public function properties()
     {
-        $this->hasMany('App\properties_shaleh','shaleh_id');
+        return $this->hasMany('App\properties_shaleh','shaleh_id');
+    }
+    public function comments(){
+        return $this->hasMany('App\Comment','shaleh_id');
     }
 }

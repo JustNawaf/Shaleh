@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\City;
+use App\Comment;
 use App\properties_shaleh;
 use App\Property;
 use App\Shaleh;
@@ -20,7 +21,7 @@ class ShalehController extends Controller
     public function show_shaleh($id){
         $shaleh = Shaleh::find($id);
         $cities  = City::all();
-        $shalehat = Shaleh::where('city_id','=',$shaleh->city_id)->get();
+        $shalehat = Shaleh::with('comments.user')->where('city_id','=',$shaleh->city_id)->get();
         return view('pages.all.showShaleh')->with(['shaleh'=>$shaleh,'cities'=>$cities,'shalehat'=>$shalehat  ]);
     }
     public function add_shaleh()
@@ -28,6 +29,18 @@ class ShalehController extends Controller
         $properties = Property::all();
         $cities = City::all();
         return view('pages.admin.addShaleh')->with(['properties'=>$properties,'cities'=>$cities]);
+    }
+    public function add_comment_to_shaleh(Request $request,$shaleh_id)
+    {
+        // return dd($request->all());
+        $new_comment = new Comment();
+        $new_comment->shaleh_id = $shaleh_id;
+        $new_comment->user_id = auth()->user()->id;
+        $new_comment->evaluation = $request->get('rating');
+        $new_comment->description = $request->get('comment');
+        $new_comment->save();
+
+        return redirect('shaleh/'.$shaleh_id);
     }
     public function store_shaleh(Request $request)
     {

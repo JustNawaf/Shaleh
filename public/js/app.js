@@ -1849,9 +1849,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['user', 'comment'],
   mounted: function mounted() {
     console.log("Component mounted.");
   }
@@ -2062,6 +2061,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -6544,7 +6544,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.n-checkbox {\n  position: absolute;\n  height: 100%;\n  width: 100%;\n  opacity: 0;\n  top: 0%;\n  left: 0%;\n  right: 0%;\n  bottom: 0%;\n}\n.n-checkbox-shadow{\ncolor:green;\n}\n", ""]);
+exports.push([module.i, "\n.n-checkbox {\r\n  position: absolute;\r\n  height: 100%;\r\n  width: 100%;\r\n  opacity: 0;\r\n  top: 0%;\r\n  left: 0%;\r\n  right: 0%;\r\n  bottom: 0%;\n}\n.n-checkbox-shadow{\r\ncolor:green;\n}\r\n", ""]);
 
 // exports
 
@@ -38026,41 +38026,35 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "w-100 border-dark d-flex my-4 px-4 py-3 flex-column position-relative shadow-lg p-"
-      },
-      [
-        _c("img", {
-          staticClass: "position-absolute",
-          staticStyle: { top: "5%", left: "1%" },
-          attrs: { width: "100px", src: "/storage/stars.png" }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "align-self-start" }, [
-          _c("h1", [_vm._v("نواف")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "align-self-start" }, [
-          _c("h4", { staticClass: "mr-5" }, [
-            _vm._v(
-              "\n            الشاليه سئ جدا و لم يتم التعامل معنا باحترافية جدا وهذا كيف كذا وانت مين وانا مين و نواف خالد عهلثه البحربي\n        "
-            )
-          ])
+  return _c(
+    "div",
+    {
+      staticClass:
+        "w-100 border-dark d-flex my-4 px-3 flex-column position-relative shadow-lg"
+    },
+    [
+      _c("img", {
+        staticClass: "position-absolute",
+        staticStyle: { top: "5%", left: "1%" },
+        attrs: {
+          width: "100px",
+          src: "/storage/star/" + _vm.comment.evaluation + ".png"
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "align-self-start" }, [
+        _c("h1", [_vm._v(_vm._s(_vm.user.name))])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "align-self-start" }, [
+        _c("p", { staticClass: "mx-2" }, [
+          _vm._v(_vm._s(_vm.comment.description))
         ])
-      ]
-    )
-  }
-]
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -38378,32 +38372,31 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-6 col-md-12 col-lg-6  w-100 h-100" }, [
-      _c(
-        "div",
-        {
-          staticClass:
-            "d-flex flex-column justify-content-center align-items-center shadow-lg my-2 rounded"
-        },
-        [
-          _c("div", [
-            _c("img", {
-              staticClass: "w-100 my-shadow",
-              staticStyle: { "border-radius": "5px" },
-              attrs: { src: "/storage/images/navbarBackground2.jpg" }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", [_c("p", [_vm._v("شاليه طيش")])]),
-          _vm._v(" "),
-          _c("div", [
-            _c("p", { staticStyle: { color: "lightgray" } }, [
-              _vm._v("الوصف وسكيبشسطكيبوطشسكيموبطمك")
-            ])
-          ])
-        ]
-      )
-    ])
+    return _c(
+      "div",
+      { staticClass: "col-6 col-md-12 col-lg-12  w-100 h-100" },
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              "d-flex flex-column justify-content-center align-items-center shadow-lg my-2 rounded"
+          },
+          [
+            _c("div", [
+              _c("img", {
+                staticClass: "w-100 my-shadow",
+                attrs: { src: "/storage/images/navbarBackground2.jpg" }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", [_c("p", [_vm._v("شاليه طيش")])]),
+            _vm._v(" "),
+            _c("div", [_c("p", [_vm._v("مكة المكرمة")])])
+          ]
+        )
+      ]
+    )
   }
 ]
 render._withStripped = true
