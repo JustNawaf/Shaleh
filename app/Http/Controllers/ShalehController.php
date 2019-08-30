@@ -14,7 +14,14 @@ class ShalehController extends Controller
     public function index()
     {
         $shalehat = Shaleh::all();
-        return view('pages.all.shalehat')->with('shalehat',$shalehat);
+        $cities  = City::all();
+        return view('pages.all.shalehat')->with(['shalehat'=> $shalehat,'cities'=>$cities]);
+    }
+    public function show_shaleh($id){
+        $shaleh = Shaleh::find($id);
+        $cities  = City::all();
+        $shalehat = Shaleh::where('city_id','=',$shaleh->city_id)->get();
+        return view('pages.all.showShaleh')->with(['shaleh'=>$shaleh,'cities'=>$cities,'shalehat'=>$shalehat  ]);
     }
     public function add_shaleh()
     {
@@ -52,7 +59,7 @@ class ShalehController extends Controller
                 $prop->save();
             }
         });
-        return redirect('/admin/shalehat');
+        // return redirect('/admin/shalehat');
         // $properties = Property::all();
         // $cities = City::all();
         // return view('pages.admin.addShaleh')->with(['properties'=>$properties,'cities'=>$cities]);

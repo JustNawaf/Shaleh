@@ -3,7 +3,7 @@
 @section('content')
 
 
-<div class="container d-flex flex-row w-100">
+<div class="container d-flex flex-row w-100 mt-5">
     <div id="1" class="d-flex flex-row justify-content-center align-items-center" data-toggle="tooltip"
         data-placement="top" title="المعلومات الشخصية"
         style="background:#BEBEBE;color:black;width:65px;height:50px;border-radius: 50%;cursor: pointer;">
@@ -13,49 +13,49 @@
     </div>
     <div id="2" class="d-flex flex-row justify-content-center align-items-center" data-toggle="tooltip"
         data-placement="top" title="المعلومات الشخصية"
-        style="background:black;color:white;width:65px;height:50px;border-radius: 50%;cursor: pointer;">
+        style="background:black;color:black;;width:65px;height:50px;border-radius: 50%;cursor: pointer;">
         <b class="text-center" style="height:fit-content">2</b>
     </div>
     <div class="align-self-center" style="border-top:3px solid black;width: 150px;">
     </div>
     <div id="3" class="d-flex flex-row justify-content-center align-items-center" data-toggle="tooltip"
         data-placement="top" title="المعلومات الشخصية"
-        style="background:black;color:white;width:65px;height:50px;border-radius: 50%;cursor: pointer;">
+        style="background:black;color:black;;width:65px;height:50px;border-radius: 50%;cursor: pointer;">
         <b class="text-center" style="height:fit-content">3</b>
     </div>
     <div class="align-self-center" style="border-top:3px solid black;width: 150px;">
     </div>
     <div id="4" class="d-flex flex-row justify-content-center align-items-center" data-toggle="tooltip"
         data-placement="top" title="المعلومات الشخصية"
-        style="background:red;color:white;width:65px;height:50px;border-radius: 50%;cursor: pointer;">
+        style="background:red;color:black;;width:65px;height:50px;border-radius: 50%;cursor: pointer;">
         <b class="text-center" style="height:fit-content">4</b>
     </div>
     <div class="align-self-center" style="border-top:3px solid black;width: 150px;">
     </div>
     <div id="5" class="d-flex flex-row justify-content-center align-items-center" data-toggle="tooltip"
         data-placement="top" title="المعلومات الشخصية"
-        style="background:green;color:white;width:65px;height:50px;border-radius: 50%;cursor: pointer;">
+        style="background:green;color:black;;width:65px;height:50px;border-radius: 50%;cursor: pointer;">
         <b class="text-center" style="height:fit-content">5</b>
     </div>
     <div class="align-self-center" style="border-top:3px solid black;width: 150px;">
     </div>
     <div id="6" class="d-flex flex-row justify-content-center align-items-center" data-toggle="tooltip"
         data-placement="top" title="المعلومات الشخصية"
-        style="background:black;color:white;width:65px;height:50px;border-radius: 50%;cursor: pointer;">
+        style="background:black;color:black;;width:65px;height:50px;border-radius: 50%;cursor: pointer;">
         <b class="text-center" style="height:fit-content">6</b>
     </div>
     <div class="align-self-center" style="border-top:3px solid black;width: 150px;">
     </div>
     <div id="7" class="d-flex flex-row justify-content-center align-items-center" data-toggle="tooltip"
         data-placement="top" title="المعلومات الشخصية"
-        style="background:black;color:white;width:65px;height:50px;border-radius: 50%;cursor: pointer;">
+        style="background:black;color:black;;width:65px;height:50px;border-radius: 50%;cursor: pointer;">
         <b class="text-center" style="height:fit-content">7</b>
     </div>
 
 </div>
 <form id="addShalehForm" action="{{ route('admin.store.shaleh') }}" method="post">
     @csrf
-    <div id="personalInformation" class="container text-right" style="color:white">
+    <div id="personalInformation" class="container text-right" style="color:black;">
         <div class="form-group mt-5">
             <h1 class="text-center">معلومات عن صاحب الشاليه</h1>
             <div class="row pt-3">
@@ -95,7 +95,7 @@
 
 
 
-    <div id="shalehInformation" class="container  text-right mt-5" style="color:white;">
+    <div id="shalehInformation" class="container  text-right mt-5" style="color:black;;">
 
         <h1 class="text-center">اضافة الشاليه</h1>
         <div class="form-group pt-3">

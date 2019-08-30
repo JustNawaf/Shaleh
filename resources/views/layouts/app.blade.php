@@ -27,20 +27,18 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
         #background-image-fixed {
-            background-color:#C4C4C4;
+            background-color:white;
             position: fixed;
             width: 100%;
             height: 100%;
             z-index: -5;
             /* background-color:white; */
-            background-image: url('/storage/images/navbarBackground2.jpg');
+            /* background-image: url('/storage/images/navbarBackground2.jpg');
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
-            background-size: cover;
+            background-size: cover; */
         }
-
-
         * {
             /* font-family: 'Cairo', sans-serif; */
             font-family: 'Tajawal', sans-serif;
@@ -49,8 +47,14 @@
         }
 
         .back {
-            /* background-color:#343434; */
+            background-color:black;
             padding-bottom: 25em;
+            /* background-color:white; */
+            background-image: url('/storage/images/navbarBackground2.jpg');
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
         }
         .n-desc-color{
             color:rgba(255, 255, 255, 0.5);
@@ -118,11 +122,11 @@
         }
 
         .title-text {
-            font-size: 2.5em;
+            font-size: 2em;
         }
 
         .desc-text {
-            font-size: 1.5em;
+            font-size: 1em;
         }
 
         .my-shadow {
@@ -162,11 +166,11 @@
 
         @media only screen and (max-width: 600px) {
             .title-text {
-                font-size: 2em;
+                font-size: 1.5em;
             }
 
             .desc-text {
-                font-size: 1em;
+                font-size: 0.75em;
             }
 
             .my-shadow {
@@ -332,8 +336,8 @@
 
         @yield('content')
     </div>
-    <div class="background-black">
-    </div>
+    {{-- <div class="background-black">
+    </div> --}}
     <script src="{{ asset('js/app.js') }}"></script>
     <script>
         $('#buttonNav').click(function(){
