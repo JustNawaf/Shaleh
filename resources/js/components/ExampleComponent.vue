@@ -1,5 +1,5 @@
 <template>
-<div class="col-12 col-md-4 col-lg-3  mt-5 w-100 h-100 my-5">
+<div class="col-12 col-md-4 col-lg-4  mt-5 w-100 h-100 my-5">
 
     <div class="main-div mb-3">
         <!-- <div class="">
@@ -82,7 +82,6 @@
 </template>
 <style>
 
-
 </style>
 <script>
     export default {
@@ -99,6 +98,20 @@
         },
         methods:{
             show(id){
+                let imgHeight = $('#'+id).height();
+                let whiteHeight = $('#'+id+'child').height();
+                var result = 0;
+                if(imgHeight>whiteHeight)
+                {
+                    result = imgHeight / whiteHeight;
+                    result *=0.18;
+                    result = (result * whiteHeight);
+                }else{
+                    result = whiteHeight / imgHeight;
+                }
+                // console.log($('#'+id).height());
+                // console.log($('#'+id+'child').height());
+                // console.log('Sub : '+($('#'+id).height() - $('#'+id+'child').height()));
                 $('#'+id+'child').finish();
                 // $('#'+id).hide(1600);
                 $('#'+id+'child').animate({
@@ -106,7 +119,7 @@
                 },function(){
                     $('#'+id).css('z-index','5');
                     $('#'+id+'child').animate({
-                    top:'50%',
+                    top:result+'%',
                     });
                 });
                 this.value = false;

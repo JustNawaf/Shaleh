@@ -19,9 +19,10 @@ class ShalehController extends Controller
         return view('pages.all.shalehat')->with(['shalehat'=> $shalehat,'cities'=>$cities]);
     }
     public function show_shaleh($id){
-        $shaleh = Shaleh::find($id);
+        $shaleh = Shaleh::with('comments.user')->find($id);
         $cities  = City::all();
-        $shalehat = Shaleh::with('comments.user')->where('city_id','=',$shaleh->city_id)->get();
+        $shalehat = Shaleh::where('city_id','=',$shaleh->city_id)->with('city')->take(3)->get();
+        // return dd($shaleh);
         return view('pages.all.showShaleh')->with(['shaleh'=>$shaleh,'cities'=>$cities,'shalehat'=>$shalehat  ]);
     }
     public function add_shaleh()

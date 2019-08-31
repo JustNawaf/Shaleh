@@ -5,10 +5,10 @@
             <img class="w-100 my-shadow" src="/storage/images/navbarBackground2.jpg">
         </div>
         <div>
-            <p>شاليه طيش</p>
+            <p>{{ shaleh.shaleh_name }}</p>
         </div>
         <div>
-            <p>مكة المكرمة</p>
+            <p>{{ shaleh.city.name }}</p>
             <!-- <p style="color:lightgray;">الوصف وسكيبشسطكيبوطشسكيموبطمك</p> -->
         </div>
     </div>
@@ -18,6 +18,9 @@
 </template>
 <script>
     export default {
+        props:[
+            'shaleh',
+        ],
         mounted() {
             console.log('Component mounted.')
         },

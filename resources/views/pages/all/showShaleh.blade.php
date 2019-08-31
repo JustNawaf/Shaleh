@@ -12,6 +12,7 @@
     }
 </style>
 @section('content')
+
 <div class="row m-0 p-0 text-right">
     <div class="col-12 col-md-8 col-lg-9 pt-5 ">
         <div class="d-flex flex-column align-items-center py-5 col-12">
@@ -85,16 +86,14 @@
             @endif
             <div id="comment" class="w-100 h-100 mt-5">
                 <h1>التعليقات</h1>
-                @foreach ($shaleh->comments as $comment)
-                    <comment  :comment="{{ $comment }}" :user="{{ $comment->user }}"></comment>
-                @endforeach
+                    <comment  v-for="comment in {{ $shaleh->comments }}" :key="comment.id" :comment="comment"></comment>
             </div>
         </div>
     </div>
     <div id="small-shaleh" class="col-12 col-md-3 col-lg-3">
         <h1 class="text-center pt-5">مقتراحات من الشاليهات</h1>
         <div class="row">
-            <small-shaleh-component v-for="shaleh in {{ $shalehat }} "></small-shaleh-component>
+            <small-shaleh-component v-for="shaleh in {{ $shalehat }}" :key="shaleh.id" :shaleh="shaleh"></small-shaleh-component>
         </div>
     </div>
 </div>

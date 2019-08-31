@@ -22,6 +22,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('property-component', require('./components/PropertyComponent.vue').default);
 Vue.component('small-shaleh-component', require('./components/SmallShalehComponent.vue').default);
 Vue.component('comment', require('./components/CommentComponent.vue').default);
+Vue.component('add-shaleh-form', require('./components/AddShalehFormComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

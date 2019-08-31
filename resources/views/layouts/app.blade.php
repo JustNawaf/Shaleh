@@ -261,7 +261,7 @@
                                 </form>
                             </div>
                         </li>
-                        @endguest
+                    @endguest
                     </ul>
                 </div>
             </div>

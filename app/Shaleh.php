@@ -16,4 +16,7 @@ class Shaleh extends Model
     public function comments(){
         return $this->hasMany('App\Comment','shaleh_id');
     }
+    public function city(){
+        return $this->belongsTo('App\City','city_id');
+    }
 }

@@ -1829,6 +1829,231 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AddShalehFormComponent.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AddShalehFormComponent.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['properties', 'cities', 'route', 'csrf'],
+  mounted: function mounted() {
+    console.log("Component mounted.");
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CommentComponent.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CommentComponent.vue?vue&type=script&lang=js& ***!
@@ -1952,7 +2177,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['shaleh', // 'desc',
   'id'],
@@ -1963,6 +2187,21 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     show: function show(id) {
+      var imgHeight = $('#' + id).height();
+      var whiteHeight = $('#' + id + 'child').height();
+      var result = 0;
+
+      if (imgHeight > whiteHeight) {
+        result = imgHeight / whiteHeight;
+        result *= 0.18;
+        result = result * whiteHeight;
+      } else {
+        result = whiteHeight / imgHeight;
+      } // console.log($('#'+id).height());
+      // console.log($('#'+id+'child').height());
+      // console.log('Sub : '+($('#'+id).height() - $('#'+id+'child').height()));
+
+
       $('#' + id + 'child').finish(); // $('#'+id).hide(1600);
 
       $('#' + id + 'child').animate({
@@ -1970,7 +2209,7 @@ __webpack_require__.r(__webpack_exports__);
       }, function () {
         $('#' + id).css('z-index', '5');
         $('#' + id + 'child').animate({
-          top: '50%'
+          top: result + '%'
         });
       });
       this.value = false;
@@ -2080,6 +2319,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['shaleh'],
   mounted: function mounted() {
     console.log('Component mounted.');
   }
@@ -6544,7 +6784,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.n-checkbox {\r\n  position: absolute;\r\n  height: 100%;\r\n  width: 100%;\r\n  opacity: 0;\r\n  top: 0%;\r\n  left: 0%;\r\n  right: 0%;\r\n  bottom: 0%;\n}\n.n-checkbox-shadow{\r\ncolor:green;\n}\r\n", ""]);
+exports.push([module.i, "\n.n-checkbox {\n  position: absolute;\n  height: 100%;\n  width: 100%;\n  opacity: 0;\n  top: 0%;\n  left: 0%;\n  right: 0%;\n  bottom: 0%;\n}\n.n-checkbox-shadow{\ncolor:green;\n}\n", ""]);
 
 // exports
 
@@ -38011,6 +38251,496 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AddShalehFormComponent.vue?vue&type=template&id=5a5af280&":
+/*!*************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AddShalehFormComponent.vue?vue&type=template&id=5a5af280& ***!
+  \*************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "form",
+    {
+      staticClass: "shadow-lg container p-3  mb-2 rounded",
+      attrs: { id: "addShalehForm", action: _vm.route, method: "post" }
+    },
+    [
+      _c("input", {
+        attrs: { type: "hidden", name: "_token" },
+        domProps: { value: _vm.csrf }
+      }),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "container  text-right mt-5",
+          staticStyle: { color: "black" },
+          attrs: { id: "shalehInformation" }
+        },
+        [
+          _c("h1", { staticClass: "text-center" }, [_vm._v("معلومات الشاليه")]),
+          _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
+          _vm._m(2),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("h1", { staticClass: "text-center" }, [_vm._v("الخدمات")]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "row" },
+              _vm._l(_vm.properties, function(property) {
+                return _c(
+                  "div",
+                  {
+                    key: property.id,
+                    staticClass:
+                      "form-group mt-5 col-md-3 col-4 d-flex flex-row justify-content-center align-content-center",
+                    attrs: { onclick: "show(this)" }
+                  },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "col d-flex flex-column justify-content-center align-items-center"
+                      },
+                      [
+                        _c("i", {
+                          class: property.icon_name,
+                          staticStyle: { "font-size": "50px" }
+                        }),
+                        _vm._v(" "),
+                        _c("p", [_vm._v(_vm._s(property.name))]),
+                        _vm._v(" "),
+                        _c("input", {
+                          staticClass: "n-checkbox",
+                          attrs: { type: "checkbox", name: "properites[]" },
+                          domProps: { value: property.id }
+                        })
+                      ]
+                    )
+                  ]
+                )
+              }),
+              0
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "form-group mt-5", attrs: { id: "mapInformation" } },
+            [
+              _c("h1", { staticClass: "text-center" }, [
+                _vm._v("معلومات الموقع")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row pt-3" }, [
+                _c(
+                  "div",
+                  { staticClass: "col-12 w-100 col-md-4 col-sm-12 col-xs-4" },
+                  [
+                    _c("label", { attrs: { for: "inputName" } }, [
+                      _vm._v("المدينة")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        staticClass: "form-control is-valid",
+                        attrs: { name: "city_id" }
+                      },
+                      _vm._l(_vm.cities, function(city) {
+                        return _c(
+                          "option",
+                          { key: city.id, domProps: { value: city.id } },
+                          [_vm._v(_vm._s(city.name))]
+                        )
+                      }),
+                      0
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _vm._m(3),
+                _vm._v(" "),
+                _vm._m(4)
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _vm._m(5),
+          _vm._v(" "),
+          _vm._m(6),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary w-100 mt-5 bg-dark",
+              attrs: { type: "submit" }
+            },
+            [_vm._v("اضافة شاليه")]
+          )
+        ]
+      )
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "container text-right",
+        staticStyle: { color: "black" },
+        attrs: { id: "personalInformation" }
+      },
+      [
+        _c("div", { staticClass: "form-group mt-5" }, [
+          _c("h1", { staticClass: "text-center" }, [
+            _vm._v("البيانات الشخصية")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row pt-3" }, [
+            _c(
+              "div",
+              { staticClass: "col-12 w-100 col-md-3 col-sm-12 col-xs-4" },
+              [
+                _c("label", { attrs: { for: "inputName" } }, [
+                  _vm._v("الاسم الاول")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control is-valid",
+                  attrs: { type: "text", name: "first_name", id: "first_name" }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "invalid-feedback" }, [
+                  _vm._v(
+                    "\n                        Validation message\n                    "
+                  )
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "col-12 w-100 col-md-3 col-sm-12 col-xs-4" },
+              [
+                _c("label", { attrs: { for: "inputName" } }, [
+                  _vm._v("الاسم الاخير")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control is-valid",
+                  attrs: { type: "text", name: "last_name", id: "last_name" }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "invalid-feedback" }, [
+                  _vm._v(
+                    "\n                        Validation message\n                    "
+                  )
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "col-12 w-100 col-md-3 col-sm-12 col-xs-4" },
+              [
+                _c("label", { attrs: { for: "inputName" } }, [
+                  _vm._v("رقم الجوال")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control is-valid",
+                  attrs: { type: "number", name: "phone", id: "phone" }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "invalid-feedback" }, [
+                  _vm._v(
+                    "\n                        Validation message\n                    "
+                  )
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "col-12 w-100 col-md-3 col-sm-12 col-xs-4" },
+              [
+                _c("label", { attrs: { for: "inputName" } }, [
+                  _vm._v("البريد الاكتروني")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control is-valid",
+                  attrs: { type: "email", name: "email", id: "email" }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "invalid-feedback" }, [
+                  _vm._v(
+                    "\n                        Validation message\n                    "
+                  )
+                ])
+              ]
+            )
+          ])
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group pt-3" }, [
+      _c("label", { attrs: { for: "inputName" } }, [_vm._v("اسم الشاليه")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "form-control is-valid",
+        attrs: { type: "text", name: "shaleh_name", id: "shaleh_name" }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "invalid-feedback" }, [
+        _vm._v("\n                Validation message\n            ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "" } }, [_vm._v("الوصف")]),
+        _vm._v(" "),
+        _c("textarea", {
+          staticClass: "form-control is-valid",
+          attrs: { name: "shaleh_desc", id: "shaleh_desc", rows: "3" }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "invalid-feedback" }, [
+          _vm._v("\n                    Validation message\n                ")
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "col-12 w-100 col-md-4 col-sm-12 col-xs-4" },
+      [
+        _c("label", { attrs: { for: "area" } }, [_vm._v("الحي")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control is-valid",
+          attrs: { type: "text", name: "area", id: "area" }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "invalid-feedback" }, [
+          _vm._v(
+            "\n                        Validation message\n                    "
+          )
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "col-12 w-100 col-md-4 col-sm-12 col-xs-4" },
+      [
+        _c("label", { attrs: { for: "street" } }, [_vm._v("الشارع")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control is-valid",
+          attrs: { type: "text", name: "street", id: "street" }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "invalid-feedback" }, [
+          _vm._v(
+            "\n                        Validation message\n                    "
+          )
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "form-group mt-5", attrs: { id: "priceInformation" } },
+      [
+        _c("h1", { staticClass: "text-center" }, [_vm._v("الأسعار")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row pt-3" }, [
+          _c(
+            "div",
+            { staticClass: "col-12 w-100 col-md-3 col-sm-12 col-xs-4" },
+            [
+              _c("label", { attrs: { for: "normal_price" } }, [
+                _vm._v("السعر في اليوم العادي")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control is-valid",
+                attrs: {
+                  type: "text",
+                  name: "normal_price",
+                  id: "normal_price"
+                }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "invalid-feedback" }, [
+                _vm._v(
+                  "\n                        Validation message\n                    "
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col-12 w-100 col-md-3 col-sm-12 col-xs-4" },
+            [
+              _c("label", { attrs: { for: "ramadan_price" } }, [
+                _vm._v("السعر في رمضان")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control is-valid",
+                attrs: {
+                  type: "text",
+                  name: "ramadan_price",
+                  id: "ramadan_price"
+                }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "invalid-feedback" }, [
+                _vm._v(
+                  "\n                        Validation message\n                    "
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col-12 w-100 col-md-3 col-sm-12 col-xs-4" },
+            [
+              _c("label", { attrs: { for: "ftr_price" } }, [
+                _vm._v("السعر في عيد الفطر")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control is-valid",
+                attrs: { type: "text", name: "ftr_price", id: "ftr_price" }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "invalid-feedback" }, [
+                _vm._v(
+                  "\n                        Validation message\n                    "
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col-12 w-100 col-md-3 col-sm-12 col-xs-4" },
+            [
+              _c("label", { attrs: { for: "adha_price" } }, [
+                _vm._v("السعر في عيد الاضحى")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control is-valid",
+                attrs: { type: "text", name: "adha_price", id: "adha_price" }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "invalid-feedback" }, [
+                _vm._v(
+                  "\n                        Validation message\n                    "
+                )
+              ])
+            ]
+          )
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "form-group mt-5", attrs: { id: "priceInformation" } },
+      [
+        _c("h1", { staticClass: "text-center" }, [_vm._v("صور الشاليه")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row pt-3" }, [
+          _c(
+            "div",
+            { staticClass: "col-12 w-100 col-md-12 col-sm-12 col-xs-4" },
+            [
+              _c("div", { staticClass: "form-group" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "float-right text-light",
+                    attrs: { for: "exampleFormControlFile" }
+                  },
+                  [_vm._v("رفع الصور الخاصة بالشاليه")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control-file text-light",
+                  attrs: {
+                    type: "file",
+                    id: "exampleFormControlFile",
+                    multiple: ""
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row", attrs: { id: "img-container" } })
+            ]
+          )
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CommentComponent.vue?vue&type=template&id=d6b6866e&":
 /*!*******************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CommentComponent.vue?vue&type=template&id=d6b6866e& ***!
@@ -38043,7 +38773,7 @@ var render = function() {
       }),
       _vm._v(" "),
       _c("div", { staticClass: "align-self-start" }, [
-        _c("h1", [_vm._v(_vm._s(_vm.user.name))])
+        _c("h1", [_vm._v(_vm._s(_vm.comment.user.name))])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "align-self-start" }, [
@@ -38078,7 +38808,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "col-12 col-md-4 col-lg-3  mt-5 w-100 h-100 my-5" },
+    { staticClass: "col-12 col-md-4 col-lg-4  mt-5 w-100 h-100 my-5" },
     [
       _c("div", { staticClass: "main-div mb-3" }, [
         _c(
@@ -38365,38 +39095,34 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "col-6 col-md-12 col-lg-12  w-100 h-100" }, [
+    _c(
+      "div",
+      {
+        staticClass:
+          "d-flex flex-column justify-content-center align-items-center shadow-lg my-2 rounded"
+      },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", [_c("p", [_vm._v(_vm._s(_vm.shaleh.shaleh_name))])]),
+        _vm._v(" "),
+        _c("div", [_c("p", [_vm._v(_vm._s(_vm.shaleh.city.name))])])
+      ]
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "col-6 col-md-12 col-lg-12  w-100 h-100" },
-      [
-        _c(
-          "div",
-          {
-            staticClass:
-              "d-flex flex-column justify-content-center align-items-center shadow-lg my-2 rounded"
-          },
-          [
-            _c("div", [
-              _c("img", {
-                staticClass: "w-100 my-shadow",
-                attrs: { src: "/storage/images/navbarBackground2.jpg" }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", [_c("p", [_vm._v("شاليه طيش")])]),
-            _vm._v(" "),
-            _c("div", [_c("p", [_vm._v("مكة المكرمة")])])
-          ]
-        )
-      ]
-    )
+    return _c("div", [
+      _c("img", {
+        staticClass: "w-100 my-shadow",
+        attrs: { src: "/storage/images/navbarBackground2.jpg" }
+      })
+    ])
   }
 ]
 render._withStripped = true
@@ -50570,6 +51296,7 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 Vue.component('property-component', __webpack_require__(/*! ./components/PropertyComponent.vue */ "./resources/js/components/PropertyComponent.vue")["default"]);
 Vue.component('small-shaleh-component', __webpack_require__(/*! ./components/SmallShalehComponent.vue */ "./resources/js/components/SmallShalehComponent.vue")["default"]);
 Vue.component('comment', __webpack_require__(/*! ./components/CommentComponent.vue */ "./resources/js/components/CommentComponent.vue")["default"]);
+Vue.component('add-shaleh-form', __webpack_require__(/*! ./components/AddShalehFormComponent.vue */ "./resources/js/components/AddShalehFormComponent.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -50636,6 +51363,75 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/AddShalehFormComponent.vue":
+/*!************************************************************!*\
+  !*** ./resources/js/components/AddShalehFormComponent.vue ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AddShalehFormComponent_vue_vue_type_template_id_5a5af280___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddShalehFormComponent.vue?vue&type=template&id=5a5af280& */ "./resources/js/components/AddShalehFormComponent.vue?vue&type=template&id=5a5af280&");
+/* harmony import */ var _AddShalehFormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddShalehFormComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/AddShalehFormComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _AddShalehFormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AddShalehFormComponent_vue_vue_type_template_id_5a5af280___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AddShalehFormComponent_vue_vue_type_template_id_5a5af280___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/AddShalehFormComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/AddShalehFormComponent.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/AddShalehFormComponent.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddShalehFormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./AddShalehFormComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AddShalehFormComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddShalehFormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/AddShalehFormComponent.vue?vue&type=template&id=5a5af280&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/AddShalehFormComponent.vue?vue&type=template&id=5a5af280& ***!
+  \*******************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddShalehFormComponent_vue_vue_type_template_id_5a5af280___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./AddShalehFormComponent.vue?vue&type=template&id=5a5af280& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AddShalehFormComponent.vue?vue&type=template&id=5a5af280&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddShalehFormComponent_vue_vue_type_template_id_5a5af280___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddShalehFormComponent_vue_vue_type_template_id_5a5af280___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 
