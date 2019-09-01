@@ -84,7 +84,7 @@
 
             </form>
             @endif
-            <div id="comment" class="w-100 h-100 mt-5">
+            <div id="comment" class="w-100 h-100 mt-5" >
                 <h1>التعليقات</h1>
                     <comment  v-for="comment in {{ $shaleh->comments }}" :key="comment.id" :comment="comment"></comment>
             </div>
