@@ -1,11 +1,11 @@
 <template>
-  <div class="form-group mt-5 row d-flex flex-row justify-content-center align-content-center">
+<div  class="form-group mt-5 col-md-3 col-4 d-flex flex-row justify-content-center align-content-center">
     <div class="col d-flex flex-column justify-content-center align-items-center">
-      <i class="fas fa-fan" style="font-size:50px;"></i>
-      <p>مكيف</p>
-      <input  id="fan-checkbox" type="checkbox" class="n-checkbox" />
-    </div>
-  </div>
+        <i :class="[property.icon_name ,checked?'n-checkbox-shadow':'']" style="font-size:3rem;"></i>
+        <p class="text-nowrap">{{ property.name }}</p>
+        <input type="checkbox" :value="property.id" name="properites[]" @change="checked == false ? checked = true:checked = false" class="n-checkbox" />
+</div>
+</div>
 </template>
 <style>
 .n-checkbox {
@@ -24,21 +24,16 @@ color:green;
 </style>
 <script>
 export default {
+    props:[
+        'property'
+    ],
+    data(){
+        return {
+            checked:false,
+        }
+    },
   mounted() {
     console.log("Component mounted.");
   },
-  methods: {
-       show:function(value){
-        //    $('#fan-checkbox').props('checked');
-        //    $('#fan').removeClass('n-checkbox-shadow');
-        if(value == 'fan')
-        {
-        $(this).find('i').addClass('n-checkbox-shadow');
-
-        }
-        // $(this).find('p').addClass('n-checkbox-shadow');
-      }
-  },
-
 };
 </script>

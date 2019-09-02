@@ -1,209 +1,54 @@
 <template>
-<!-- <div class="container d-flex flex-row w-100 mt-5">
-    <div id="1" class="d-flex flex-row justify-content-center align-items-center" data-toggle="tooltip"
-        data-placement="top" title="المعلومات الشخصية"
-        style="background:#BEBEBE;color:black;width:65px;height:50px;border-radius: 50%;cursor: pointer;">
-        <b class="text-center" style="height:fit-content">1</b>
-    </div>
-    <div class="align-self-center" style="border-top:3px solid green;width: 150px;">
-    </div>
-    <div id="2" class="d-flex flex-row justify-content-center align-items-center" data-toggle="tooltip"
-        data-placement="top" title="المعلومات الشخصية"
-        style="background:black;color:black;;width:65px;height:50px;border-radius: 50%;cursor: pointer;">
-        <b class="text-center" style="height:fit-content">2</b>
-    </div>
-    <div class="align-self-center" style="border-top:3px solid black;width: 150px;">
-    </div>
-    <div id="3" class="d-flex flex-row justify-content-center align-items-center" data-toggle="tooltip"
-        data-placement="top" title="المعلومات الشخصية"
-        style="background:black;color:black;;width:65px;height:50px;border-radius: 50%;cursor: pointer;">
-        <b class="text-center" style="height:fit-content">3</b>
-    </div>
-    <div class="align-self-center" style="border-top:3px solid black;width: 150px;">
-    </div>
-    <div id="4" class="d-flex flex-row justify-content-center align-items-center" data-toggle="tooltip"
-        data-placement="top" title="المعلومات الشخصية"
-        style="background:red;color:black;;width:65px;height:50px;border-radius: 50%;cursor: pointer;">
-        <b class="text-center" style="height:fit-content">4</b>
-    </div>
-    <div class="align-self-center" style="border-top:3px solid black;width: 150px;">
-    </div>
-    <div id="5" class="d-flex flex-row justify-content-center align-items-center" data-toggle="tooltip"
-        data-placement="top" title="المعلومات الشخصية"
-        style="background:green;color:black;;width:65px;height:50px;border-radius: 50%;cursor: pointer;">
-        <b class="text-center" style="height:fit-content">5</b>
-    </div>
-    <div class="align-self-center" style="border-top:3px solid black;width: 150px;">
-    </div>
-    <div id="6" class="d-flex flex-row justify-content-center align-items-center" data-toggle="tooltip"
-        data-placement="top" title="المعلومات الشخصية"
-        style="background:black;color:black;;width:65px;height:50px;border-radius: 50%;cursor: pointer;">
-        <b class="text-center" style="height:fit-content">6</b>
-    </div>
-    <div class="align-self-center" style="border-top:3px solid black;width: 150px;">
-    </div>
-    <div id="7" class="d-flex flex-row justify-content-center align-items-center" data-toggle="tooltip"
-        data-placement="top" title="المعلومات الشخصية"
-        style="background:black;color:black;;width:65px;height:50px;border-radius: 50%;cursor: pointer;">
-        <b class="text-center" style="height:fit-content">7</b>
-    </div>
-
-</div>  -->
-<!-- {{ route('admin.store.shaleh') }} -->
-<form id="addShalehForm" :action="route" method="post" class="shadow-lg container p-3  mb-2 rounded">
+<form id="addShalehForm" :action="route" method="post" class="shadow-lg container p-3 mb-2 rounded text-right" @submit.prevent="onSubmit">
     <input type="hidden" name="_token" :value="csrf">
-    <div id="personalInformation" class="container text-right" style="color:black;">
-        <div class="form-group mt-5">
-            <h1 class="text-center">البيانات الشخصية</h1>
-            <div class="row pt-3">
-                <div class="col-12 w-100 col-md-3 col-sm-12 col-xs-4">
-                    <label for="inputName">الاسم الاول</label>
-                    <input type="text" class="form-control is-valid" name="first_name" id="first_name">
-                    <div class="invalid-feedback" style="">
-                        Validation message
-                    </div>
-                </div>
-                <div class="col-12 w-100 col-md-3 col-sm-12 col-xs-4">
-                    <label for="inputName">الاسم الاخير</label>
-                    <input type="text" class="form-control is-valid" name="last_name" id="last_name">
-                    <div class="invalid-feedback" style="">
-                        Validation message
-                    </div>
-                </div>
 
-                <div class="col-12 w-100 col-md-3 col-sm-12 col-xs-4">
-                    <label for="inputName">رقم الجوال</label>
-                    <input type="number" class="form-control is-valid" name="phone" id="phone">
-                    <div class="invalid-feedback" style="">
-                        Validation message
-                    </div>
-                </div>
-                <div class="col-12 w-100 col-md-3 col-sm-12 col-xs-4">
-                    <label for="inputName">البريد الاكتروني</label>
-                    <input type="email" class="form-control is-valid" name="email" id="email">
-                    <div class="invalid-feedback" style="">
-                        Validation message
-                    </div>
-                </div>
-            </div>
+    <personal-info @state_personal_info="state_personal_info($event)"></personal-info>
+    <shaleh-info @state_shaleh_info="state_shaleh_info($event)"></shaleh-info>
+
+    <div class="form-group">
+        <h1 class="text-center">الخدمات</h1>
+        <div class="row">
+            <property-component v-for="property in properties" :key="property.id" :property="property"></property-component>
         </div>
-
     </div>
+    <map-info @state_map_info="state_map_info($event)" :cities="cities"></map-info>
+    <price-info @state_price_info="state_price_info($event)"></price-info>
 
-
-
-    <div id="shalehInformation" class="container  text-right mt-5" style="color:black;;">
-
-        <h1 class="text-center">معلومات الشاليه</h1>
-        <div class="form-group pt-3">
-            <label for="inputName">اسم الشاليه</label>
-            <input type="text" class="form-control is-valid" name="shaleh_name" id="shaleh_name">
-            <div class="invalid-feedback" style="">
-                Validation message
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="form-group">
-                <label for="">الوصف</label>
-                <textarea class="form-control is-valid" name="shaleh_desc" id="shaleh_desc" rows="3"></textarea>
-                <div class="invalid-feedback" style="">
-                    Validation message
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <h1 class="text-center">الخدمات</h1>
-            <div class="row">
-                <div v-for="property in properties" :key="property.id" class="form-group mt-5 col-md-3 col-4 d-flex flex-row justify-content-center align-content-center"
-                    onclick="show(this)">
-                    <div class="col d-flex flex-column justify-content-center align-items-center">
-                        <i :class="property.icon_name" style="font-size:50px;"></i>
-                        <p>{{ property.name }}</p>
-                        <input type="checkbox" :value="property.id" name="properites[]" class="n-checkbox" />
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="mapInformation" class="form-group mt-5">
-            <h1 class="text-center">معلومات الموقع</h1>
-            <div class="row pt-3">
-                <div class="col-12 w-100 col-md-4 col-sm-12 col-xs-4">
-                    <label for="inputName">المدينة</label>
-                    <select class="form-control is-valid" name="city_id">
-                        <option v-for="city in cities" :value="city.id" :key="city.id">{{ city.name }}</option>
-                    </select>
-                </div>
-                <div class="col-12 w-100 col-md-4 col-sm-12 col-xs-4">
-                    <label for="area">الحي</label>
-                    <input type="text" class="form-control is-valid" name="area" id="area">
-                    <div class="invalid-feedback" style="">
-                        Validation message
-                    </div>
-                </div>
-
-                <div class="col-12 w-100 col-md-4 col-sm-12 col-xs-4">
-                    <label for="street">الشارع</label>
-                    <input type="text" class="form-control is-valid" name="street" id="street">
-                    <div class="invalid-feedback" style="">
-                        Validation message
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="priceInformation" class="form-group mt-5">
-            <h1 class="text-center">الأسعار</h1>
-            <div class="row pt-3">
-                <div class="col-12 w-100 col-md-3 col-sm-12 col-xs-4">
-                    <label for="normal_price">السعر في اليوم العادي</label>
-                    <input type="text" class="form-control is-valid" name="normal_price" id="normal_price">
-                    <div class="invalid-feedback" style="">
-                        Validation message
-                    </div>
-                </div>
-                <div class="col-12 w-100 col-md-3 col-sm-12 col-xs-4">
-                    <label for="ramadan_price">السعر في رمضان</label>
-                    <input type="text" class="form-control is-valid" name="ramadan_price" id="ramadan_price">
-                    <div class="invalid-feedback" style="">
-                        Validation message
-                    </div>
-                </div>
-
-                <div class="col-12 w-100 col-md-3 col-sm-12 col-xs-4">
-                    <label for="ftr_price">السعر في عيد الفطر</label>
-                    <input type="text" class="form-control is-valid" name="ftr_price" id="ftr_price">
-                    <div class="invalid-feedback" style="">
-                        Validation message
-                    </div>
-                </div>
-                <div class="col-12 w-100 col-md-3 col-sm-12 col-xs-4">
-                    <label for="adha_price">السعر في عيد الاضحى</label>
-                    <input type="text" class="form-control is-valid" name="adha_price" id="adha_price">
-                    <div class="invalid-feedback" style="">
-                        Validation message
-                    </div>
-                </div>
-            </div>
-
-         </div>
         <div id="priceInformation" class="form-group mt-5">
             <h1 class="text-center">صور الشاليه</h1>
             <div class="row pt-3">
                 <div class="col-12 w-100 col-md-12 col-sm-12 col-xs-4">
                     <div class="form-group">
                         <label for="exampleFormControlFile" class="float-right text-light">رفع الصور الخاصة بالشاليه</label>
-                        <input type="file" class="form-control-file text-light" id="exampleFormControlFile" multiple>
+                        <input type="file" class="form-control-file text-light" @change="addImage" multiple>
                     </div>
-                        <div id="img-container" class="row">
+                    <div id="img-container" class="row">
+                        <form-imgs v-for="img in imgs" :file="img" :key="img.name" @image-deleted="deleteImg($event)"></form-imgs>
                     </div>
                 </div>
             </div>
         </div>
         <button type="submit" class="btn btn-primary w-100 mt-5 bg-dark">اضافة شاليه</button>
-    </div>
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                <div class="modal-header position-relative">
+                    <h5 class="modal-title text-success" id="exampleModalLongTitle">تمت الاضافة</h5>
+                    <button type="button" class="close position-absolute" data-dismiss="modal" aria-label="Close" style="left:0px;">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    الان تستطيع من خلال حسابك ادارة الشاليهات الخاصة بك و تعديل بيانات متى ما شئت.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary w-100" data-dismiss="modal">حسنا</button>
+                </div>
+                </div>
+            </div>
+        </div>
 </form>
+
 </template>
 <script>
 export default {
@@ -213,6 +58,58 @@ export default {
         'route',
         'csrf'
     ],
+    data(){
+        return{
+            status:{
+                personalInfo:false,
+                shalehInfo:false,
+                mapInfo:false,
+                priceInfo:false,
+            },
+            imgs:[],
+        }
+    },
+    methods:{
+        state_personal_info:function(state){
+            this.status.personalInfo=state;
+        },
+        state_shaleh_info:function(state){
+            this.status.shalehInfo=state;
+        },
+        state_map_info:function(state){
+            this.status.mapInfo=state;
+        },
+        state_price_info:function(state){
+            this.status.priceInfo=state;
+        },
+        addImage:function(e){
+            var tgt = e.target,
+            files = tgt.files;
+            if (FileReader && files && files.length) {
+                for (let index = 0; index < files.length; index++) {
+                    this.imgs.push(files[index])
+                    }
+                }
+        },
+        deleteImg:function(event)
+        {
+            this.imgs = this.imgs.filter(img=>img.name!= event);
+            console.log(this.imgs.length);
+        },
+        onSubmit:function(){
+             let myForm = new FormData($('#addShalehForm')[0]);
+             if(this.imgs.length !=0){
+                 this.imgs.forEach(img=>myForm.append('imgs[]',img,img.name));
+             }
+            console.log(myForm);
+            axios.post(this.route,myForm).then(function(response){
+                console.log(response);
+                $('.modal').modal('show');
+            }).catch(function(error){
+                console.log(error);
+            });
+        },
+    },
   mounted() {
     console.log("Component mounted.");
   },

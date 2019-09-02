@@ -7,8 +7,10 @@ use App\Comment;
 use App\properties_shaleh;
 use App\Property;
 use App\Shaleh;
+use App\Shaleh_Images;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ShalehController extends Controller
 {
@@ -33,7 +35,6 @@ class ShalehController extends Controller
     }
     public function add_comment_to_shaleh(Request $request,$shaleh_id)
     {
-        // return dd($request->all());
         $new_comment = new Comment();
         $new_comment->shaleh_id = $shaleh_id;
         $new_comment->user_id = auth()->user()->id;
@@ -45,7 +46,7 @@ class ShalehController extends Controller
     }
     public function store_shaleh(Request $request)
     {
-
+        // return $request->all();
         DB::transaction(function ()use($request) {
             $shaleh = new Shaleh();
             $shaleh->user_id = auth()->user()->id;
@@ -71,6 +72,17 @@ class ShalehController extends Controller
                 $prop->shaleh_id = $shaleh->id;
                 $prop->property_id = $property;
                 $prop->save();
+            }
+            foreach($request->file('imgs') as $key=>$img){
+                // $file_name_with_ext = $img->getClientOriginalName();
+                // $file_name = pathinfo($file_name_with_ext,PATHINFO_FILENAME);
+                $extension = $img->getClientOriginalExtension();
+                $file_name_to_store = $key.'.'.$extension;
+                $img->storeAs('public/shalehat_images/'.$shaleh->id,$file_name_to_store);
+                $shaleh_image = new Shaleh_Images();
+                $shaleh_image->shaleh_id = $shaleh->id;
+                $shaleh_image->image_name = $file_name_to_store;
+                $shaleh_image->save();
             }
         });
         // return redirect('/admin/shalehat');

@@ -47,10 +47,10 @@
         }
 
         .back {
-            background-color:black;
+            /* background-color:black; */
             padding-bottom: 25em;
             /* background-color:white; */
-            background-image: url('/storage/images/navbarBackground2.jpg');
+            /* background-image: url('/storage/images/navbarBackground2.jpg'); */
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -200,8 +200,8 @@
 </head>
 
 <body>
-    <div id="background-image-fixed">
-    </div>
+    {{-- <div id="background-image-fixed">
+    </div> --}}
     <div id="app" class="m-0 p-0 m-auto m-lg-0">
         <div class="content">
             <div id="sideNav" style="height:100vh;">
@@ -265,7 +265,7 @@
                     </ul>
                 </div>
             </div>
-            <nav id="nav" class="navbar navbar-expand-md navbar-dark  back w-100 position-relative">
+            <nav id="nav" class="navbar navbar-expand-md navbar-dark  back bg-dark w-100 position-relative">
                 <div class="container">
                     <a class="navbar-brand big-text" href="{{ url('/') }}">
                         <img src="/storage/logo/logl1.png" width="45" height="45" class="d-inline-block align-top"

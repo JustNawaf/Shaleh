@@ -23,6 +23,12 @@ Vue.component('property-component', require('./components/PropertyComponent.vue'
 Vue.component('small-shaleh-component', require('./components/SmallShalehComponent.vue').default);
 Vue.component('comment', require('./components/CommentComponent.vue').default);
 Vue.component('add-shaleh-form', require('./components/AddShalehFormComponent.vue').default);
+Vue.component('personal-info', require('./components/Form/PersonalInfoComponent.vue').default);
+Vue.component('shaleh-info', require('./components/Form/ShalehInformationComponent.vue').default);
+Vue.component('map-info', require('./components/Form/MapInformationComponent.vue').default);
+Vue.component('price-info', require('./components/Form/PriceInfomationComponent.vue').default);
+Vue.component('form-imgs', require('./components/Form/ImageFormComponent.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

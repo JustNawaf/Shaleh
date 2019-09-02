@@ -240,38 +240,19 @@
 
     //     console.log(x);
     // }
-    var imgs = [];
-    $('#exampleFormControlFile').change(function(e){
-        var tgt = e.target,
-        files = tgt.files;
+    // var imgs = [];
+    // $('#exampleFormControlFile').change(function(e){
+    //     var tgt = e.target,
+    //     files = tgt.files;
 
-    if (FileReader && files && files.length) {
-        for (let index = 0; index < files.length; index++) {
-            imgs.push(files[index])
-            setupReader(files[index]);
-            }
-        }
-    });
-    function setupReader(file) {
-        var name = file.name;
-        var reader = new FileReader();
+    // if (FileReader && files && files.length) {
+    //     for (let index = 0; index < files.length; index++) {
+    //         imgs.push(files[index])
+    //         setupReader(files[index]);
+    //         }
+    //     }
+    // });
 
-
-        reader.onload = function (e) {
-                // document.getElementById('myimage').src = fr.result;
-                let s = '<div class="w-100 h-50 py-2 px-2 col-6 col-md-3">';
-                s+='<button type="button" class="position-absolute btn btn-danger text-light mr-1 p-1"';
-                s+=`style="background-color:red;" onclick="deleteImg(this)">حذف</button>`;
-                s+=`<img class="w-100 h-100 img-responsive rounded" src="${reader.result}" data-name="${file.name}">`;
-                s+=`<p class="text-center text-light pt-3">${file.name}</p>`;
-                s+='</div>';
-
-                $('#img-container').append(s);
-
-            }
-            reader.readAsDataURL(file);
-
-        }
 
     // Not supported
     // else {
@@ -279,18 +260,18 @@
     //     // them on the server until the user's session ends.
     // }
     // })
-    function deleteImg(div)
-    {
-        imgs = imgs.filter(img=>img.name.trim()!= $(div).next().data('name').trim());
-        console.log(imgs);
-        if(imgs.length == 0 )
-        {
-            $('#exampleFormControlFile').val('');
-        }
-        // $('#exampleFormControlFile').toArray()[0].files[0].name = 'ASDasd';
-        // return console.log($('#exampleFormControlFile').toArray()[0].files);
-        $(div).parent().remove();
-    }
+    // function deleteImg(div)
+    // {
+    //     imgs = imgs.filter(img=>img.name.trim()!= $(div).next().data('name').trim());
+    //     console.log(imgs);
+    //     if(imgs.length == 0 )
+    //     {
+    //         $('#exampleFormControlFile').val('');
+    //     }
+    //     // $('#exampleFormControlFile').toArray()[0].files[0].name = 'ASDasd';
+    //     // return console.log($('#exampleFormControlFile').toArray()[0].files);
+    //     $(div).parent().remove();
+    // }
     // new Vue({
     //     el:'#personalInformation',
     //     data: {
@@ -315,50 +296,50 @@
     //         key: 'information'
     //     },
     //   });
-    $('#1').click(function(){
-        alert('1');
+    // $('#1').click(function(){
+    //     alert('1');
 
-    });
-    $('#1').tooltip();
+    // });
+    // $('#1').tooltip();
 
-    $('#2').click(function(){
-        alert('2');
-    });
-    $('#2').tooltip();
-    $('#3').click(function(){
-        alert('3');
-    });
-    $('#3').tooltip();
-    $('#4').click(function(){
-        alert('4');
-    });
-    $('#4').tooltip();
-    $('#5').click(function(){
-        alert('5');
-    });
-    $('#5').tooltip();
-    $('#6').click(function(){
-        alert('6');
-    });
-    $('#6').tooltip();
-    $('#7').click(function(){
-        alert('7');
-    });
-    $('#7').tooltip();
-    function show(div){
-        //    $('#fan-checkbox').props('checked');
-        //    $('#fan').removeClass('n-checkbox-shadow');
-        var ss = $(div).find('input:checkbox:first').is(":checked");
-        if(ss == false)
-        {
-            $(div).find('i').removeClass('n-checkbox-shadow');
-        }else{
-            $(div).find('i').addClass('n-checkbox-shadow');
+    // $('#2').click(function(){
+    //     alert('2');
+    // });
+    // $('#2').tooltip();
+    // $('#3').click(function(){
+    //     alert('3');
+    // });
+    // $('#3').tooltip();
+    // $('#4').click(function(){
+    //     alert('4');
+    // });
+    // $('#4').tooltip();
+    // $('#5').click(function(){
+    //     alert('5');
+    // });
+    // $('#5').tooltip();
+    // $('#6').click(function(){
+    //     alert('6');
+    // });
+    // $('#6').tooltip();
+    // $('#7').click(function(){
+    //     alert('7');
+    // });
+    // $('#7').tooltip();
+    // function show(div){
+    //     //    $('#fan-checkbox').props('checked');
+    //     //    $('#fan').removeClass('n-checkbox-shadow');
+    //     var ss = $(div).find('input:checkbox:first').is(":checked");
+    //     if(ss == false)
+    //     {
+    //         $(div).find('i').removeClass('n-checkbox-shadow');
+    //     }else{
+    //         $(div).find('i').addClass('n-checkbox-shadow');
 
-        }
+    //     }
 
-        // $(this).find('p').addClass('n-checkbox-shadow');
-      }
+    //     // $(this).find('p').addClass('n-checkbox-shadow');
+    //   }
 
 </script>
 @endsection
