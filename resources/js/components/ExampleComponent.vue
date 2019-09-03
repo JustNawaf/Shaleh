@@ -4,13 +4,13 @@
             <div class=" w-100 h-75 d-flex flex-column align-items-center my-shadow" style="margin-bottom:5rem;">
                 <div  :id="id" class="w-100 h-100 d-flex flex-column align-items-center position-relative"
                     style="z-index: 0;">
-                    <div :id="'controlImage'+this.id" class="carousel slide" data-ride="carousel">
+                    <div :id="'controlImage'+this.id" class="carousel" data-ride="carousel">
                         <div class="carousel-inner" style="border-radius: 10px;">
                             <div class="carousel-item active" style="border-radius: 10px;">
-                                <img class="my-shadow img" :src="'/storage/shalehat_images/'+this.id+'/'+this.imgs[0].image_name">
+                                <img class="d-block my-shadow img" :src="'/storage/shalehat_images/'+this.id+'/'+this.imgs[0].image_name">
                             </div>
                             <div class="carousel-item"  v-for="img in imgs.slice(1)" :key="img.id" style="border-radius: 10px;">
-                                <img  class="img my-shadow" :src="'/storage/shalehat_images/'+img.shaleh_id+'/'+img.image_name">
+                                <img  class="d-block img my-shadow" :src="'/storage/shalehat_images/'+img.shaleh_id+'/'+img.image_name">
                             </div>
                         </div>
                             <a class="carousel-control-prev" :href="'#controlImage'+this.id" role="button" data-slide="prev">
@@ -39,7 +39,7 @@
                                 <h5 class="font-weight-bold">{{ shaleh.normal_price }} ريال <span style="color:lightgray;">/ باليوم</span></h5>
                             </div>
                             <div class="mt-1 text-left">
-                                <img width="80px" :src="'/storage/star/'+rating+'.png'">
+                                <img width="80px" :src="'/star/'+rating+'.png'">
                                 <p class="d-inline mt-3" style="color:lightgray;">{{ totalComments }} تقييمات</p>
                             </div>
                         </div>

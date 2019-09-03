@@ -39009,7 +39009,7 @@ var render = function() {
                 _c(
                   "div",
                   {
-                    staticClass: "carousel slide",
+                    staticClass: "carousel",
                     attrs: {
                       id: "controlImage" + this.id,
                       "data-ride": "carousel"
@@ -39031,7 +39031,7 @@ var render = function() {
                           },
                           [
                             _c("img", {
-                              staticClass: "my-shadow img",
+                              staticClass: "d-block my-shadow img",
                               attrs: {
                                 src:
                                   "/storage/shalehat_images/" +
@@ -39053,7 +39053,7 @@ var render = function() {
                             },
                             [
                               _c("img", {
-                                staticClass: "img my-shadow",
+                                staticClass: "d-block img my-shadow",
                                 attrs: {
                                   src:
                                     "/storage/shalehat_images/" +
@@ -39193,7 +39193,7 @@ var render = function() {
                         _c("img", {
                           attrs: {
                             width: "80px",
-                            src: "/storage/star/" + _vm.rating + ".png"
+                            src: "/star/" + _vm.rating + ".png"
                           }
                         }),
                         _vm._v(" "),

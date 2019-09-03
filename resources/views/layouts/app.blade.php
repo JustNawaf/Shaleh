@@ -234,7 +234,7 @@
                 <div class="text-center">
                     <div class="mt-5">
                         <p class="big-text">
-                            <img src="/storage/logo/logl1.png" width="45" height="45" class="d-inline-block align-top"
+                            <img src="/logo/logl1.png" width="45" height="45" class="d-inline-block align-top"
                                 alt="">
                             شاليه
                         </p>
@@ -294,7 +294,7 @@
             <nav id="nav" class="navbar navbar-expand-md navbar-dark  back bg-dark w-100 position-relative">
                 <div class="container">
                     <a class="navbar-brand big-text" href="{{ url('/') }}">
-                        <img src="/storage/logo/logl1.png" width="45" height="45" class="d-inline-block align-top"
+                        <img src="/logo/logl1.png" width="45" height="45" class="d-inline-block align-top"
                             alt="">
                         {{-- {{ config('app.name', 'شـاليه') }} --}}
                         شـاليه
@@ -379,7 +379,6 @@
             }
 
         });
-
     </script>
 </body>
 
