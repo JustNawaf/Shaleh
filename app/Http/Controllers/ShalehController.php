@@ -16,7 +16,8 @@ class ShalehController extends Controller
 {
     public function index()
     {
-        $shalehat = Shaleh::all();
+        $shalehat = Shaleh::with(['imgs','comments'])->get();
+        // return dd($shalehat);
         $cities  = City::all();
         return view('pages.all.shalehat')->with(['shalehat'=> $shalehat,'cities'=>$cities]);
     }
@@ -78,7 +79,7 @@ class ShalehController extends Controller
                 // $file_name = pathinfo($file_name_with_ext,PATHINFO_FILENAME);
                 $extension = $img->getClientOriginalExtension();
                 $file_name_to_store = $key.'.'.$extension;
-                $img->storeAs('public/shalehat_images/'.$shaleh->id,$file_name_to_store);
+                $img->storeAs('shalehat_images/'.$shaleh->id,$file_name_to_store,'public');
                 $shaleh_image = new Shaleh_Images();
                 $shaleh_image->shaleh_id = $shaleh->id;
                 $shaleh_image->image_name = $file_name_to_store;
@@ -89,5 +90,17 @@ class ShalehController extends Controller
         // $properties = Property::all();
         // $cities = City::all();
         // return view('pages.admin.addShaleh')->with(['properties'=>$properties,'cities'=>$cities]);
+    }
+
+    public function search_shalehat(Request $request){
+        $shaleh_name = $request->get('shaleh_name');
+        $city_id = $request->get('city_id');
+        $shalehat = Shaleh::when($shaleh_name,function($query,$shaleh_name){
+            return $query->where('shaleh_name',$shaleh_name);
+        })->when($city_id,function($query,$city_id){
+            return $query->where('city_id',$city_id);
+        })->orderby('normal_price','DESC')->with(['imgs','comments'])->get();
+
+        return $shalehat;
     }
 }

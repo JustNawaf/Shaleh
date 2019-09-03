@@ -18,9 +18,11 @@
             <h1 class="text-center">صور الشاليه</h1>
             <div class="row pt-3">
                 <div class="col-12 w-100 col-md-12 col-sm-12 col-xs-4">
-                    <div class="form-group">
-                        <label for="exampleFormControlFile" class="float-right text-light">رفع الصور الخاصة بالشاليه</label>
-                        <input type="file" class="form-control-file text-light" @change="addImage" multiple>
+                    <div class="input-group mb-3">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="imgs" aria-describedby="inputGroupFileAddon01" @change="addImage" multiple>
+                            <label class="custom-file-label" for="imgs"></label>
+                        </div>
                     </div>
                     <div id="img-container" class="row">
                         <form-imgs v-for="img in imgs" :file="img" :key="img.name" @image-deleted="deleteImg($event)"></form-imgs>

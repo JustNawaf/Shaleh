@@ -28,6 +28,7 @@ Vue.component('shaleh-info', require('./components/Form/ShalehInformationCompone
 Vue.component('map-info', require('./components/Form/MapInformationComponent.vue').default);
 Vue.component('price-info', require('./components/Form/PriceInfomationComponent.vue').default);
 Vue.component('form-imgs', require('./components/Form/ImageFormComponent.vue').default);
+Vue.component('form-search', require('./components/Form/SearchFormComponent.vue').default);
 
 
 /**

@@ -196,6 +196,32 @@
         .n-checkbox-shadow {
             color: green;
         }
+        .img{
+            position: relative;
+            float: left;
+            width: 100%;
+            /* height: 375px; */
+            min-height: 23.4rem;
+            max-height: 23.4rem;
+            border-radius: 10px;
+            background-position: 50% 50%;
+            background-repeat:   no-repeat;
+            background-size:     cover;
+            }
+        @media only screen and (max-width: 600px) {
+            .img{
+            position: relative;
+            float: left;
+            width: 100%;
+            min-height: 11.1rem;
+            max-height: 11.1rem;
+            border-radius: 10px;
+            background-position: 50% 50%;
+            background-repeat:   no-repeat;
+            background-size:     cover;
+            }
+
+        }
     </style>
 </head>
 

@@ -19,4 +19,7 @@ class Shaleh extends Model
     public function city(){
         return $this->belongsTo('App\City','city_id');
     }
+    public function imgs(){
+        return $this->hasMany('App\Shaleh_Images','shaleh_id');
+    }
 }
