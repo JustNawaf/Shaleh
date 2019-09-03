@@ -1979,6 +1979,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['user', 'comment'],
   mounted: function mounted() {
@@ -2735,6 +2746,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -38938,7 +38951,8 @@ var render = function() {
     "div",
     {
       staticClass:
-        "w-100 border-dark d-flex my-4 px-3 flex-column position-relative shadow-lg"
+        "w-100  d-flex my-4 px-3 flex-column position-relative shadow-lg text-light",
+      staticStyle: { "background-color": "#636970" }
     },
     [
       _c("img", {
@@ -38946,17 +38960,40 @@ var render = function() {
         staticStyle: { top: "5%", left: "1%" },
         attrs: {
           width: "100px",
-          src: "/storage/star/" + _vm.comment.evaluation + ".png"
+          src: "/star/" + _vm.comment.evaluation + ".png"
         }
       }),
       _vm._v(" "),
-      _c("div", { staticClass: "align-self-start" }, [
-        _c("h1", [_vm._v(_vm._s(_vm.comment.user.name))])
+      _c("div", { staticClass: "row bg-dark px-3 py-3" }, [
+        _c("div", { staticClass: "col" }, [
+          _c("h1", [_vm._v(_vm._s(_vm.comment.user.name))])
+        ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "align-self-start" }, [
-        _c("p", { staticClass: "mx-2" }, [
-          _vm._v(_vm._s(_vm.comment.description))
+      _c(
+        "div",
+        {
+          staticClass: "row bg-dark pb-2",
+          staticStyle: { "margin-bottom": "1px" }
+        },
+        [
+          _c("div", { staticClass: "col" }, [
+            _c("p", { staticClass: "d-inline" }, [
+              _vm._v(_vm._s(_vm.comment.created_at))
+            ]),
+            _vm._v(" "),
+            _c("i", { staticClass: "far fa-calendar-alt text-light" })
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "row bg-dark px-3 py-3" }, [
+        _c("div", { staticClass: "col" }, [
+          _c("p", { staticClass: "h3" }, [_vm._v("التعليق : ")]),
+          _vm._v(" "),
+          _c("p", { staticClass: "h3 mx-2" }, [
+            _vm._v(_vm._s(_vm.comment.description))
+          ])
         ])
       ])
     ]
@@ -40131,7 +40168,18 @@ var render = function() {
         _vm._v(" "),
         _c("div", [_c("p", [_vm._v(_vm._s(_vm.shaleh.shaleh_name))])]),
         _vm._v(" "),
-        _c("div", [_c("p", [_vm._v(_vm._s(_vm.shaleh.city.name))])])
+        _c("div", [_c("p", [_vm._v(_vm._s(_vm.shaleh.city.name))])]),
+        _vm._v(" "),
+        _c("div", [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-secondary",
+              attrs: { href: /shaleh/ + _vm.shaleh.id }
+            },
+            [_vm._v("صفحة الشاليه")]
+          )
+        ])
       ]
     )
   ])
@@ -40144,7 +40192,7 @@ var staticRenderFns = [
     return _c("div", [
       _c("img", {
         staticClass: "w-100 my-shadow",
-        attrs: { src: "/storage/images/navbarBackground2.jpg" }
+        attrs: { src: "/images/navbarBackground2.jpg" }
       })
     ])
   }

@@ -22,9 +22,9 @@ class ShalehController extends Controller
         return view('pages.all.shalehat')->with(['shalehat'=> $shalehat,'cities'=>$cities]);
     }
     public function show_shaleh($id){
-        $shaleh = Shaleh::with('comments.user')->find($id);
+        $shaleh = Shaleh::with(['comments.user','properties.property'])->find($id);
         $cities  = City::all();
-        $shalehat = Shaleh::where('city_id','=',$shaleh->city_id)->with('city')->take(3)->get();
+        $shalehat = Shaleh::where('city_id','=',$shaleh->city_id)->where('id','!=',$id)->with('city')->take(3)->get();
         // return dd($shaleh);
         return view('pages.all.showShaleh')->with(['shaleh'=>$shaleh,'cities'=>$cities,'shalehat'=>$shalehat  ]);
     }
@@ -42,8 +42,9 @@ class ShalehController extends Controller
         $new_comment->evaluation = $request->get('rating');
         $new_comment->description = $request->get('comment');
         $new_comment->save();
-
-        return redirect('shaleh/'.$shaleh_id);
+        return Comment::where('id',$new_comment->id)->with('user')->first();
+        // return $new_comment->with('user')->first();
+        // return redirect('shaleh/'.$shaleh_id);
     }
     public function store_shaleh(Request $request)
     {
