@@ -2,9 +2,9 @@
 <div class="col-12 col-md-4 col-lg-4  mt-5 w-100 h-100 my-5">
     <div class="main-div mb-3">
             <div class=" w-100 h-75 d-flex flex-column align-items-center my-shadow" style="margin-bottom:5rem;">
-                <div  :id="id" class="w-100 h-100 d-flex flex-column align-items-center position-relative"
+                <div  :id="this.id" class="w-100 h-100 d-flex flex-column align-items-center position-relative"
                     style="z-index: 0;">
-                    <div :id="'controlImage'+this.id" class="carousel" data-ride="carousel">
+                    <div :id="'controlImage'+this.id" class="carousel slide w-100" data-ride="carousel">
                         <div class="carousel-inner" style="border-radius: 10px;">
                             <div class="carousel-item active" style="border-radius: 10px;">
                                 <img class="d-block my-shadow img" :src="'/storage/shalehat_images/'+this.id+'/'+this.imgs[0].image_name">
@@ -12,7 +12,6 @@
                             <div class="carousel-item"  v-for="img in imgs.slice(1)" :key="img.id" style="border-radius: 10px;">
                                 <img  class="d-block img my-shadow" :src="'/storage/shalehat_images/'+img.shaleh_id+'/'+img.image_name">
                             </div>
-                        </div>
                             <a class="carousel-control-prev" :href="'#controlImage'+this.id" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Previous</span>
@@ -22,17 +21,19 @@
                                 <span class="sr-only">Next</span>
                             </a>
                         </div>
+
+                        </div>
                         <div class="position-absolute w-100" style="top:-30px;">
-                            <div class="row w-100">
-                                <div class="col-8 col-md-10 col-lg-10">
-                                    <a class=" shadow-lg px-1 py-1 btn btn-dark w-100" :href="shalehPage" target="_blank" style="z-index:-3;" :style="checkUser ? 'top:-30px;right:5px;':'top:-30px;'">صفحة الشاليه</a>
+                            <div class="row m-0 p-0 w-100">
+                                <div :class="checkUser ? 'col-8 col-md-10 col-lg-10':'col-12 col-md-12 col-lg-12'" style="z-index:-3;">
+                                    <a class=" shadow-lg px-1 py-1 btn btn-dark w-100" :href="shalehPage" :style="checkUser ? 'top:-30px;right:5px;':'top:-30px;'">صفحة الشاليه</a>
                                 </div>
-                                <div class="col-4 col-md-2 col-lg-2  p-0 m-0">
+                                <div v-if="checkUser" class="col-4 col-md-2 col-lg-2  p-0 m-0">
                                     <div class="row w-100 p-0 m-0 d-flex flex-row justify-content-between">
-                                        <div v-if="checkUser" class="shadow-lg text-dark">
+                                        <div  class="shadow-lg text-dark">
                                         <i class="far fa-edit text-dark icon"></i>
                                         </div>
-                                        <div v-if="checkUser" class="shadow-lg text-dark">
+                                        <div class="shadow-lg text-dark">
                                             <i class="fas fa-trash-alt text-danger icon"></i>
                                         </div>
                                     </div>
@@ -49,7 +50,7 @@
                         <div class="col d-flex flex-column justify-content-start align-items-start px-4 py-3">
                             <div>
                                 <p class="px-2 rounded d-inline" :class="classType">{{ type }}</p>
-                                <p class="d-inline" style="color:lightgray">{{ shaleh.shaleh_desc }}</p>
+                                <!-- <p class="d-inline" style="color:lightgray">{{ shaleh.shaleh_desc }}</p> -->
                             </div>
                             <div class="mt-2">
                                 <h5 class="font-weight-bold title-text">{{ shaleh.shaleh_name }}</h5>

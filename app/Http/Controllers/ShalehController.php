@@ -102,11 +102,20 @@ class ShalehController extends Controller
     public function search_shalehat(Request $request){
         $shaleh_name = $request->get('shaleh_name');
         $city_id = $request->get('city_id');
+        $price = $request->get('price_order');
+        // if($city_id != 'all'){
+        //     return 'true';
+        // }else{
+        //     return 'false';
+        // }
+        // return $city_id;
+
         $shalehat = Shaleh::when($shaleh_name,function($query,$shaleh_name){
             return $query->where('shaleh_name',$shaleh_name);
         })->when($city_id,function($query,$city_id){
-            return $query->where('city_id',$city_id);
-        })->orderby('normal_price','DESC')->with(['imgs','comments'])->get();
+            if($city_id != 'all')
+            return $query->where('city_id','=',$city_id);
+        })->orderby('normal_price',$price)->with(['imgs','comments'])->get();
 
         return $shalehat;
     }

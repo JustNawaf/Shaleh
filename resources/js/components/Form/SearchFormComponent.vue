@@ -11,6 +11,7 @@
             <div class="form-group">
                 <label for="exampleInputPassword1">الرجاء تحديد المنطقة</label>
                 <select class="form-control" name="city_id">
+                    <option value="all">الكل</option>
                     <option v-for="city in cities" :value="city.id" :key="city.id">{{ city.name }}</option>
                 </select>
                 <small id="emailHelp" class="form-text text-muted">الرجاء تحديد المنطقة المراد البحث بها</small>
@@ -18,8 +19,8 @@
             <div class="form-group">
                 <label for="exampleInputPassword1">تحديد الاسعار</label>
                 <select class="form-control" name="price_order">
-                    <option value="1">تصاعدي</option>
-                    <option value="1">تنازلي</option>
+                    <option value="DESC">تصاعدي</option>
+                    <option value="ASC">تنازلي</option>
                 </select>
                 <small id="emailHelp" class="form-text text-muted">الرجاء اختيار الاسعار تصاعديا او تنازليا</small>
             </div>

@@ -2081,6 +2081,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['shaleh', // 'desc',
   'id', 'imgs', 'current_user' // 'price'
@@ -2211,7 +2212,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -2581,6 +2581,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -39062,13 +39063,13 @@ var render = function() {
                 staticClass:
                   "w-100 h-100 d-flex flex-column align-items-center position-relative",
                 staticStyle: { "z-index": "0" },
-                attrs: { id: _vm.id }
+                attrs: { id: this.id }
               },
               [
                 _c(
                   "div",
                   {
-                    staticClass: "carousel",
+                    staticClass: "carousel slide w-100",
                     attrs: {
                       id: "controlImage" + this.id,
                       "data-ride": "carousel"
@@ -39123,51 +39124,53 @@ var render = function() {
                               })
                             ]
                           )
-                        })
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "carousel-control-prev",
+                            attrs: {
+                              href: "#controlImage" + this.id,
+                              role: "button",
+                              "data-slide": "prev"
+                            }
+                          },
+                          [
+                            _c("span", {
+                              staticClass: "carousel-control-prev-icon",
+                              attrs: { "aria-hidden": "true" }
+                            }),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "sr-only" }, [
+                              _vm._v("Previous")
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "carousel-control-next",
+                            attrs: {
+                              href: "#controlImage" + this.id,
+                              role: "button",
+                              "data-slide": "next"
+                            }
+                          },
+                          [
+                            _c("span", {
+                              staticClass: "carousel-control-next-icon",
+                              attrs: { "aria-hidden": "true" }
+                            }),
+                            _vm._v(" "),
+                            _c("span", { staticClass: "sr-only" }, [
+                              _vm._v("Next")
+                            ])
+                          ]
+                        )
                       ],
                       2
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "a",
-                      {
-                        staticClass: "carousel-control-prev",
-                        attrs: {
-                          href: "#controlImage" + this.id,
-                          role: "button",
-                          "data-slide": "prev"
-                        }
-                      },
-                      [
-                        _c("span", {
-                          staticClass: "carousel-control-prev-icon",
-                          attrs: { "aria-hidden": "true" }
-                        }),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "sr-only" }, [
-                          _vm._v("Previous")
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "a",
-                      {
-                        staticClass: "carousel-control-next",
-                        attrs: {
-                          href: "#controlImage" + this.id,
-                          role: "button",
-                          "data-slide": "next"
-                        }
-                      },
-                      [
-                        _c("span", {
-                          staticClass: "carousel-control-next-icon",
-                          attrs: { "aria-hidden": "true" }
-                        }),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "sr-only" }, [_vm._v("Next")])
-                      ]
                     )
                   ]
                 ),
@@ -39179,63 +39182,38 @@ var render = function() {
                     staticStyle: { top: "-30px" }
                   },
                   [
-                    _c("div", { staticClass: "row w-100" }, [
-                      _c("div", { staticClass: "col-8 col-md-10 col-lg-10" }, [
-                        _c(
-                          "a",
-                          {
-                            staticClass:
-                              " shadow-lg px-1 py-1 btn btn-dark w-100",
-                            staticStyle: { "z-index": "-3" },
-                            style: _vm.checkUser
-                              ? "top:-30px;right:5px;"
-                              : "top:-30px;",
-                            attrs: { href: _vm.shalehPage, target: "_blank" }
-                          },
-                          [_vm._v("صفحة الشاليه")]
-                        )
-                      ]),
-                      _vm._v(" "),
+                    _c("div", { staticClass: "row m-0 p-0 w-100" }, [
                       _c(
                         "div",
-                        { staticClass: "col-4 col-md-2 col-lg-2  p-0 m-0" },
+                        {
+                          class: _vm.checkUser
+                            ? "col-8 col-md-10 col-lg-10"
+                            : "col-12 col-md-12 col-lg-12",
+                          staticStyle: { "z-index": "-3" }
+                        },
                         [
                           _c(
-                            "div",
+                            "a",
                             {
                               staticClass:
-                                "row w-100 p-0 m-0 d-flex flex-row justify-content-between"
+                                " shadow-lg px-1 py-1 btn btn-dark w-100",
+                              style: _vm.checkUser
+                                ? "top:-30px;right:5px;"
+                                : "top:-30px;",
+                              attrs: { href: _vm.shalehPage }
                             },
-                            [
-                              _vm.checkUser
-                                ? _c(
-                                    "div",
-                                    { staticClass: "shadow-lg text-dark" },
-                                    [
-                                      _c("i", {
-                                        staticClass:
-                                          "far fa-edit text-dark icon"
-                                      })
-                                    ]
-                                  )
-                                : _vm._e(),
-                              _vm._v(" "),
-                              _vm.checkUser
-                                ? _c(
-                                    "div",
-                                    { staticClass: "shadow-lg text-dark" },
-                                    [
-                                      _c("i", {
-                                        staticClass:
-                                          "fas fa-trash-alt text-danger icon"
-                                      })
-                                    ]
-                                  )
-                                : _vm._e()
-                            ]
+                            [_vm._v("صفحة الشاليه")]
                           )
                         ]
-                      )
+                      ),
+                      _vm._v(" "),
+                      _vm.checkUser
+                        ? _c(
+                            "div",
+                            { staticClass: "col-4 col-md-2 col-lg-2  p-0 m-0" },
+                            [_vm._m(0)]
+                          )
+                        : _vm._e()
                     ])
                   ]
                 )
@@ -39277,15 +39255,6 @@ var render = function() {
                             class: _vm.classType
                           },
                           [_vm._v(_vm._s(_vm.type))]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "p",
-                          {
-                            staticClass: "d-inline",
-                            staticStyle: { color: "lightgray" }
-                          },
-                          [_vm._v(_vm._s(_vm.shaleh.shaleh_desc))]
                         )
                       ]),
                       _vm._v(" "),
@@ -39334,7 +39303,28 @@ var render = function() {
     ]
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "row w-100 p-0 m-0 d-flex flex-row justify-content-between"
+      },
+      [
+        _c("div", { staticClass: "shadow-lg text-dark" }, [
+          _c("i", { staticClass: "far fa-edit text-dark icon" })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "shadow-lg text-dark" }, [
+          _c("i", { staticClass: "fas fa-trash-alt text-danger icon" })
+        ])
+      ]
+    )
+  }
+]
 render._withStripped = true
 
 
@@ -39372,9 +39362,7 @@ var render = function() {
         _c("img", {
           staticClass: "w-100 h-100 img rounded",
           attrs: { src: _vm.getSrc }
-        }),
-        _vm._v(" "),
-        _c("p", [_vm._v(_vm._s(_vm.getName))])
+        })
       ])
     : _vm._e()
 }
@@ -39959,14 +39947,18 @@ var render = function() {
           _c(
             "select",
             { staticClass: "form-control", attrs: { name: "city_id" } },
-            _vm._l(_vm.cities, function(city) {
-              return _c(
-                "option",
-                { key: city.id, domProps: { value: city.id } },
-                [_vm._v(_vm._s(city.name))]
-              )
-            }),
-            0
+            [
+              _c("option", { attrs: { value: "all" } }, [_vm._v("الكل")]),
+              _vm._v(" "),
+              _vm._l(_vm.cities, function(city) {
+                return _c(
+                  "option",
+                  { key: city.id, domProps: { value: city.id } },
+                  [_vm._v(_vm._s(city.name))]
+                )
+              })
+            ],
+            2
           ),
           _vm._v(" "),
           _c(
@@ -40028,9 +40020,9 @@ var staticRenderFns = [
         "select",
         { staticClass: "form-control", attrs: { name: "price_order" } },
         [
-          _c("option", { attrs: { value: "1" } }, [_vm._v("تصاعدي")]),
+          _c("option", { attrs: { value: "DESC" } }, [_vm._v("تصاعدي")]),
           _vm._v(" "),
-          _c("option", { attrs: { value: "1" } }, [_vm._v("تنازلي")])
+          _c("option", { attrs: { value: "ASC" } }, [_vm._v("تنازلي")])
         ]
       ),
       _vm._v(" "),
