@@ -22,7 +22,26 @@
                                 <span class="sr-only">Next</span>
                             </a>
                         </div>
-                    <a class="position-absolute shadow-lg px-1 py-1 btn btn-secondary" :href="shalehPage" target="_blank">صفحة الشاليه</a>
+                        <div class="position-absolute w-100" style="top:-30px;">
+                            <div class="row w-100">
+                                <div class="col-8 col-md-10 col-lg-10">
+                                    <a class=" shadow-lg px-1 py-1 btn btn-dark w-100" :href="shalehPage" target="_blank" style="z-index:-3;" :style="checkUser ? 'top:-30px;right:5px;':'top:-30px;'">صفحة الشاليه</a>
+                                </div>
+                                <div class="col-4 col-md-2 col-lg-2  p-0 m-0">
+                                    <div class="row w-100 p-0 m-0 d-flex flex-row justify-content-between">
+                                        <div v-if="checkUser" class="shadow-lg text-dark">
+                                        <i class="far fa-edit text-dark icon"></i>
+                                        </div>
+                                        <div v-if="checkUser" class="shadow-lg text-dark">
+                                            <i class="fas fa-trash-alt text-danger icon"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <!-- <a class="position-absolute shadow-lg p-0 m-0 btn btn-dark" :href="shalehPage" target="_blank" style="top:0px;left:15px;;z-index:2;border-radius:25%;">
+                        <i class="far fa-edit text-light" style="font-size:2rem;"></i>
+                    </a> -->
                 </div>
                 <div :id="id+'child'" @click="value ? show(id):hide(id)" class="position-absolute bg-light text-dark my-shadow"
                     style="z-index: 1;width: 95%;min-height: 100px;border-radius: 10px;top:80%;">
@@ -58,7 +77,8 @@
             'shaleh',
             // 'desc',
             'id',
-            'imgs'
+            'imgs',
+            'current_user'
             // 'price'
         ],
         data(){
@@ -117,6 +137,12 @@
             },
             totalComments:function(){
                 return this.shaleh.comments.length;
+            },
+            checkUser:function(){
+                if(this.shaleh.user_id == this.current_user){
+                    return true;
+                }
+                return false;
             },
             rating:function(){
                 let rating = 0;

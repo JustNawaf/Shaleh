@@ -8,6 +8,7 @@ use App\properties_shaleh;
 use App\Property;
 use App\Shaleh;
 use App\Shaleh_Images;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -21,10 +22,15 @@ class ShalehController extends Controller
         $cities  = City::all();
         return view('pages.all.shalehat')->with(['shalehat'=> $shalehat,'cities'=>$cities]);
     }
+    public function shalehate(){
+        $shalehat = Shaleh::with(['imgs','comments'])->where('user_id',Auth::user()->id)->get();
+        $cities  = City::all();
+        return view('pages.all.shalehate')->with(['shalehat'=> $shalehat,'cities'=>$cities]);
+    }
     public function show_shaleh($id){
         $shaleh = Shaleh::with(['comments.user','properties.property'])->find($id);
         $cities  = City::all();
-        $shalehat = Shaleh::where('city_id','=',$shaleh->city_id)->where('id','!=',$id)->with('city')->take(3)->get();
+        $shalehat = Shaleh::where('city_id','=',$shaleh->city_id)->where('id','!=',$id)->with(['city','imgs'])->take(3)->get();
         // return dd($shaleh);
         return view('pages.all.showShaleh')->with(['shaleh'=>$shaleh,'cities'=>$cities,'shalehat'=>$shalehat  ]);
     }

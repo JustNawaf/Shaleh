@@ -196,6 +196,19 @@
         .n-checkbox-shadow {
             color: green;
         }
+        .img-big{
+            position: relative;
+            float: left;
+            min-width: 100%;
+            max-width: 100%;
+            /* height: 375px; */
+            min-height: 50.8rem;
+            max-height: 50.8rem;
+            border-radius: 10px;
+            background-position: 50% 50%;
+            background-repeat:   no-repeat;
+            background-size:     cover;
+        }
         .img{
             position: relative;
             float: left;
@@ -207,7 +220,38 @@
             background-position: 50% 50%;
             background-repeat:   no-repeat;
             background-size:     cover;
+        }
+        /* <div v-if="checkUser" class="p-0 m-0 position-absolute shadow-lg text-dark" style="top:-35px;left:2rem;;z-index:2;border-radius:25%;">
+                        <i class="far fa-edit text-dark" style="font-size:2rem;"></i>
+                    </div> */
+        .icons-edit{
+            top:-30px;
+            left:3rem;
+            z-index:2;
+        }
+        .icons-delete{
+            top:-30px;
+            left:6.5rem;
+            z-index:2;
+        }
+        .icon{
+                font-size:1.5rem;
+        }
+        @media only screen and (max-width:1920px){
+            .icons-edit{
+            top:-28px;
+            left:2rem;
+            z-index:2;
             }
+            .icons-delete{
+            top:-28px;
+            left:5rem;
+            z-index:2;
+            }
+            .icon{
+                font-size:1.5rem;
+            }
+        }
         @media only screen and (max-width: 600px) {
             .img{
             position: relative;
@@ -219,6 +263,30 @@
             background-position: 50% 50%;
             background-repeat:   no-repeat;
             background-size:     cover;
+            }
+            .img-big{
+                position: relative;
+                float: left;
+                width: 100%;
+                min-height: 25.2rem;
+                max-height: 25.2rem;
+                border-radius: 10px;
+                background-position: 50% 50%;
+                background-repeat:   no-repeat;
+                background-size:     cover;
+            }
+            .icons-edit{
+            top:-28px;
+            left:1rem;
+            z-index:2;
+            }
+            .icons-delete{
+            top:-28px;
+            left:3rem;
+            z-index:2;
+            }
+            .icon{
+                font-size:1.5rem;
             }
 
         }
@@ -250,6 +318,9 @@
                             <a class="nav-link mid-text" href="{{ route('index.shalehat') }}">الشاليهات</a>
                         </li>
                         @canany(['is_admin','is_buss'])
+                        <li class="nav-item">
+                            <a class="nav-link mid-text" href="#">شاليهاتي</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link mid-text" href="{{ route('admin.add.shaleh') }}">اضافة شاليه</a>
                         </li>
@@ -315,6 +386,9 @@
                                 <a class="nav-link mid-text" href="{{ route('index.shalehat') }}">الشاليهات</a>
                             </li>
                             @canany(['is_admin','is_buss'])
+                            <li class="nav-item">
+                                <a class="nav-link mid-text" href="{{ route('admin.shalehate') }}">شاليهاتي</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link mid-text" href="{{ route('admin.add.shaleh') }}">اضافة شاليه</a>
                             </li>

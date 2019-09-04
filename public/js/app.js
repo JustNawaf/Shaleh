@@ -2062,9 +2062,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['shaleh', // 'desc',
-  'id', 'imgs' // 'price'
+  'id', 'imgs', 'current_user' // 'price'
   ],
   data: function data() {
     return {
@@ -2122,6 +2141,13 @@ __webpack_require__.r(__webpack_exports__);
     },
     totalComments: function totalComments() {
       return this.shaleh.comments.length;
+    },
+    checkUser: function checkUser() {
+      if (this.shaleh.user_id == this.current_user) {
+        return true;
+      }
+
+      return false;
     },
     rating: function rating() {
       var rating = 0;
@@ -2746,10 +2772,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
 //
 //
 //
@@ -39151,13 +39173,71 @@ var render = function() {
                 ),
                 _vm._v(" "),
                 _c(
-                  "a",
+                  "div",
                   {
-                    staticClass:
-                      "position-absolute shadow-lg px-1 py-1 btn btn-secondary",
-                    attrs: { href: _vm.shalehPage, target: "_blank" }
+                    staticClass: "position-absolute w-100",
+                    staticStyle: { top: "-30px" }
                   },
-                  [_vm._v("صفحة الشاليه")]
+                  [
+                    _c("div", { staticClass: "row w-100" }, [
+                      _c("div", { staticClass: "col-8 col-md-10 col-lg-10" }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass:
+                              " shadow-lg px-1 py-1 btn btn-dark w-100",
+                            staticStyle: { "z-index": "-3" },
+                            style: _vm.checkUser
+                              ? "top:-30px;right:5px;"
+                              : "top:-30px;",
+                            attrs: { href: _vm.shalehPage, target: "_blank" }
+                          },
+                          [_vm._v("صفحة الشاليه")]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "col-4 col-md-2 col-lg-2  p-0 m-0" },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "row w-100 p-0 m-0 d-flex flex-row justify-content-between"
+                            },
+                            [
+                              _vm.checkUser
+                                ? _c(
+                                    "div",
+                                    { staticClass: "shadow-lg text-dark" },
+                                    [
+                                      _c("i", {
+                                        staticClass:
+                                          "far fa-edit text-dark icon"
+                                      })
+                                    ]
+                                  )
+                                : _vm._e(),
+                              _vm._v(" "),
+                              _vm.checkUser
+                                ? _c(
+                                    "div",
+                                    { staticClass: "shadow-lg text-dark" },
+                                    [
+                                      _c("i", {
+                                        staticClass:
+                                          "fas fa-trash-alt text-danger icon"
+                                      })
+                                    ]
+                                  )
+                                : _vm._e()
+                            ]
+                          )
+                        ]
+                      )
+                    ])
+                  ]
                 )
               ]
             ),
@@ -40156,47 +40236,55 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "col-6 col-md-12 col-lg-12  w-100 h-100" }, [
-    _c(
-      "div",
-      {
-        staticClass:
-          "d-flex flex-column justify-content-center align-items-center shadow-lg my-2 rounded"
-      },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("div", [_c("p", [_vm._v(_vm._s(_vm.shaleh.shaleh_name))])]),
-        _vm._v(" "),
-        _c("div", [_c("p", [_vm._v(_vm._s(_vm.shaleh.city.name))])]),
-        _vm._v(" "),
-        _c("div", [
-          _c(
-            "a",
-            {
-              staticClass: "btn btn-secondary",
-              attrs: { href: /shaleh/ + _vm.shaleh.id }
-            },
-            [_vm._v("صفحة الشاليه")]
-          )
-        ])
-      ]
-    )
-  ])
+  return _c(
+    "div",
+    { staticClass: "col-12 col-md-12 col-lg-12  w-100 h-100 rounded" },
+    [
+      _c(
+        "div",
+        {
+          staticClass:
+            "d-flex flex-column justify-content-center align-items-center my-2 rounded my-shadow",
+          staticStyle: { "background-color": "#636970" }
+        },
+        [
+          _c("div", { staticClass: " rounded" }, [
+            _c("img", {
+              staticClass: "w-100 img",
+              attrs: {
+                src:
+                  "/storage/shalehat_images/" +
+                  _vm.shaleh.id +
+                  "/" +
+                  _vm.shaleh.imgs[0].image_name
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "p-1 rounded w-100 text-center" }, [
+            _c("p", { staticClass: "h3 text-light " }, [
+              _vm._v(_vm._s(_vm.shaleh.shaleh_name))
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "h3 text-light " }, [
+              _vm._v(_vm._s(_vm.shaleh.city.name))
+            ]),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-light w-100",
+                attrs: { href: /shaleh/ + _vm.shaleh.id }
+              },
+              [_vm._v("صفحة الشاليه")]
+            )
+          ])
+        ]
+      )
+    ]
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("img", {
-        staticClass: "w-100 my-shadow",
-        attrs: { src: "/images/navbarBackground2.jpg" }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

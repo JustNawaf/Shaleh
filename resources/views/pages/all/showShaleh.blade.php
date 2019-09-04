@@ -17,26 +17,24 @@
     <div class="col-12 col-md-8 col-lg-9 pt-5 ">
         <div class="d-flex flex-column align-items-center py-5">
             <h1>{{ $shaleh->shaleh_name }}</h1>
-            {{-- <div class="w-100 h-2 ">
-                <img src="/storage/images/navbarBackground2.jpg" class="img-thumbnail img-responsive">
-            </div> --}}
-            <div id="{{ $shaleh->id }}" class="carousel slide" data-ride="carousel" data-interval="false">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="/images/navbarBackground2.jpg" class="d-block w-100">
+            <div id="shaleh_page{{ $shaleh->id }}" class="carousel slide w-100" data-ride="carousel">
+                <div class="carousel-inner" style="border-radius: 10px;">
+                    <div class="carousel-item active" style="border-radius: 10px;">
+                        <img class="d-block my-shadow img-big" src="/storage/shalehat_images/{{ $shaleh->id }}/{{ $shaleh->imgs[0]->image_name }}">
                     </div>
-                    <div class="carousel-item">
-                        <img src="/images/navbarBackground2.jpg" class="d-block w-100">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="/images/navbarBackground2.jpg" class="d-block w-100">
-                    </div>
+                    @foreach ($shaleh->imgs as $key=>$img)
+                        @if ($key >0)
+                        <div class="carousel-item"  style="border-radius: 10px;">
+                            <img  class="d-block img-big my-shadow" src="/storage/shalehat_images/{{ $shaleh->id }}/{{ $img->image_name }}">
+                        </div>
+                        @endif
+                    @endforeach
                 </div>
-                <a class="carousel-control-prev" href="#{{ $shaleh->id }}" role="button" data-slide="prev">
+                <a class="carousel-control-prev" href="#shaleh_page{{ $shaleh->id }}" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
                 </a>
-                <a class="carousel-control-next" href="#{{ $shaleh->id }}" role="button" data-slide="next">
+                <a class="carousel-control-next" href="#shaleh_page{{ $shaleh->id }}" role="button" data-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>
@@ -80,6 +78,19 @@
                             <p class="text-nowrap text-light p-0 m-0">{{ $property->property->name }}</p>
                         </div>
                     @endforeach
+                </div>
+            </div>
+            <div class="w-100 h-100 mt-5 py-3 px-3" style="background-color:#636970;">
+                <h1 class="text-center text-light mb-3">معلومات التواصل</h1>
+                <div class="row m-0 p-0">
+                    <div class="col text-center bg-dark p-3 text-nowrap d-flex flex-column justify-content-center align-items-center" style="margin-left:1px;margin-top:1px;">
+                        <p class="h1 text-light">رقم الجوال</p>
+                        <p class="h4 text-nowrap p-0 m-0 text-success">{{ $shaleh->phone }}</p>
+                    </div>
+                    <div class="col text-center bg-dark p-3 text-nowrap d-flex flex-column justify-content-center align-items-center" style="margin-left:1px;margin-top:1px;">
+                        <p class="h1 text-light">البريد الاكتروني</p>
+                        <p class="h4 text-nowrap p-0 m-0 text-success">{{ $shaleh->email }}</p>
+                    </div>
                 </div>
             </div>
             <div id="comment" class="w-100 h-100 mt-5" >

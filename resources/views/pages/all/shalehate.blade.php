@@ -2,7 +2,7 @@
 
 @section('content')
 <div id="app" class="m-0 p-3">
-    <div id="shalehat" class="row p-0 m-0">
+    <div id="shalehate" class="row p-0 m-0">
         <div class="col-12 col-md-2 col-lg-2">
             <h1 class="text-center" style="">البحث</h1>
             <form-search @shalehat="showResult($event)" :cities="{{ $cities }}" route="{{ route('search') }}" ></form-search>
@@ -17,7 +17,7 @@
 <script>
 
     var vm = new Vue({
-        el:'#shalehat',
+        el:'#shalehate',
         data() {
             return {
                 shalehat:@json($shalehat),

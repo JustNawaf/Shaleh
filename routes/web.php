@@ -25,4 +25,5 @@ Route::post('/add/comment/shaleh/{id}','ShalehController@add_comment_to_shaleh')
 Route::prefix('admin')->group(function(){
 Route::get('/add-shaleh','ShalehController@add_shaleh')->middleware('buss')->name('admin.add.shaleh');
 Route::post('/store-shaleh','ShalehController@store_shaleh')->middleware('buss')->name('admin.store.shaleh');
+Route::get('/shalehate','ShalehController@shalehate')->middleware('buss')->name('admin.shalehate');
 });
