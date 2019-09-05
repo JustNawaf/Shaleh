@@ -436,8 +436,6 @@
 
         @yield('content')
     </div>
-    {{-- <div class="background-black">
-    </div> --}}
     <script src="{{ asset('js/app.js') }}"></script>
     <script>
         $('#buttonNav').click(function(){

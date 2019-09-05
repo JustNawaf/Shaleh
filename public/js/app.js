@@ -1891,9 +1891,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['properties', 'cities', 'route', 'csrf'],
+  props: ['properties', 'cities', 'route', 'csrf', 'shaleh'],
   data: function data() {
     return {
       status: {
@@ -1902,7 +1901,7 @@ __webpack_require__.r(__webpack_exports__);
         mapInfo: false,
         priceInfo: false
       },
-      imgs: []
+      imgs: this.shaleh != null ? this.shaleh.imgs : []
     };
   },
   methods: {
@@ -1950,6 +1949,19 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         console.log(error);
       });
+    },
+    checkProperty: function checkProperty(index) {
+      var _this = this;
+
+      var result = false;
+      if (this.shaleh == null) return result;
+      var property = this.shaleh.properties.forEach(function (e) {
+        if (_this.properties[index].id == e.property.id) {
+          result = true;
+          return;
+        }
+      });
+      return result;
     }
   },
   mounted: function mounted() {
@@ -2082,6 +2094,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['shaleh', // 'desc',
   'id', 'imgs', 'current_user' // 'price'
@@ -2090,8 +2108,16 @@ __webpack_require__.r(__webpack_exports__);
     return {
       value: true,
       type: '',
-      classType: ''
+      classType: '',
+      deleted: null,
+      spinner: false
     };
+  },
+  created: function created() {
+    this.spinner = true;
+  },
+  mounted: function mounted() {
+    this.spinner = false;
   },
   methods: {
     show: function show(id) {
@@ -2134,6 +2160,17 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
       this.value = true;
+    },
+    deleteShaleh: function deleteShaleh() {
+      var _this = this;
+
+      this.spinner = true;
+      axios.post('/admin/delete/shaleh/' + this.shaleh.id).then(function (response) {
+        _this.spinner = false;
+        _this.deleted = response.data; // $('.modal').modal('show');
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
   },
   computed: {
@@ -2195,9 +2232,6 @@ __webpack_require__.r(__webpack_exports__);
 
       return result;
     }
-  },
-  mounted: function mounted() {
-    console.log('Component mounted.');
   }
 });
 
@@ -2219,7 +2253,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['file'],
+  props: ['file', 'shaleh_id'],
   mounted: function mounted() {
     console.log("Component mounted.");
   },
@@ -2230,6 +2264,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     getSrc: function getSrc() {
+      // return console.log(this.file);
+      if (this.shaleh_id != null) {
+        return '/storage/shalehat_images/' + this.shaleh_id + '/' + this.file.image_name;
+      }
+
       return URL.createObjectURL(this.file);
     },
     getName: function getName() {
@@ -2292,16 +2331,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['cities'],
+  props: ['cities', 'shaleh'],
   mounted: function mounted() {
     console.log("Component mounted.");
   },
   data: function data() {
     return {
-      area: '',
-      area_state: null,
-      street: '',
-      street_state: null
+      area: this.shaleh.area != null ? this.shaleh.area : '',
+      area_state: this.shaleh.area != null ? true : null,
+      street: this.shaleh.street != null ? this.shaleh.street : '',
+      street_state: this.shaleh.street != null ? true : null
     };
   },
   watch: {
@@ -2389,20 +2428,21 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     console.log("Component mounted.");
   },
+  props: ['shaleh'],
   data: function data() {
     return {
       regex: {
         emailRegex: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/igm,
         phoneRegex: /^(009665|9665|\+9665|05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$/
       },
-      first_name: '',
-      first_name_state: null,
-      last_name: '',
-      last_name_state: null,
-      phone: '',
-      phone_state: null,
-      email: '',
-      email_state: null
+      first_name: this.shaleh.first_name != null ? this.shaleh.first_name : '',
+      first_name_state: this.shaleh.first_name != null ? true : null,
+      last_name: this.shaleh.last_name != null ? this.shaleh.last_name : '',
+      last_name_state: this.shaleh.last_name != null ? true : null,
+      phone: this.shaleh.phone != null ? this.shaleh.phone : '',
+      phone_state: this.shaleh.phone != null ? true : null,
+      email: this.shaleh.email != null ? this.shaleh.email : '',
+      email_state: this.shaleh.email != null ? true : null
     };
   },
   watch: {
@@ -2509,16 +2549,17 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     console.log("Component mounted.");
   },
+  props: ['shaleh'],
   data: function data() {
     return {
-      price_normal: '',
-      price_normal_state: null,
-      price_ramadan: '',
-      price_ramadan_state: null,
-      price_ftr: '',
-      price_ftr_state: null,
-      price_adha: '',
-      price_adha_state: null
+      price_normal: this.shaleh.normal_price != null ? this.shaleh.normal_price : '',
+      price_normal_state: this.shaleh.normal_price != null ? true : null,
+      price_ramadan: this.shaleh.ramadan_price != null ? this.shaleh.ramadan_price : '',
+      price_ramadan_state: this.shaleh.ramadan_price != null ? true : null,
+      price_ftr: this.shaleh.ftr_price != null ? this.shaleh.ftr_price : '',
+      price_ftr_state: this.shaleh.ftr_price != null ? true : null,
+      price_adha: this.shaleh.adha_price != null ? this.shaleh.adha_price : '',
+      price_adha_state: this.shaleh.adha_price != null ? true : null
     };
   },
   watch: {
@@ -2676,12 +2717,13 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     console.log("Component mounted.");
   },
+  props: ['shaleh'],
   data: function data() {
     return {
-      shaleh_name: '',
-      shaleh_name_state: null,
-      shaleh_desc: '',
-      shaleh_desc_state: null
+      shaleh_name: this.shaleh.shaleh_name != null ? this.shaleh.shaleh_name : '',
+      shaleh_name_state: this.shaleh.shaleh_name != null ? true : null,
+      shaleh_desc: this.shaleh.shaleh_desc != null ? this.shaleh.shaleh_desc : '',
+      shaleh_desc_state: this.shaleh.shaleh_desc != null ? true : null
     };
   },
   watch: {
@@ -2751,10 +2793,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['property'],
+  props: ['property', 'property_shaleh'],
   data: function data() {
     return {
-      checked: false
+      checked: this.property_shaleh
     };
   },
   mounted: function mounted() {
@@ -38756,6 +38798,7 @@ var render = function() {
       }),
       _vm._v(" "),
       _c("personal-info", {
+        attrs: { shaleh: this.shaleh ? this.shaleh : "null" },
         on: {
           state_personal_info: function($event) {
             return _vm.state_personal_info($event)
@@ -38764,6 +38807,7 @@ var render = function() {
       }),
       _vm._v(" "),
       _c("shaleh-info", {
+        attrs: { shaleh: this.shaleh ? this.shaleh : "null" },
         on: {
           state_shaleh_info: function($event) {
             return _vm.state_shaleh_info($event)
@@ -38777,10 +38821,13 @@ var render = function() {
         _c(
           "div",
           { staticClass: "row" },
-          _vm._l(_vm.properties, function(property) {
+          _vm._l(_vm.properties, function(property, index) {
             return _c("property-component", {
               key: property.id,
-              attrs: { property: property }
+              attrs: {
+                property: property,
+                property_shaleh: _vm.checkProperty(index)
+              }
             })
           }),
           1
@@ -38788,7 +38835,10 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("map-info", {
-        attrs: { cities: _vm.cities },
+        attrs: {
+          cities: _vm.cities,
+          shaleh: this.shaleh ? this.shaleh : "null"
+        },
         on: {
           state_map_info: function($event) {
             return _vm.state_map_info($event)
@@ -38797,6 +38847,7 @@ var render = function() {
       }),
       _vm._v(" "),
       _c("price-info", {
+        attrs: { shaleh: this.shaleh ? this.shaleh : "null" },
         on: {
           state_price_info: function($event) {
             return _vm.state_price_info($event)
@@ -38841,7 +38892,10 @@ var render = function() {
                   _vm._l(_vm.imgs, function(img) {
                     return _c("form-imgs", {
                       key: img.name,
-                      attrs: { file: img },
+                      attrs: {
+                        file: img,
+                        shaleh_id: _vm.shaleh ? _vm.shaleh.id : "null"
+                      },
                       on: {
                         "image-deleted": function($event) {
                           return _vm.deleteImg($event)
@@ -39044,264 +39098,344 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "col-12 col-md-4 col-lg-4  mt-5 w-100 h-100 my-5" },
-    [
-      _c("div", { staticClass: "main-div mb-3" }, [
-        _c(
-          "div",
-          {
-            staticClass:
-              " w-100 h-75 d-flex flex-column align-items-center my-shadow",
-            staticStyle: { "margin-bottom": "5rem" }
-          },
-          [
+  return this.deleted == null
+    ? _c(
+        "div",
+        { staticClass: "col-12 col-md-4 col-lg-4  mt-5 w-100 h-100 my-5" },
+        [
+          _c("p", [_vm._v(_vm._s())]),
+          _vm._v(" "),
+          _c("div", { staticClass: "main-div mb-3" }, [
             _c(
               "div",
               {
                 staticClass:
-                  "w-100 h-100 d-flex flex-column align-items-center position-relative",
-                staticStyle: { "z-index": "0" },
-                attrs: { id: this.id }
+                  " w-100 h-75 d-flex flex-column align-items-center my-shadow",
+                staticStyle: { "margin-bottom": "5rem" }
               },
               [
                 _c(
                   "div",
                   {
-                    staticClass: "carousel slide w-100",
-                    attrs: {
-                      id: "controlImage" + this.id,
-                      "data-ride": "carousel"
-                    }
+                    staticClass:
+                      "w-100 h-100 d-flex flex-column align-items-center position-relative",
+                    staticStyle: { "z-index": "0" },
+                    attrs: { id: this.id }
                   },
                   [
                     _c(
                       "div",
                       {
-                        staticClass: "carousel-inner",
-                        staticStyle: { "border-radius": "10px" }
+                        staticClass: "carousel slide w-100",
+                        attrs: {
+                          id: "controlImage" + this.id,
+                          "data-ride": "carousel"
+                        }
                       },
                       [
                         _c(
                           "div",
                           {
-                            staticClass: "carousel-item active",
+                            staticClass: "carousel-inner",
                             staticStyle: { "border-radius": "10px" }
                           },
                           [
-                            _c("img", {
-                              staticClass: "d-block my-shadow img",
-                              attrs: {
-                                src:
-                                  "/storage/shalehat_images/" +
-                                  this.id +
-                                  "/" +
-                                  this.imgs[0].image_name
-                              }
-                            })
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _vm._l(_vm.imgs.slice(1), function(img) {
-                          return _c(
+                            _c(
+                              "div",
+                              {
+                                staticClass: "carousel-item active",
+                                staticStyle: { "border-radius": "10px" }
+                              },
+                              [
+                                _c("img", {
+                                  staticClass: "d-block my-shadow img",
+                                  attrs: {
+                                    src:
+                                      "/storage/shalehat_images/" +
+                                      this.id +
+                                      "/" +
+                                      this.imgs[0].image_name
+                                  }
+                                })
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _vm._l(_vm.imgs.slice(1), function(img) {
+                              return _c(
+                                "div",
+                                {
+                                  key: img.id,
+                                  staticClass: "carousel-item",
+                                  staticStyle: { "border-radius": "10px" }
+                                },
+                                [
+                                  _c("img", {
+                                    staticClass: "d-block img my-shadow",
+                                    attrs: {
+                                      src:
+                                        "/storage/shalehat_images/" +
+                                        img.shaleh_id +
+                                        "/" +
+                                        img.image_name
+                                    }
+                                  })
+                                ]
+                              )
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "a",
+                              {
+                                staticClass: "carousel-control-prev",
+                                attrs: {
+                                  href: "#controlImage" + this.id,
+                                  role: "button",
+                                  "data-slide": "prev"
+                                }
+                              },
+                              [
+                                _c("span", {
+                                  staticClass: "carousel-control-prev-icon",
+                                  attrs: { "aria-hidden": "true" }
+                                }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "sr-only" }, [
+                                  _vm._v("Previous")
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "a",
+                              {
+                                staticClass: "carousel-control-next",
+                                attrs: {
+                                  href: "#controlImage" + this.id,
+                                  role: "button",
+                                  "data-slide": "next"
+                                }
+                              },
+                              [
+                                _c("span", {
+                                  staticClass: "carousel-control-next-icon",
+                                  attrs: { "aria-hidden": "true" }
+                                }),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "sr-only" }, [
+                                  _vm._v("Next")
+                                ])
+                              ]
+                            )
+                          ],
+                          2
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "position-absolute w-100",
+                        staticStyle: { top: "-30px" }
+                      },
+                      [
+                        _c("div", { staticClass: "row m-0 p-0 w-100" }, [
+                          _c(
                             "div",
                             {
-                              key: img.id,
-                              staticClass: "carousel-item",
-                              staticStyle: { "border-radius": "10px" }
+                              class: _vm.checkUser
+                                ? "col-8 col-md-10 col-lg-10"
+                                : "col-12 col-md-12 col-lg-12",
+                              staticStyle: { "z-index": "0" }
                             },
                             [
-                              _c("img", {
-                                staticClass: "d-block img my-shadow",
-                                attrs: {
-                                  src:
-                                    "/storage/shalehat_images/" +
-                                    img.shaleh_id +
-                                    "/" +
-                                    img.image_name
-                                }
-                              })
+                              _c(
+                                "a",
+                                {
+                                  staticClass:
+                                    " shadow-lg px-1 py-1 btn btn-dark w-100",
+                                  attrs: { href: _vm.shalehPage }
+                                },
+                                [_vm._v("صفحة الشاليه")]
+                              )
                             ]
-                          )
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "a",
+                          ),
+                          _vm._v(" "),
+                          _vm.checkUser
+                            ? _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "col-4 col-md-2 col-lg-2  p-0 m-0"
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "row w-100 p-0 m-0 d-flex flex-row justify-content-between"
+                                    },
+                                    [
+                                      _c(
+                                        "div",
+                                        { staticClass: "shadow-lg text-dark" },
+                                        [
+                                          _c(
+                                            "a",
+                                            {
+                                              staticClass:
+                                                "bg-transparent border-0",
+                                              attrs: {
+                                                href:
+                                                  "/admin/update/shaleh/" +
+                                                  this.shaleh.id
+                                              }
+                                            },
+                                            [
+                                              _c("i", {
+                                                staticClass:
+                                                  "far fa-edit text-dark icon"
+                                              })
+                                            ]
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        { staticClass: "shadow-lg text-dark" },
+                                        [
+                                          _c(
+                                            "button",
+                                            {
+                                              staticClass:
+                                                "bg-transparent border-0",
+                                              on: {
+                                                click: function($event) {
+                                                  return _vm.deleteShaleh()
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _c("i", {
+                                                staticClass:
+                                                  "fas fa-trash-alt text-danger icon"
+                                              })
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            : _vm._e()
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    this.spinner
+                      ? _c(
+                          "div",
                           {
-                            staticClass: "carousel-control-prev",
-                            attrs: {
-                              href: "#controlImage" + this.id,
-                              role: "button",
-                              "data-slide": "prev"
-                            }
+                            staticClass:
+                              "w-100 h-100 position-absolute d-flex align-items-center justify-content-center",
+                            staticStyle: { "z-index": "55" }
                           },
-                          [
-                            _c("span", {
-                              staticClass: "carousel-control-prev-icon",
-                              attrs: { "aria-hidden": "true" }
-                            }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "sr-only" }, [
-                              _vm._v("Previous")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          {
-                            staticClass: "carousel-control-next",
-                            attrs: {
-                              href: "#controlImage" + this.id,
-                              role: "button",
-                              "data-slide": "next"
-                            }
-                          },
-                          [
-                            _c("span", {
-                              staticClass: "carousel-control-next-icon",
-                              attrs: { "aria-hidden": "true" }
-                            }),
-                            _vm._v(" "),
-                            _c("span", { staticClass: "sr-only" }, [
-                              _vm._v("Next")
-                            ])
-                          ]
+                          [_vm._m(0)]
                         )
-                      ],
-                      2
-                    )
+                      : _vm._e()
                   ]
                 ),
                 _vm._v(" "),
                 _c(
                   "div",
                   {
-                    staticClass: "position-absolute w-100",
-                    staticStyle: { top: "-30px" }
+                    staticClass:
+                      "position-absolute bg-light text-dark my-shadow",
+                    staticStyle: {
+                      "z-index": "1",
+                      width: "95%",
+                      "min-height": "100px",
+                      "border-radius": "10px",
+                      top: "80%"
+                    },
+                    attrs: { id: _vm.id + "child" },
+                    on: {
+                      click: function($event) {
+                        _vm.value ? _vm.show(_vm.id) : _vm.hide(_vm.id)
+                      }
+                    }
                   },
                   [
-                    _c("div", { staticClass: "row m-0 p-0 w-100" }, [
+                    _c("div", { staticClass: "row" }, [
                       _c(
                         "div",
                         {
-                          class: _vm.checkUser
-                            ? "col-8 col-md-10 col-lg-10"
-                            : "col-12 col-md-12 col-lg-12",
-                          staticStyle: { "z-index": "-3" }
+                          staticClass:
+                            "col d-flex flex-column justify-content-start align-items-start px-4 py-3"
                         },
                         [
-                          _c(
-                            "a",
-                            {
-                              staticClass:
-                                " shadow-lg px-1 py-1 btn btn-dark w-100",
-                              style: _vm.checkUser
-                                ? "top:-30px;right:5px;"
-                                : "top:-30px;",
-                              attrs: { href: _vm.shalehPage }
-                            },
-                            [_vm._v("صفحة الشاليه")]
-                          )
+                          _c("div", [
+                            _c(
+                              "p",
+                              {
+                                staticClass: "px-2 rounded d-inline",
+                                class: _vm.classType
+                              },
+                              [_vm._v(_vm._s(_vm.type))]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "mt-2" }, [
+                            _c(
+                              "h5",
+                              { staticClass: "font-weight-bold title-text" },
+                              [_vm._v(_vm._s(_vm.shaleh.shaleh_name))]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "mt-1" }, [
+                            _c("h5", { staticClass: "font-weight-bold" }, [
+                              _vm._v(
+                                _vm._s(_vm.shaleh.normal_price) + " ريال "
+                              ),
+                              _c(
+                                "span",
+                                { staticStyle: { color: "lightgray" } },
+                                [_vm._v("/ باليوم")]
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "mt-1 text-left" }, [
+                            _c("img", {
+                              attrs: {
+                                width: "80px",
+                                src: "/star/" + _vm.rating + ".png"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "p",
+                              {
+                                staticClass: "d-inline mt-3",
+                                staticStyle: { color: "lightgray" }
+                              },
+                              [_vm._v(_vm._s(_vm.totalComments) + " تقييمات")]
+                            )
+                          ])
                         ]
-                      ),
-                      _vm._v(" "),
-                      _vm.checkUser
-                        ? _c(
-                            "div",
-                            { staticClass: "col-4 col-md-2 col-lg-2  p-0 m-0" },
-                            [_vm._m(0)]
-                          )
-                        : _vm._e()
+                      )
                     ])
                   ]
                 )
               ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "position-absolute bg-light text-dark my-shadow",
-                staticStyle: {
-                  "z-index": "1",
-                  width: "95%",
-                  "min-height": "100px",
-                  "border-radius": "10px",
-                  top: "80%"
-                },
-                attrs: { id: _vm.id + "child" },
-                on: {
-                  click: function($event) {
-                    _vm.value ? _vm.show(_vm.id) : _vm.hide(_vm.id)
-                  }
-                }
-              },
-              [
-                _c("div", { staticClass: "row" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "col d-flex flex-column justify-content-start align-items-start px-4 py-3"
-                    },
-                    [
-                      _c("div", [
-                        _c(
-                          "p",
-                          {
-                            staticClass: "px-2 rounded d-inline",
-                            class: _vm.classType
-                          },
-                          [_vm._v(_vm._s(_vm.type))]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "mt-2" }, [
-                        _c(
-                          "h5",
-                          { staticClass: "font-weight-bold title-text" },
-                          [_vm._v(_vm._s(_vm.shaleh.shaleh_name))]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "mt-1" }, [
-                        _c("h5", { staticClass: "font-weight-bold" }, [
-                          _vm._v(_vm._s(_vm.shaleh.normal_price) + " ريال "),
-                          _c("span", { staticStyle: { color: "lightgray" } }, [
-                            _vm._v("/ باليوم")
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "mt-1 text-left" }, [
-                        _c("img", {
-                          attrs: {
-                            width: "80px",
-                            src: "/star/" + _vm.rating + ".png"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "p",
-                          {
-                            staticClass: "d-inline mt-3",
-                            staticStyle: { color: "lightgray" }
-                          },
-                          [_vm._v(_vm._s(_vm.totalComments) + " تقييمات")]
-                        )
-                      ])
-                    ]
-                  )
-                ])
-              ]
             )
-          ]
-        )
-      ])
-    ]
-  )
+          ])
+        ]
+      )
+    : _vm._e()
 }
 var staticRenderFns = [
   function() {
@@ -39310,18 +39444,8 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "div",
-      {
-        staticClass: "row w-100 p-0 m-0 d-flex flex-row justify-content-between"
-      },
-      [
-        _c("div", { staticClass: "shadow-lg text-dark" }, [
-          _c("i", { staticClass: "far fa-edit text-dark icon" })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "shadow-lg text-dark" }, [
-          _c("i", { staticClass: "fas fa-trash-alt text-danger icon" })
-        ])
-      ]
+      { staticClass: "spinner-border", attrs: { role: "status" } },
+      [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
     )
   }
 ]

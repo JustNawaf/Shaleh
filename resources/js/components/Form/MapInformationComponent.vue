@@ -29,17 +29,18 @@
 <script>
 export default {
     props:[
-        'cities'
+        'cities',
+        'shaleh'
     ],
   mounted() {
     console.log("Component mounted.");
   },
       data(){
         return{
-            area:'',
-            area_state:null,
-            street:'',
-            street_state:null,
+            area:this.shaleh.area != null?this.shaleh.area:'',
+            area_state:this.shaleh.area != null?true:null,
+            street:this.shaleh.street != null?this.shaleh.street:'',
+            street_state:this.shaleh.street != null?true:null,
         }
     },
   watch:{

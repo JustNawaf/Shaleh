@@ -119,4 +119,20 @@ class ShalehController extends Controller
 
         return $shalehat;
     }
+    public function update_shaleh_view($id){
+        $properties = Property::all();
+        $cities = City::all();
+        $shaleh = Shaleh::with(['properties.property','city','imgs'])->find($id);
+        return view('pages.admin.editShaleh')->with(['properties'=>$properties,'cities'=>$cities,'shaleh'=>$shaleh]);
+    }
+    public function delete_shaleh($id)
+    {
+        $shaleh = Shaleh::find($id);
+        if($shaleh->user_id != Auth::user()->id)
+        {
+            return;
+        }
+        $shaleh->delete();
+        return '1';
+    }
 }

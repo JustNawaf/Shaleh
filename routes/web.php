@@ -26,4 +26,6 @@ Route::prefix('admin')->group(function(){
 Route::get('/add-shaleh','ShalehController@add_shaleh')->middleware('buss')->name('admin.add.shaleh');
 Route::post('/store-shaleh','ShalehController@store_shaleh')->middleware('buss')->name('admin.store.shaleh');
 Route::get('/shalehate','ShalehController@shalehate')->middleware('buss')->name('admin.shalehate');
+Route::get('/update/shaleh/{id}','ShalehController@update_shaleh_view')->middleware('admin_buss');
+Route::post('/delete/shaleh/{id}','ShalehController@delete_shaleh')->middleware('admin_buss');
 });

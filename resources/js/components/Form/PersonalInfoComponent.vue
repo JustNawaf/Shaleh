@@ -42,20 +42,23 @@ export default {
   mounted() {
     console.log("Component mounted.");
   },
+    props:[
+        'shaleh'
+    ],
       data(){
         return{
             regex:{
                 emailRegex:/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/igm,
                 phoneRegex:/^(009665|9665|\+9665|05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$/
             },
-            first_name:'',
-            first_name_state:null,
-            last_name:'',
-            last_name_state:null,
-            phone:'',
-            phone_state:null,
-            email:'',
-            email_state:null
+            first_name:this.shaleh.first_name != null?this.shaleh.first_name:'',
+            first_name_state:this.shaleh.first_name != null?true:null,
+            last_name:this.shaleh.last_name != null?this.shaleh.last_name:'',
+            last_name_state:this.shaleh.last_name != null?true:null,
+            phone:this.shaleh.phone != null?this.shaleh.phone:'',
+            phone_state:this.shaleh.phone != null?true:null,
+            email:this.shaleh.email != null?this.shaleh.email:'',
+            email_state:this.shaleh.email != null?true:null,
         }
     },
   watch:{

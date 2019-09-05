@@ -3,7 +3,7 @@
     <div class="col d-flex flex-column justify-content-center align-items-center">
         <i :class="[property.icon_name ,checked?'n-checkbox-shadow':'']" style="font-size:3rem;"></i>
         <p class="text-nowrap">{{ property.name }}</p>
-        <input type="checkbox" :value="property.id" name="properites[]" @change="checked == false ? checked = true:checked = false" class="n-checkbox" />
+        <input type="checkbox" :value="property.id" name="properites[]" @change="checked == false ? checked = true:checked = false" class="n-checkbox"/>
 </div>
 </div>
 </template>
@@ -25,11 +25,12 @@ color:green;
 <script>
 export default {
     props:[
-        'property'
+        'property',
+        'property_shaleh'
     ],
     data(){
         return {
-            checked:false,
+            checked:this.property_shaleh,
         }
     },
   mounted() {

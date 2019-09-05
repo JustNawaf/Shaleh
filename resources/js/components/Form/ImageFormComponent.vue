@@ -7,7 +7,8 @@
 <script>
 export default {
     props:[
-        'file'
+        'file',
+        'shaleh_id'
     ],
   mounted() {
     console.log("Component mounted.");
@@ -19,6 +20,10 @@ export default {
     },
     computed: {
         getSrc:function(){
+            // return console.log(this.file);
+            if(this.shaleh_id != null){
+                return '/storage/shalehat_images/'+this.shaleh_id+'/'+this.file.image_name;
+            }
             return URL.createObjectURL(this.file);
         },
         getName:function(){

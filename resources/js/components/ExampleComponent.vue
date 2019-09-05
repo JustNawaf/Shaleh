@@ -1,5 +1,6 @@
 <template>
-<div class="col-12 col-md-4 col-lg-4  mt-5 w-100 h-100 my-5">
+<div  v-if="this.deleted == null" class="col-12 col-md-4 col-lg-4  mt-5 w-100 h-100 my-5">
+    <p>{{  }}</p>
     <div class="main-div mb-3">
             <div class=" w-100 h-75 d-flex flex-column align-items-center my-shadow" style="margin-bottom:5rem;">
                 <div  :id="this.id" class="w-100 h-100 d-flex flex-column align-items-center position-relative"
@@ -25,19 +26,24 @@
                         </div>
                         <div class="position-absolute w-100" style="top:-30px;">
                             <div class="row m-0 p-0 w-100">
-                                <div :class="checkUser ? 'col-8 col-md-10 col-lg-10':'col-12 col-md-12 col-lg-12'" style="z-index:-3;">
-                                    <a class=" shadow-lg px-1 py-1 btn btn-dark w-100" :href="shalehPage" :style="checkUser ? 'top:-30px;right:5px;':'top:-30px;'">صفحة الشاليه</a>
+                                <div :class="checkUser ? 'col-8 col-md-10 col-lg-10':'col-12 col-md-12 col-lg-12'" style="z-index:0;">
+                                    <a class=" shadow-lg px-1 py-1 btn btn-dark w-100" :href="shalehPage">صفحة الشاليه</a>
                                 </div>
                                 <div v-if="checkUser" class="col-4 col-md-2 col-lg-2  p-0 m-0">
                                     <div class="row w-100 p-0 m-0 d-flex flex-row justify-content-between">
                                         <div  class="shadow-lg text-dark">
-                                        <i class="far fa-edit text-dark icon"></i>
+                                            <a class="bg-transparent border-0" :href="'/admin/update/shaleh/'+this.shaleh.id"><i class="far fa-edit text-dark icon"></i></a>
                                         </div>
                                         <div class="shadow-lg text-dark">
-                                            <i class="fas fa-trash-alt text-danger icon"></i>
+                                           <button @click="deleteShaleh()" class="bg-transparent border-0"> <i class="fas fa-trash-alt text-danger icon"></i></button>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div v-if="this.spinner" class="w-100 h-100 position-absolute d-flex align-items-center justify-content-center" style="z-index:55;">
+                            <div class="spinner-border" role="status" >
+                                <span class="sr-only">Loading...</span>
                             </div>
                         </div>
                     <!-- <a class="position-absolute shadow-lg p-0 m-0 btn btn-dark" :href="shalehPage" target="_blank" style="top:0px;left:15px;;z-index:2;border-radius:25%;">
@@ -86,8 +92,16 @@
             return {
                 value:true,
                 type:'',
-                classType:''
+                classType:'',
+                deleted:null,
+                spinner:false,
             }
+        },
+        created(){
+            this.spinner=true;
+        },
+        mounted() {
+            this.spinner=false;
         },
         methods:{
             show(id){
@@ -131,6 +145,16 @@
                 this.value = true;
 
             },
+            deleteShaleh(){
+                this.spinner=true;
+                axios.post('/admin/delete/shaleh/'+this.shaleh.id).then((response)=>{
+                    this.spinner=false;
+                this.deleted = response.data;
+                // $('.modal').modal('show');
+                }).catch(function(error){
+                    console.log(error);
+                });
+            }
         },
         computed:{
             shalehPage:function(){
@@ -192,8 +216,6 @@
                 return result;
             }
         },
-        mounted() {
-            console.log('Component mounted.')
-        },
+
     }
 </script>

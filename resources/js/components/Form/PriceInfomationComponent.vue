@@ -39,17 +39,19 @@ export default {
   mounted() {
     console.log("Component mounted.");
   },
+    props:[
+        'shaleh'
+    ],
       data(){
         return{
-            price_normal:'',
-            price_normal_state:null,
-            price_ramadan:'',
-            price_ramadan_state:null,
-            price_ftr:'',
-            price_ftr_state:null,
-            price_adha:'',
-            price_adha_state:null,
-
+            price_normal:this.shaleh.normal_price != null?this.shaleh.normal_price:'',
+            price_normal_state:this.shaleh.normal_price != null?true:null,
+            price_ramadan:this.shaleh.ramadan_price != null?this.shaleh.ramadan_price:'',
+            price_ramadan_state:this.shaleh.ramadan_price != null?true:null,
+            price_ftr:this.shaleh.ftr_price != null?this.shaleh.ftr_price:'',
+            price_ftr_state:this.shaleh.ftr_price != null?true:null,
+            price_adha:this.shaleh.adha_price != null?this.shaleh.adha_price:'',
+            price_adha_state:this.shaleh.adha_price != null?true:null,
         }
     },
   watch:{

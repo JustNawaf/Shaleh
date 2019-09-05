@@ -6,7 +6,7 @@
     <div class="container d-flex bg-dark text-light mt-3 p-2 justify-content-center align-items-center"  style="border-top-left-radius: 25px;border-top-right-radius: 25px;border-bottom-left-radius: 25%px;">
         <h1>اضافة شاليه</h1>
     </div>
-    <add-shaleh-form :properties="{{ $properties }}" :cities="{{ $cities }}" route="{{ route('admin.store.shaleh') }}" csrf="{{ Session::token() }}"></add-shaleh-form>
+    <add-shaleh-form :properties="{{ $properties }}" :cities="{{ $cities }}"  route="{{ route('admin.store.shaleh') }}" csrf="{{ Session::token() }}"></add-shaleh-form>
 </div>
 {{-- <div class="container d-flex flex-row w-100 mt-5">
     <div id="1" class="d-flex flex-row justify-content-center align-items-center" data-toggle="tooltip"

@@ -26,12 +26,15 @@ export default {
   mounted() {
     console.log("Component mounted.");
   },
+      props:[
+        'shaleh'
+    ],
       data(){
         return{
-            shaleh_name:'',
-            shaleh_name_state:null,
-            shaleh_desc:'',
-            shaleh_desc_state:null,
+            shaleh_name:this.shaleh.shaleh_name != null?this.shaleh.shaleh_name:'',
+            shaleh_name_state:this.shaleh.shaleh_name != null?true:null,
+            shaleh_desc:this.shaleh.shaleh_desc != null?this.shaleh.shaleh_desc:'',
+            shaleh_desc_state:this.shaleh.shaleh_desc != null?true:null,
         }
     },
   watch:{

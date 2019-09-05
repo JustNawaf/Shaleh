@@ -1,18 +1,17 @@
 <template>
 <form id="addShalehForm" :action="route" method="post" class="shadow-lg container p-3 mb-2 rounded text-right" @submit.prevent="onSubmit">
     <input type="hidden" name="_token" :value="csrf">
-
-    <personal-info @state_personal_info="state_personal_info($event)"></personal-info>
-    <shaleh-info @state_shaleh_info="state_shaleh_info($event)"></shaleh-info>
+    <personal-info @state_personal_info="state_personal_info($event)" :shaleh="this.shaleh?this.shaleh:'null'"></personal-info>
+    <shaleh-info @state_shaleh_info="state_shaleh_info($event)" :shaleh="this.shaleh?this.shaleh:'null'"></shaleh-info>
 
     <div class="form-group">
         <h1 class="text-center">الخدمات</h1>
         <div class="row">
-            <property-component v-for="property in properties" :key="property.id" :property="property"></property-component>
+            <property-component v-for="(property,index) in properties" :key="property.id" :property="property" :property_shaleh="checkProperty(index)"></property-component>
         </div>
     </div>
-    <map-info @state_map_info="state_map_info($event)" :cities="cities"></map-info>
-    <price-info @state_price_info="state_price_info($event)"></price-info>
+    <map-info @state_map_info="state_map_info($event)" :cities="cities" :shaleh="this.shaleh?this.shaleh:'null'"></map-info>
+    <price-info @state_price_info="state_price_info($event)" :shaleh="this.shaleh?this.shaleh:'null'"></price-info>
 
         <div id="priceInformation" class="form-group mt-5">
             <h1 class="text-center">صور الشاليه</h1>
@@ -25,7 +24,7 @@
                         </div>
                     </div>
                     <div id="img-container" class="row">
-                        <form-imgs v-for="img in imgs" :file="img" :key="img.name" @image-deleted="deleteImg($event)"></form-imgs>
+                        <form-imgs v-for="img in imgs" :file="img" :key="img.name" @image-deleted="deleteImg($event)" :shaleh_id="shaleh?shaleh.id:'null'"></form-imgs>
                     </div>
                 </div>
             </div>
@@ -58,7 +57,8 @@ export default {
         'properties',
         'cities',
         'route',
-        'csrf'
+        'csrf',
+        'shaleh'
     ],
     data(){
         return{
@@ -68,7 +68,7 @@ export default {
                 mapInfo:false,
                 priceInfo:false,
             },
-            imgs:[],
+            imgs:this.shaleh != null?this.shaleh.imgs:[],
         }
     },
     methods:{
@@ -111,6 +111,19 @@ export default {
                 console.log(error);
             });
         },
+        checkProperty(index){
+            let result =false;
+            if(this.shaleh == null)
+            return result;
+
+            let property = this.shaleh.properties.forEach((e)=>{
+                if(this.properties[index].id == e.property.id){
+                     result = true;
+                    return;
+                }
+            });
+            return result;
+        }
     },
   mounted() {
     console.log("Component mounted.");
