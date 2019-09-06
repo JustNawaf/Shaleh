@@ -19,6 +19,7 @@ class CreatePropertiesShalehsTable extends Migration
             $table->foreign('shaleh_id')->references('id')->on('shalehs');
             $table->bigInteger('property_id')->unsigned();
             $table->foreign('property_id')->references('id')->on('properties');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

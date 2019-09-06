@@ -5,7 +5,7 @@
             <div class="col-12 w-100 col-md-4 col-sm-12 col-xs-4">
                 <label for="inputName">المدينة</label>
                 <select class="form-control is-valid" name="city_id">
-                    <option v-for="city in cities" :value="city.id" :key="city.id">{{ city.name }}</option>
+                    <option v-for="city in cities" :value="city.id" :key="city.id" :selected="checkSelected(city.id)">{{ city.name }}</option>
                 </select>
             </div>
             <div class="col-12 w-100 col-md-4 col-sm-12 col-xs-4">
@@ -70,7 +70,13 @@ export default {
           }else{
             this.$emit('state_map_info',false);
           }
+      },
+      checkSelected(city_id){
+          if(city_id == this.shaleh.city_id){
+              return true;
+          }
+          return false;
       }
-  }
+  },
 };
 </script>

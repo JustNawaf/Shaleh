@@ -1901,7 +1901,10 @@ __webpack_require__.r(__webpack_exports__);
         mapInfo: false,
         priceInfo: false
       },
-      imgs: this.shaleh != null ? this.shaleh.imgs : []
+      message: '',
+      imgs: this.shaleh != null ? this.shaleh.imgs : [],
+      addedImgs: [],
+      deletedImgs: []
     };
   },
   methods: {
@@ -1917,17 +1920,46 @@ __webpack_require__.r(__webpack_exports__);
     state_price_info: function state_price_info(state) {
       this.status.priceInfo = state;
     },
+    redirect: function redirect() {
+      document.location = '/admin/shalehate';
+    },
     addImage: function addImage(e) {
       var tgt = e.target,
           files = tgt.files;
 
-      if (FileReader && files && files.length) {
+      if (FileReader && files && files.length && this.shaleh != null) {
         for (var index = 0; index < files.length; index++) {
+          this.addedImgs.push(files[index]);
           this.imgs.push(files[index]);
+        }
+
+        return;
+      }
+
+      if (FileReader && files && files.length) {
+        for (var _index = 0; _index < files.length; _index++) {
+          this.imgs.push(files[_index]);
         }
       }
     },
     deleteImg: function deleteImg(event) {
+      var _this = this;
+
+      if (this.shaleh != null) {
+        this.imgs.forEach(function (e) {
+          if (e.image_name == event) {
+            _this.deletedImgs.push(e);
+
+            return;
+          }
+        });
+        this.addedImgs = this.addedImgs.filter(function (img) {
+          return img.name != event;
+        });
+        return;
+      }
+
+      console.log('ds');
       this.imgs = this.imgs.filter(function (img) {
         return img.name != event;
       });
@@ -1950,18 +1982,46 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
     },
+    editShaleh: function editShaleh() {
+      var myForm = new FormData($('#addShalehForm')[0]);
+
+      if (this.deletedImgs.length != 0 || this.addedImgs.length != 0) {
+        this.deletedImgs.forEach(function (img) {
+          return myForm.append('deleted_imgs[]', img.image_name);
+        });
+        this.addedImgs.forEach(function (img) {
+          return myForm.append('added_imgs[]', img, img.name);
+        });
+      }
+
+      axios.post('/admin/edit/shaleh/' + this.shaleh.id, myForm).then(function (response) {
+        console.log(response);
+        $('.modal').modal('show');
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
     checkProperty: function checkProperty(index) {
-      var _this = this;
+      var _this2 = this;
 
       var result = false;
       if (this.shaleh == null) return result;
       var property = this.shaleh.properties.forEach(function (e) {
-        if (_this.properties[index].id == e.property.id) {
+        if (_this2.properties[index].id == e.property.id) {
           result = true;
           return;
         }
       });
       return result;
+    }
+  },
+  computed: {
+    checkShaleh: function checkShaleh() {
+      if (this.shaleh == null) {
+        return true;
+      } else if (this.shaleh != null) {
+        return false;
+      }
     }
   },
   mounted: function mounted() {
@@ -2265,13 +2325,17 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     getSrc: function getSrc() {
       // return console.log(this.file);
-      if (this.shaleh_id != null) {
+      if (!("size" in this.file)) {
         return '/storage/shalehat_images/' + this.shaleh_id + '/' + this.file.image_name;
       }
 
       return URL.createObjectURL(this.file);
     },
     getName: function getName() {
+      if (!("size" in this.file)) {
+        return this.file.image_name;
+      }
+
       return this.file.name;
     }
   },
@@ -2286,7 +2350,6 @@ __webpack_require__.r(__webpack_exports__);
     deleteImg: function deleteImg() {
       this.$emit('image-deleted', this.getName);
       this.show = false;
-      console.log(this.imgs);
     }
   }
 });
@@ -2370,6 +2433,13 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         this.$emit('state_map_info', false);
       }
+    },
+    checkSelected: function checkSelected(city_id) {
+      if (city_id == this.shaleh.city_id) {
+        return true;
+      }
+
+      return false;
     }
   }
 });
@@ -38787,7 +38857,7 @@ var render = function() {
       on: {
         submit: function($event) {
           $event.preventDefault()
-          return _vm.onSubmit($event)
+          _vm.checkShaleh ? _vm.onSubmit() : _vm.editShaleh()
         }
       }
     },
@@ -38911,16 +38981,93 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary w-100 mt-5 bg-dark",
-          attrs: { type: "submit" }
-        },
-        [_vm._v("اضافة شاليه")]
-      ),
+      _vm.checkShaleh
+        ? _c(
+            "button",
+            {
+              staticClass: "btn btn-primary w-100 mt-5 bg-dark",
+              attrs: { type: "submit" }
+            },
+            [_vm._v("اضافة شاليه")]
+          )
+        : _vm._e(),
       _vm._v(" "),
-      _vm._m(0)
+      !_vm.checkShaleh
+        ? _c(
+            "button",
+            {
+              staticClass: "btn btn-primary w-100 mt-5 bg-dark",
+              attrs: { type: "submit" }
+            },
+            [_vm._v("تعديل الشاليه")]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "modal fade",
+          attrs: {
+            id: "exampleModalCenter",
+            tabindex: "-1",
+            role: "dialog",
+            "aria-labelledby": "exampleModalCenterTitle",
+            "aria-hidden": "true"
+          }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "modal-dialog modal-dialog-centered",
+              attrs: { role: "document" }
+            },
+            [
+              _c("div", { staticClass: "modal-content" }, [
+                _c("div", { staticClass: "modal-header position-relative" }, [
+                  _c(
+                    "h5",
+                    {
+                      staticClass: "modal-title text-success",
+                      attrs: { id: "exampleModalLongTitle" }
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(_vm.checkShaleh ? "تمت الاضافة" : "تم التعديل")
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(0)
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-body" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(
+                        _vm.checkShaleh
+                          ? "تم اضافة شاليه جديد بنجاح .. يمكنك الان التعديل و مشاهدة الشاليه من خدمات الموقع"
+                          : "تم التعديل بنجاح .. يمكنك الان مشاهدة الشاليه من خدمات الموقع"
+                      )
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-footer" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-secondary w-100",
+                      attrs: { type: "button", "data-dismiss": "modal" },
+                      on: { click: _vm.redirect }
+                    },
+                    [_vm._v("حسنا")]
+                  )
+                ])
+              ])
+            ]
+          )
+        ]
+      )
     ],
     1
   )
@@ -38931,75 +39078,17 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c(
-      "div",
+      "button",
       {
-        staticClass: "modal fade",
+        staticClass: "close position-absolute",
+        staticStyle: { left: "0px" },
         attrs: {
-          id: "exampleModalCenter",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "exampleModalCenterTitle",
-          "aria-hidden": "true"
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
         }
       },
-      [
-        _c(
-          "div",
-          {
-            staticClass: "modal-dialog modal-dialog-centered",
-            attrs: { role: "document" }
-          },
-          [
-            _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "modal-header position-relative" }, [
-                _c(
-                  "h5",
-                  {
-                    staticClass: "modal-title text-success",
-                    attrs: { id: "exampleModalLongTitle" }
-                  },
-                  [_vm._v("تمت الاضافة")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "close position-absolute",
-                    staticStyle: { left: "0px" },
-                    attrs: {
-                      type: "button",
-                      "data-dismiss": "modal",
-                      "aria-label": "Close"
-                    }
-                  },
-                  [
-                    _c("span", { attrs: { "aria-hidden": "true" } }, [
-                      _vm._v("×")
-                    ])
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _vm._v(
-                  "\n                    الان تستطيع من خلال حسابك ادارة الشاليهات الخاصة بك و تعديل بيانات متى ما شئت.\n                "
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-secondary w-100",
-                    attrs: { type: "button", "data-dismiss": "modal" }
-                  },
-                  [_vm._v("حسنا")]
-                )
-              ])
-            ])
-          ]
-        )
-      ]
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
     )
   }
 ]
@@ -39531,7 +39620,13 @@ var render = function() {
             _vm._l(_vm.cities, function(city) {
               return _c(
                 "option",
-                { key: city.id, domProps: { value: city.id } },
+                {
+                  key: city.id,
+                  domProps: {
+                    value: city.id,
+                    selected: _vm.checkSelected(city.id)
+                  }
+                },
                 [_vm._v(_vm._s(city.name))]
               )
             }),
@@ -40316,7 +40411,7 @@ var render = function() {
           _c("input", {
             staticClass: "n-checkbox",
             attrs: { type: "checkbox", name: "properites[]" },
-            domProps: { value: _vm.property.id },
+            domProps: { value: _vm.property.id, checked: this.checked },
             on: {
               change: function($event) {
                 _vm.checked == false

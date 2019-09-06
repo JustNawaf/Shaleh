@@ -18,6 +18,7 @@ class CreateImagesTable extends Migration
             $table->bigInteger('shaleh_id')->unsigned();
             $table->foreign('shaleh_id')->references('id')->on('shalehs');
             $table->string('url');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

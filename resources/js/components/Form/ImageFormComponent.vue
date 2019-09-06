@@ -21,12 +21,15 @@ export default {
     computed: {
         getSrc:function(){
             // return console.log(this.file);
-            if(this.shaleh_id != null){
+            if(!("size" in this.file)){
                 return '/storage/shalehat_images/'+this.shaleh_id+'/'+this.file.image_name;
             }
             return URL.createObjectURL(this.file);
         },
         getName:function(){
+            if(!("size" in this.file)){
+                return this.file.image_name;
+            }
             return this.file.name;
         }
     },
@@ -42,8 +45,6 @@ export default {
         {
             this.$emit('image-deleted',this.getName);
             this.show=false;
-            console.log(this.imgs);
-
         },
   }
 };

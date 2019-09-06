@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\City;
 use App\Comment;
+use App\Images;
 use App\properties_shaleh;
 use App\Property;
 use App\Shaleh;
 use App\Shaleh_Images;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -85,7 +87,7 @@ class ShalehController extends Controller
                 // $file_name_with_ext = $img->getClientOriginalName();
                 // $file_name = pathinfo($file_name_with_ext,PATHINFO_FILENAME);
                 $extension = $img->getClientOriginalExtension();
-                $file_name_to_store = $key.'.'.$extension;
+                $file_name_to_store = rand(1, 1000000).'.'.$extension;
                 $img->storeAs('shalehat_images/'.$shaleh->id,$file_name_to_store,'public');
                 $shaleh_image = new Shaleh_Images();
                 $shaleh_image->shaleh_id = $shaleh->id;
@@ -103,12 +105,6 @@ class ShalehController extends Controller
         $shaleh_name = $request->get('shaleh_name');
         $city_id = $request->get('city_id');
         $price = $request->get('price_order');
-        // if($city_id != 'all'){
-        //     return 'true';
-        // }else{
-        //     return 'false';
-        // }
-        // return $city_id;
 
         $shalehat = Shaleh::when($shaleh_name,function($query,$shaleh_name){
             return $query->where('shaleh_name',$shaleh_name);
@@ -124,6 +120,58 @@ class ShalehController extends Controller
         $cities = City::all();
         $shaleh = Shaleh::with(['properties.property','city','imgs'])->find($id);
         return view('pages.admin.editShaleh')->with(['properties'=>$properties,'cities'=>$cities,'shaleh'=>$shaleh]);
+    }
+    public function edit_shaleh(Request $request,$id){
+        $shaleh = Shaleh::find($id);
+        $shaleh_properties =  $shaleh->properties->map->property_id;
+
+        DB::transaction(function () use($request,$shaleh,$shaleh_properties) {
+        $shaleh->first_name = $request->get('first_name');
+        $shaleh->last_name = $request->get('last_name');
+        $shaleh->phone = $request->get('phone');
+        $shaleh->email = $request->get('email');
+        $shaleh->shaleh_name = $request->get('shaleh_name');
+        $shaleh->shaleh_desc = $request->get('shaleh_desc');
+        $shaleh->city_id = $request->get('city_id');
+        $shaleh->area = $request->get('area');
+        $shaleh->street = $request->get('street');
+        $shaleh->normal_price = $request->get('normal_price');
+        $shaleh->ramadan_price = $request->get('ramadan_price');
+        $shaleh->ftr_price = $request->get('ftr_price');
+        $shaleh->adha_price = $request->get('adha_price');
+        $shaleh->save();
+        foreach($shaleh_properties as $property){
+            if(!in_array($property,$request->get('properites'))){
+                properties_shaleh::where('property_id',$property)->where('shaleh_id',$shaleh->id)->delete();
+            }
+        }
+        foreach (array_diff($request->get('properites'),$shaleh_properties->toArray()) as  $property) {
+            $prop = new properties_shaleh();
+            $prop->shaleh_id = $shaleh->id;
+            $prop->property_id = $property;
+            $prop->save();
+        }
+        if(! empty($request->get('deleted_imgs'))){
+
+            foreach($request->get('deleted_imgs') as $deleted_img){
+                Shaleh_Images::where('shaleh_id',$shaleh->id)->where('image_name',$deleted_img)->delete();
+                Storage::disk('public')->move('shalehat_images/'.$shaleh->id.'/'.$deleted_img,'shalehat_images/'.$shaleh->id.'/deleted'.$deleted_img);
+            }
+        }
+        if(! empty($request->file('added_imgs'))){
+        foreach($request->file('added_imgs') as $key=>$img){
+
+            $extension = $img->getClientOriginalExtension();
+            $file_name_to_store = rand(1, 1000000).'.'.$extension;
+            $img->storeAs('shalehat_images/'.$shaleh->id,$file_name_to_store,'public');
+            $shaleh_image = new Shaleh_Images();
+            $shaleh_image->shaleh_id = $shaleh->id;
+            $shaleh_image->image_name = $file_name_to_store;
+            $shaleh_image->save();
+        }
+    }
+
+    });
     }
     public function delete_shaleh($id)
     {
