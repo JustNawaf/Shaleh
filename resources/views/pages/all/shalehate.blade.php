@@ -5,7 +5,7 @@
     <div id="shalehate" class="row p-0 m-0">
         <div class="col-12 col-md-2 col-lg-2">
             <h1 class="text-center" style="">البحث</h1>
-            <form-search @shalehat="showResult($event)" :cities="{{ $cities }}" route="{{ route('search') }}" ></form-search>
+            <form-search @shalehat="showResult($event)" :cities="{{ $cities }}" route="{{ route('search.shalehate') }}" ></form-search>
         </div>
         <div class="col-12 col-md-10 col-lg-10">
             <div class="row">

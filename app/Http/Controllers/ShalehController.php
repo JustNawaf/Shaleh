@@ -115,6 +115,21 @@ class ShalehController extends Controller
 
         return $shalehat;
     }
+    public function search_shalehate(Request $request){
+        $shaleh_name = $request->get('shaleh_name');
+        $city_id = $request->get('city_id');
+        $price = $request->get('price_order');
+
+        $shalehat = Shaleh::when($shaleh_name,function($query,$shaleh_name){
+            return $query->where('shaleh_name',$shaleh_name);
+        })->when($city_id,function($query,$city_id){
+            if($city_id != 'all')
+            return $query->where('city_id','=',$city_id);
+        })->where('user_id',Auth::user()->id)->with(['imgs','comments'])->orderby('normal_price',$price)->get();
+
+
+        return $shalehat;
+    }
     public function update_shaleh_view($id){
         $properties = Property::all();
         $cities = City::all();

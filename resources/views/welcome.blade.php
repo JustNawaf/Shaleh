@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="subject text-center w-100">
-        <div class=" container w-100 w-100 d-flex flex-column justify-content-center" style="height: 100vh;">
-            <h1 class="large-text-subject mb-5" style="color:white;">شاليه</h1>
+    <div class="subject text-center w-100 position-relative">
+        <div class=" container w-100 w-100 d-flex flex-column justify-content-center">
+            <h1 class="large-text-subject mb-5 text-dark">شاليه</h1>
             <h2 class="align-self-start medium-text-subject" style="color:#BEBFBE;">
                 عبارة عن موقع شاليهات يتم التسجيل فيه على حسب الشخص اذا كان مالك لشاليه او شخص يريد الاستئجار
             </h2>

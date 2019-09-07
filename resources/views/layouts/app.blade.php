@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'شـاليه') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}" ></script>
 
 
     <!-- Fonts -->
@@ -296,72 +296,72 @@
 <body>
     {{-- <div id="background-image-fixed">
     </div> --}}
-    <div id="app" class="m-0 p-0 m-auto m-lg-0">
-        <div class="content">
-            <div id="sideNav" style="height:100vh;">
-                <div class="text-center">
-                    <div class="mt-5">
-                        <p class="big-text">
-                            <img src="/logo/logl1.png" width="45" height="45" class="d-inline-block align-top"
-                                alt="">
-                            شاليه
-                        </p>
-                    </div>
-                    <br>
+    <div id="sideNav" style="height:100vh;">
+            <div class="text-center">
+                <div class="mt-5">
+                    <p class="big-text">
+                        <img src="/logo/logl1.png" width="45" height="45" class="d-inline-block align-top"
+                            alt="">
+                        شاليه
+                    </p>
+                </div>
+                <br>
 
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav" style="padding-inline-start:0px;">
-                        <li class="nav-item w-100 ml-0">
-                            <a class="nav-link mid-text" href="{{ route('login') }}"></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link mid-text" href="{{ route('index.shalehat') }}">الشاليهات</a>
-                        </li>
-                        @canany(['is_admin','is_buss'])
-                        <li class="nav-item">
-                            <a class="nav-link mid-text" href="#">شاليهاتي</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link mid-text" href="{{ route('admin.add.shaleh') }}">اضافة شاليه</a>
-                        </li>
-                        @endcanany
-                    </ul>
+                <!-- Left Side Of Navbar -->
+                <ul class="navbar-nav" style="padding-inline-start:0px;">
+                    <li class="nav-item w-100 ml-0">
+                        <a class="nav-link mid-text" href="{{ route('login') }}"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mid-text" href="{{ route('index.shalehat') }}">الشاليهات</a>
+                    </li>
+                    @canany(['is_admin','is_buss'])
+                    <li class="nav-item">
+                        <a class="nav-link mid-text" href="{{ route('admin.shalehate') }}">شاليهاتي</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mid-text" href="{{ route('admin.add.shaleh') }}">اضافة شاليه</a>
+                    </li>
+                    @endcanany
+                </ul>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav" style="padding-inline-start:0px;">
-                        <!-- Authentication Links -->
-                        @guest
-                        <li class="nav-item">
-                            <a class="nav-link mid-text" href="{{ route('login') }}">تسجيل الدخول</a>
-                        </li>
-                        @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link mid-text" href="{{ route('register') }}">تسجيل جديد</a>
-                        </li>
-                        @endif
-                        @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                <!-- Right Side Of Navbar -->
+                <ul class="navbar-nav" style="padding-inline-start:0px;">
+                    <!-- Authentication Links -->
+                    @guest
+                    <li class="nav-item">
+                        <a class="nav-link mid-text" href="{{ route('login') }}">تسجيل الدخول</a>
+                    </li>
+                    @if (Route::has('register'))
+                    <li class="nav-item">
+                        <a class="nav-link mid-text" href="{{ route('register') }}">تسجيل جديد</a>
+                    </li>
+                    @endif
+                    @else
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                             document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                    style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                    @endguest
-                    </ul>
-                </div>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                @endguest
+                </ul>
             </div>
+        </div>
+    <div id="app" class="m-0 p-0 m-auto m-lg-0 position-relative">
+        <div id="content" class="content">
             <nav id="nav" class="navbar navbar-expand-md navbar-dark  back bg-dark w-100 position-relative">
                 <div class="container">
                     <a class="navbar-brand big-text" href="{{ url('/') }}">
@@ -409,16 +409,16 @@
                             </li>
                             @endif
                             @else
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown w-100">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu-left text-center d-block" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                                  document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('auth.Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -443,11 +443,11 @@
             let left = $('#sideNav').position().left;
             if(left == 0 )
             {
-                $('#sideNav').animate({left:'100%'},700);
-                $('#nav').animate({left:'0%'},700);
+                $('#sideNav').animate({left:'100%'},600);
+                $('#app').animate({left:'0%'},600);
             }else {
-                $('#sideNav').animate({left:'0%'},700);
-                $('#nav').animate({left:'50%'},700);
+                $('#sideNav').animate({left:'0%'},600);
+                $('#app').animate({left:'50%'},600);
             }
 
         });
