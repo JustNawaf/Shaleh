@@ -1904,13 +1904,7 @@ __webpack_require__.r(__webpack_exports__);
       message: '',
       imgs: this.shaleh != null ? this.shaleh.imgs : [],
       addedImgs: [],
-      deletedImgs: [],
-      personalErrorMessages: {
-        first_name: null,
-        last_name: null,
-        phone: null,
-        email: null
-      }
+      deletedImgs: []
     };
   },
   methods: {
@@ -1972,8 +1966,6 @@ __webpack_require__.r(__webpack_exports__);
       console.log(this.imgs.length);
     },
     onSubmit: function onSubmit() {
-      var _this2 = this;
-
       var myForm = new FormData($('#addShalehForm')[0]);
 
       if (this.imgs.length != 0) {
@@ -1987,45 +1979,8 @@ __webpack_require__.r(__webpack_exports__);
         console.log(response);
         $('.modal').modal('show');
       })["catch"](function (error) {
-        var errors = error.response.data.errors;
-        console.log(errors.first_name[0]);
-
-        _this2.personalInfoErrors(errors);
+        console.log(error);
       });
-    },
-    personalInfoErrors: function personalInfoErrors(errors) {
-      if (errors.hasOwnProperty('first_name')) {
-        this.personalErrorMessages.first_name = errors.first_name[0];
-      }
-
-      if (errors.hasOwnProperty('last_name')) {
-        this.personalErrorMessages.last_name = errors.last_name[0];
-      }
-
-      if (errors.hasOwnProperty('phone')) {
-        this.personalErrorMessages.phone = errors.phone[0];
-      }
-
-      if (errors.hasOwnProperty('email')) {
-        this.personalErrorMessages.email = errors.email[0];
-      }
-    },
-    shalehInfoErrors: function shalehInfoErrors(errors) {
-      if (errors.hasOwnProperty('first_name')) {
-        this.personalErrorMessages.first_name = errors.first_name[0];
-      }
-
-      if (errors.hasOwnProperty('last_name')) {
-        this.personalErrorMessages.last_name = errors.last_name[0];
-      }
-
-      if (errors.hasOwnProperty('phone')) {
-        this.personalErrorMessages.phone = errors.phone[0];
-      }
-
-      if (errors.hasOwnProperty('email')) {
-        this.personalErrorMessages.email = errors.email[0];
-      }
     },
     editShaleh: function editShaleh() {
       var myForm = new FormData($('#addShalehForm')[0]);
@@ -2042,16 +1997,17 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/admin/edit/shaleh/' + this.shaleh.id, myForm).then(function (response) {
         console.log(response);
         $('.modal').modal('show');
-      })["catch"](function (error) {// console.log(error.errors.first_name);
+      })["catch"](function (error) {
+        console.log(error);
       });
     },
     checkProperty: function checkProperty(index) {
-      var _this3 = this;
+      var _this2 = this;
 
       var result = false;
       if (this.shaleh == null) return result;
       var property = this.shaleh.properties.forEach(function (e) {
-        if (_this3.properties[index].id == e.property.id) {
+        if (_this2.properties[index].id == e.property.id) {
           result = true;
           return;
         }
@@ -2542,7 +2498,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     console.log("Component mounted.");
   },
-  props: ['shaleh', 'errors'],
+  props: ['shaleh'],
   data: function data() {
     return {
       regex: {
@@ -2550,13 +2506,13 @@ __webpack_require__.r(__webpack_exports__);
         phoneRegex: /^(009665|9665|\+9665|05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$/
       },
       first_name: this.shaleh.first_name != null ? this.shaleh.first_name : '',
-      first_name_state: this.shaleh.first_name != null ? true : this.errors.first_name != null ? false : true,
+      first_name_state: this.shaleh.first_name != null ? true : null,
       last_name: this.shaleh.last_name != null ? this.shaleh.last_name : '',
-      last_name_state: this.shaleh.last_name != null ? true : this.errors.last_name != null ? false : true,
+      last_name_state: this.shaleh.last_name != null ? true : null,
       phone: this.shaleh.phone != null ? this.shaleh.phone : '',
-      phone_state: this.shaleh.phone != null ? true : this.errors.phone != null ? false : true,
+      phone_state: this.shaleh.phone != null ? true : null,
       email: this.shaleh.email != null ? this.shaleh.email : '',
-      email_state: this.shaleh.email != null ? true : this.errors.email != null ? false : true
+      email_state: this.shaleh.email != null ? true : null
     };
   },
   watch: {
@@ -38912,10 +38868,7 @@ var render = function() {
       }),
       _vm._v(" "),
       _c("personal-info", {
-        attrs: {
-          shaleh: this.shaleh ? this.shaleh : "null",
-          errors: this.personalErrorMessages
-        },
+        attrs: { shaleh: this.shaleh ? this.shaleh : "null" },
         on: {
           state_personal_info: function($event) {
             return _vm.state_personal_info($event)
@@ -39090,7 +39043,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "modal-body" }, [
                   _vm._v(
-                    "\n                    " +
+                    "\r\n                    " +
                       _vm._s(
                         _vm.checkShaleh
                           ? "تم اضافة شاليه جديد بنجاح .. يمكنك الان التعديل و مشاهدة الشاليه من خدمات الموقع"
