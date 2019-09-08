@@ -2,11 +2,13 @@
 Normal User
 ```bash
 - Can See All Shalehat.
+- Can see shaleh page.
 - Add comment and rating to each shaleh.
 ```
 Buss User
 ```bash
 - Can See All Shalehat.
+- Can see shaleh page.
 - Add comment and rating to each shaleh.
 - Can Add new Shaleh.
 - Can see all shalehat he created
@@ -16,6 +18,7 @@ Buss User
 Admin
 ```bash
 - Can See All Shalehat.
+- Can see shaleh page.
 - Add comment and rating to each shaleh.
 - Can Add new Shaleh.
 - Can edit any shaleh.
