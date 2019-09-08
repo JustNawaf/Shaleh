@@ -11,7 +11,6 @@
     <title>{{ config('app.name', 'شـاليه') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" ></script>
 
 
     <!-- Fonts -->
@@ -25,6 +24,8 @@
     <script src="https://kit.fontawesome.com/82a6a22d16.js"></script>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/app.js') }}" ></script>
+
     <style>
         #background-image-fixed {
             background-color:white;
@@ -344,10 +345,10 @@
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu dropdown-menu-right text-center d-block" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                                {{ __('auth.Logout') }}
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST"
