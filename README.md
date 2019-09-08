@@ -1,4 +1,26 @@
 # Shaleh
+Normal User
+```bash
+- Can See All Shalehat.
+- Add comment and rating to each shaleh.
+```
+Buss User
+```bash
+- Can See All Shalehat.
+- Add comment and rating to each shaleh.
+- Can Add new Shaleh.
+- Can see all shalehat he created
+- Can edit any shaleh he created.
+- Can Delete any Shaleh he created.
+```
+Admin
+```bash
+- Can See All Shalehat.
+- Add comment and rating to each shaleh.
+- Can Add new Shaleh.
+- Can edit any shaleh.
+- Can Delete any Shaleh.
+```
 # Setup
 First you need to install composer
 ```bash
