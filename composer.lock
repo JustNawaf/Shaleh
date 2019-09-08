@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "48893cca6b3371cf8b7dadeab7908a77",
+    "content-hash": "b787c152c8099013399090c35b4aad3e",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -377,6 +377,43 @@
                 "trusted proxy"
             ],
             "time": "2019-01-10T14:06:47+00:00"
+        },
+        {
+            "name": "geniusts/hijri-dates",
+            "version": "1.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GeniusTS/hijri-dates.git",
+                "reference": "c89ea439bb7704edd9c372385789d866422c0d05"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GeniusTS/hijri-dates/zipball/c89ea439bb7704edd9c372385789d866422c0d05",
+                "reference": "c89ea439bb7704edd9c372385789d866422c0d05",
+                "shasum": ""
+            },
+            "require": {
+                "nesbot/carbon": "^2.16|^1.22",
+                "php": ">=7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "GeniusTS\\HijriDate\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Abdul-Kader Zein-Eddin",
+                    "email": "aboudeh1987@gmail.com"
+                }
+            ],
+            "description": "PHP library to convert Gregorian date to Hijri date and vice versa",
+            "time": "2019-04-11T09:45:04+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",

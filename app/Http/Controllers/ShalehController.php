@@ -19,6 +19,7 @@ class ShalehController extends Controller
 {
     public function index()
     {
+
         $shalehat = Shaleh::with(['imgs','comments'])->get();
         // return dd($shalehat);
         $cities  = City::all();
@@ -30,11 +31,22 @@ class ShalehController extends Controller
         return view('pages.all.shalehate')->with(['shalehat'=> $shalehat,'cities'=>$cities]);
     }
     public function show_shaleh($id){
+        $now = \GeniusTS\HijriDate\Date::now();
+        $price_show = null;
+        if($now->month == 9){
+            $price_show = 1;
+        }else if($now->month == 10 && $now->day <=10){
+            $price_show = 2;
+        }else if($now->month == 12 && ($now->day <= 13 && $now->day >=10)){
+            $price_show = 3;
+        }else{
+            $price_show = 0;
+        }
         $shaleh = Shaleh::with(['comments.user','properties.property'])->find($id);
         $cities  = City::all();
         $shalehat = Shaleh::where('city_id','=',$shaleh->city_id)->where('id','!=',$id)->with(['city','imgs'])->take(3)->get();
         // return dd($shaleh);
-        return view('pages.all.showShaleh')->with(['shaleh'=>$shaleh,'cities'=>$cities,'shalehat'=>$shalehat  ]);
+        return view('pages.all.showShaleh')->with(['shaleh'=>$shaleh,'cities'=>$cities,'shalehat'=>$shalehat,'price_show'=>$price_show  ]);
     }
     public function add_shaleh()
     {

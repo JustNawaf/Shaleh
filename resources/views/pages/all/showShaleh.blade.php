@@ -46,24 +46,26 @@
                 <h1 class="" style="color:black;">الوصـف</h1>
                 <p class="h3 text-justify">{{ $shaleh->shaleh_desc }}</p>
             </div>
-            <div class="w-100 h-100 mt-5 py-3 px-3" style="background-color:#636970;">
-                <h1 class="text-center text-light mb-3">الاسـعار</h1>
-                <div class="row m-0 p-0">
-                    <div class="col text-center bg-dark p-3 text-nowrap" style="margin-left:1px;margin-top:1px;">
-                        <h3 class="text-light">اليوم العادي</h3>
-                        <h3 class="text-success">{{ $shaleh->normal_price }} ريال</h3>
-                    </div>
-                    <div class="col text-center bg-dark p-3 text-nowrap" style="margin-left:1px;margin-top:1px;">
-                        <h3 class="text-light">رمضان المبارك</h3>
-                        <h3 class="text-success">{{ $shaleh->ramadan_price }} ريال</h3>
-                    </div>
-                    <div class="col text-center bg-dark p-3 text-nowrap" style="margin-left:1px;margin-top:1px;">
-                        <h3 class="text-light">عيد الفطر</h3>
-                        <h3 class="text-success">{{ $shaleh->ftr_price }} ريال</h3>
-                    </div>
-                    <div class="col text-center bg-dark p-3 text-nowrap" style="margin-left:1px;margin-top:1px;">
-                        <h3 class="text-light">عيد الاضحى</h3>
-                        <h3 class="text-success">{{ $shaleh->adha_price }} ريال</h3>
+            <div id="price">
+                <div class="w-100 h-100 mt-5 py-3 px-3" style="background-color:#636970;">
+                    <h1 class="text-center text-light mb-3">الاسـعار</h1>
+                    <div class="row m-0 p-0">
+                        <div v-if="price_show == 0" class="col text-center bg-dark p-3 text-nowrap" style="margin-left:1px;margin-top:1px;">
+                            <h3 class="text-light">اليوم العادي</h3>
+                            <h3 class="text-success">{{ $shaleh->normal_price }} ريال</h3>
+                        </div>
+                        <div  v-if="price_show == 1" class="col text-center bg-dark p-3 text-nowrap" style="margin-left:1px;margin-top:1px;">
+                            <h3 class="text-light">رمضان المبارك</h3>
+                            <h3 class="text-success">{{ $shaleh->ramadan_price }} ريال</h3>
+                        </div>
+                        <div  v-if="price_show == 2" class="col text-center bg-dark p-3 text-nowrap" style="margin-left:1px;margin-top:1px;">
+                            <h3 class="text-light">عيد الفطر</h3>
+                            <h3 class="text-success">{{ $shaleh->ftr_price }} ريال</h3>
+                        </div>
+                        <div  v-if="price_show == 3" class="col text-center bg-dark p-3 text-nowrap" style="margin-left:1px;margin-top:1px;">
+                            <h3 class="text-light">عيد الاضحى</h3>
+                            <h3 class="text-success">{{ $shaleh->adha_price }} ريال</h3>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -133,6 +135,12 @@
 <script>
     new Vue({
         el:'#small-shaleh',
+    });
+    new Vue({
+        el:'#price',
+        data:{
+            price_show:{{ $price_show }}
+        }
     });
     new Vue({
         el:'#comment',
