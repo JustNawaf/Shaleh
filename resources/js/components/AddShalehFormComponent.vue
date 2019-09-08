@@ -19,7 +19,7 @@
                 <div class="col-12 w-100 col-md-12 col-sm-12 col-xs-4">
                     <div class="input-group mb-3">
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="imgs" aria-describedby="inputGroupFileAddon01" @change="addImage" multiple>
+                            <input type="file" class="custom-file-input" id="imgs" aria-describedby="inputGroupFileAddon01" @change="addImage" multiple accept=".png, .jpg, .jpeg">
                             <label class="custom-file-label" for="imgs"></label>
                         </div>
                     </div>
