@@ -56,6 +56,14 @@ class ShalehController extends Controller
     }
     public function add_comment_to_shaleh(Request $request,$shaleh_id)
     {
+        $this->validate($request,[
+            'comment' => ['required', 'string', 'max:255'],
+            'rating' => ['required'],
+        ],[
+            'comment.required' => 'الرجاء كتابة وصف االتعليق',
+            'rating.required' => 'الرجاء اختيار التقييم',
+        ]
+        );
         $new_comment = new Comment();
         $new_comment->shaleh_id = $shaleh_id;
         $new_comment->user_id = auth()->user()->id;
@@ -63,12 +71,39 @@ class ShalehController extends Controller
         $new_comment->description = $request->get('comment');
         $new_comment->save();
         return Comment::where('id',$new_comment->id)->with('user')->first();
-        // return $new_comment->with('user')->first();
-        // return redirect('shaleh/'.$shaleh_id);
     }
     public function store_shaleh(Request $request)
     {
-        // return $request->all();
+        $this->validate($request,[
+            'first_name' => ['required', 'string'],
+            'last_name' => ['required', 'string'],
+            'phone' => ['required', 'numeric'],
+            'email' => ['required', 'email'],
+            'shaleh_name' => ['required', 'string'],
+            'shaleh_desc' => ['required', 'string'],
+            'city_id' => ['required'],
+            'area' => ['required', 'string'],
+            'street' => ['required', 'string'],
+            'normal_price' => ['required', 'numeric'],
+            'ramadan_price' => ['required', 'numeric'],
+            'ftr_price' => ['required', 'numeric'],
+            'adha_price' => ['required', 'numeric']
+        ],[
+            'first_name.required' => 'الرجاء كتابة الاسم الاول',
+            'last_name.required' => 'الرجاء كتابة الاسم الاخير',
+            'phone.required' => 'الرجاء كتابة رقم هاتفك',
+            'email.required' => 'الرجاء كتابة بريدك الاكتروني',
+            'shaleh_name.required' => 'الرجاء كتابة اسم الشاليه',
+            'shaleh_desc.required' => 'الرجاء كتابة وصف الشاليه',
+            'city_id.required' => 'الرجاء اختيار مدينة',
+            'area.required' => 'الرجاء كتابة اسم الحي',
+            'street.required' => 'الرجاء كتابة اسم الشارع',
+            'normal_price.required' => 'الرجاء كتابة سعر الشاليه في اليوم العادي',
+            'ramadan_price.required' => 'الرجاء كتابة سعر الشاليه في شهر رمضان',
+            'ftr_price.required' => 'الرجاء كتابة سعر الشاليه في عيد الفطر',
+            'adha_price.required' => 'الرجاء كتابة سعر الشاليه في العيد الاضحى',
+        ]
+        );
         DB::transaction(function ()use($request) {
             $shaleh = new Shaleh();
             $shaleh->user_id = auth()->user()->id;
@@ -149,6 +184,37 @@ class ShalehController extends Controller
         return view('pages.admin.editShaleh')->with(['properties'=>$properties,'cities'=>$cities,'shaleh'=>$shaleh]);
     }
     public function edit_shaleh(Request $request,$id){
+        $this->validate($request,[
+            'first_name' => ['required', 'string'],
+            'last_name' => ['required', 'string'],
+            'phone' => ['required', 'numeric'],
+            'email' => ['required', 'email'],
+            'shaleh_name' => ['required', 'string'],
+            'shaleh_desc' => ['required', 'string'],
+            'city_id' => ['required'],
+            'area' => ['required', 'string'],
+            'street' => ['required', 'string'],
+            'normal_price' => ['required', 'numeric'],
+            'ramadan_price' => ['required', 'numeric'],
+            'ftr_price' => ['required', 'numeric'],
+            'adha_price' => ['required', 'numeric']
+        ],[
+            'first_name.required' => 'الرجاء كتابة الاسم الاول',
+            'last_name.required' => 'الرجاء كتابة الاسم الاخير',
+            'phone.required' => 'الرجاء كتابة رقم هاتفك',
+            'email.required' => 'الرجاء كتابة بريدك الاكتروني',
+            'shaleh_name.required' => 'الرجاء كتابة اسم الشاليه',
+            'shaleh_desc.required' => 'الرجاء كتابة وصف الشاليه',
+            'city_id.required' => 'الرجاء اختيار مدينة',
+            'area.required' => 'الرجاء كتابة اسم الحي',
+            'street.required' => 'الرجاء كتابة اسم الشارع',
+            'normal_price.required' => 'الرجاء كتابة سعر الشاليه في اليوم العادي',
+            'ramadan_price.required' => 'الرجاء كتابة سعر الشاليه في شهر رمضان',
+            'ftr_price.required' => 'الرجاء كتابة سعر الشاليه في عيد الفطر',
+            'adha_price.required' => 'الرجاء كتابة سعر الشاليه في العيد الاضحى',
+        ]
+        );
+
         $shaleh = Shaleh::find($id);
         $shaleh_properties =  $shaleh->properties->map->property_id;
 

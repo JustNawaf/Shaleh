@@ -1904,7 +1904,13 @@ __webpack_require__.r(__webpack_exports__);
       message: '',
       imgs: this.shaleh != null ? this.shaleh.imgs : [],
       addedImgs: [],
-      deletedImgs: []
+      deletedImgs: [],
+      personalErrorMessages: {
+        first_name: null,
+        last_name: null,
+        phone: null,
+        email: null
+      }
     };
   },
   methods: {
@@ -1966,6 +1972,8 @@ __webpack_require__.r(__webpack_exports__);
       console.log(this.imgs.length);
     },
     onSubmit: function onSubmit() {
+      var _this2 = this;
+
       var myForm = new FormData($('#addShalehForm')[0]);
 
       if (this.imgs.length != 0) {
@@ -1979,8 +1987,45 @@ __webpack_require__.r(__webpack_exports__);
         console.log(response);
         $('.modal').modal('show');
       })["catch"](function (error) {
-        console.log(error);
+        var errors = error.response.data.errors;
+        console.log(errors.first_name[0]);
+
+        _this2.personalInfoErrors(errors);
       });
+    },
+    personalInfoErrors: function personalInfoErrors(errors) {
+      if (errors.hasOwnProperty('first_name')) {
+        this.personalErrorMessages.first_name = errors.first_name[0];
+      }
+
+      if (errors.hasOwnProperty('last_name')) {
+        this.personalErrorMessages.last_name = errors.last_name[0];
+      }
+
+      if (errors.hasOwnProperty('phone')) {
+        this.personalErrorMessages.phone = errors.phone[0];
+      }
+
+      if (errors.hasOwnProperty('email')) {
+        this.personalErrorMessages.email = errors.email[0];
+      }
+    },
+    shalehInfoErrors: function shalehInfoErrors(errors) {
+      if (errors.hasOwnProperty('first_name')) {
+        this.personalErrorMessages.first_name = errors.first_name[0];
+      }
+
+      if (errors.hasOwnProperty('last_name')) {
+        this.personalErrorMessages.last_name = errors.last_name[0];
+      }
+
+      if (errors.hasOwnProperty('phone')) {
+        this.personalErrorMessages.phone = errors.phone[0];
+      }
+
+      if (errors.hasOwnProperty('email')) {
+        this.personalErrorMessages.email = errors.email[0];
+      }
     },
     editShaleh: function editShaleh() {
       var myForm = new FormData($('#addShalehForm')[0]);
@@ -1997,17 +2042,16 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/admin/edit/shaleh/' + this.shaleh.id, myForm).then(function (response) {
         console.log(response);
         $('.modal').modal('show');
-      })["catch"](function (error) {
-        console.log(error);
+      })["catch"](function (error) {// console.log(error.errors.first_name);
       });
     },
     checkProperty: function checkProperty(index) {
-      var _this2 = this;
+      var _this3 = this;
 
       var result = false;
       if (this.shaleh == null) return result;
       var property = this.shaleh.properties.forEach(function (e) {
-        if (_this2.properties[index].id == e.property.id) {
+        if (_this3.properties[index].id == e.property.id) {
           result = true;
           return;
         }
@@ -2498,7 +2542,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     console.log("Component mounted.");
   },
-  props: ['shaleh'],
+  props: ['shaleh', 'errors'],
   data: function data() {
     return {
       regex: {
@@ -2506,13 +2550,13 @@ __webpack_require__.r(__webpack_exports__);
         phoneRegex: /^(009665|9665|\+9665|05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$/
       },
       first_name: this.shaleh.first_name != null ? this.shaleh.first_name : '',
-      first_name_state: this.shaleh.first_name != null ? true : null,
+      first_name_state: this.shaleh.first_name != null ? true : this.errors.first_name != null ? false : true,
       last_name: this.shaleh.last_name != null ? this.shaleh.last_name : '',
-      last_name_state: this.shaleh.last_name != null ? true : null,
+      last_name_state: this.shaleh.last_name != null ? true : this.errors.last_name != null ? false : true,
       phone: this.shaleh.phone != null ? this.shaleh.phone : '',
-      phone_state: this.shaleh.phone != null ? true : null,
+      phone_state: this.shaleh.phone != null ? true : this.errors.phone != null ? false : true,
       email: this.shaleh.email != null ? this.shaleh.email : '',
-      email_state: this.shaleh.email != null ? true : null
+      email_state: this.shaleh.email != null ? true : this.errors.email != null ? false : true
     };
   },
   watch: {
@@ -7367,7 +7411,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.n-checkbox {\n  position: absolute;\n  height: 100%;\n  width: 100%;\n  opacity: 0;\n  top: 0%;\n  left: 0%;\n  right: 0%;\n  bottom: 0%;\n}\n.n-checkbox-shadow{\ncolor:green;\n}\n", ""]);
+exports.push([module.i, "\n.n-checkbox {\r\n  position: absolute;\r\n  height: 100%;\r\n  width: 100%;\r\n  opacity: 0;\r\n  top: 0%;\r\n  left: 0%;\r\n  right: 0%;\r\n  bottom: 0%;\n}\n.n-checkbox-shadow{\r\ncolor:green;\n}\r\n", ""]);
 
 // exports
 
@@ -38868,7 +38912,10 @@ var render = function() {
       }),
       _vm._v(" "),
       _c("personal-info", {
-        attrs: { shaleh: this.shaleh ? this.shaleh : "null" },
+        attrs: {
+          shaleh: this.shaleh ? this.shaleh : "null",
+          errors: this.personalErrorMessages
+        },
         on: {
           state_personal_info: function($event) {
             return _vm.state_personal_info($event)
@@ -53538,8 +53585,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\Shaleh\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\Shaleh\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\laragon\www\sh\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\sh\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
